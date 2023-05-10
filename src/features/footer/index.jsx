@@ -110,7 +110,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex items-center justify-center">
-          <p className="flex content-center justify-center text-xs mb-12 w-1/2 text-center text-gray-600 bg-opacity-75">
+          <p className="flex content-center justify-center text-xs mb-12 w-1/2 text-center text-gray-500 hover:text-white bg-opacity-75">
             Random Capsule does not deal with medical/clinical emergencies. In
             case of extreme suicidal crisis please visit your nearest mental
             health professional or call the national mental helpline number
@@ -120,14 +120,14 @@ const Footer = () => {
 
         <div className="bg-gray-800 bg-opacity-75">
           <div className="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
-            <Link className="flex title-font font-medium items-center md:justify-start justify-center text-white">
+            {/* <Link className="flex title-font font-medium items-center md:justify-start justify-center text-white">
               <img
                 className="block h-12 lg:h-16 w-auto"
                 src={require("../../assets/img/logo.png")}
                 alt="Random Capsule"
               />
-              {/* <span className="ml-3 text-xl">Tailblocks</span> */}
-            </Link>
+              <span className="ml-3 text-xl">Tailblocks</span>
+            </Link> */}
             <p className="text-sm text-gray-400 sm:ml-6 sm:mt-0 mt-4">
               © {new Date().getFullYear()} Random Capsule —
               <a

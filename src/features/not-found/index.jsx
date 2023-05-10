@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import SEO from "../seo";
 
 const PageNotFound = () => {
   return (
     <div className="flex items-center justify-center min-h-screen">
+      <SEO title="404" />
       <div className="bg-white py-6 sm:py-8 lg:py-12">
         <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
           <div className="flex flex-col items-center">
@@ -21,7 +23,7 @@ const PageNotFound = () => {
               to="/home"
               className="inline-block rounded-lg bg-blue-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-blue-400 focus-visible:ring active:text-gray-700 md:text-base"
             >
-              Go Home
+              &#8592; Go Home
             </Link>
           </div>
         </div>
