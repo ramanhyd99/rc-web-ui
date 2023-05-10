@@ -14,7 +14,7 @@ const WhyRandomCapsule = ({ className }) => {
         </div>
         <div class="grid gap-3 sm:grid-cols-2 md:gap-8 xl:grid-cols-2">
           <div class="flex divide-x rounded-lg border bg-gray-50">
-            <div class="flex items-center p-2 text-indigo-500 md:p-4">
+            <div class="flex items-center p-2 text-blue-500 md:p-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-6 w-6 md:h-8 md:w-8"
@@ -43,7 +43,7 @@ const WhyRandomCapsule = ({ className }) => {
             </div>
           </div>
           <div class="flex divide-x rounded-lg border bg-gray-50">
-            <div class="flex items-center p-2 text-indigo-500 md:p-4">
+            <div class="flex items-center p-2 text-blue-500 md:p-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-6 w-6 md:h-8 md:w-8"
@@ -74,7 +74,7 @@ const WhyRandomCapsule = ({ className }) => {
           </div>
 
           <div class="flex divide-x rounded-lg border bg-gray-50">
-            <div class="flex items-center p-2 text-indigo-500 md:p-4">
+            <div class="flex items-center p-2 text-blue-500 md:p-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-6 w-6 md:h-8 md:w-8"
@@ -105,7 +105,7 @@ const WhyRandomCapsule = ({ className }) => {
           </div>
 
           <div class="flex divide-x rounded-lg border bg-gray-50">
-            <div class="flex items-center p-2 text-indigo-500 md:p-4">
+            <div class="flex items-center p-2 text-blue-500 md:p-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-6 w-6 md:h-8 md:w-8"

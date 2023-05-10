@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import AnimatedHomeTitle from "../../common/AnimatedHomeTitle";
+import BookNow from "../../home/BookNow";
 import WhyRandomCapsule from "../../home/WhyRandomCapsule";
 import SEO from "../../seo";
 
@@ -31,15 +32,15 @@ const Home = () => {
               <div className="flex justify-center">
                 <Link
                   to="/your-psychologist"
-                  className="inline-flex text-white bg-black py-2 px-6 focus:outline-none hover:bg-gray-800 rounded text-lg"
+                  className="inline-flex text-white bg-gray-900 py-2 px-6 focus:outline-none hover:bg-gray-800 rounded text-lg"
                 >
                   Know more &#8594;
                 </Link>
                 <Link
-                  to="/booking"
+                  to="/contact-us"
                   className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"
                 >
-                  Book Session
+                  Contact
                 </Link>
               </div>
             </div>
@@ -47,7 +48,10 @@ const Home = () => {
         </div>
       </div>
       <div>
-        <WhyRandomCapsule className={"mt-5 px-14"}/>
+        <WhyRandomCapsule className={"mt-5 px-14"} />
+      </div>
+      <div>
+        <BookNow className={"mt-5 px-14"} />
       </div>
     </>
   );
