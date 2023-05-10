@@ -4,7 +4,7 @@ import { Facebook, Instagram, LinkedIn, Twitter } from "../common/svgs";
 const Footer = () => {
   return (
     <>
-      <footer className="text-gray-400 bg-gray-900 body-font">
+      <footer className="text-gray-400 bg-gray-900 body-font mt-20">
         <div className="container px-5 pt-24 py-12 mx-auto">
           <div className="flex flex-wrap md:text-center text-center order-first justify-center">
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">

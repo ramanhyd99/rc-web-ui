@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import AnimatedHomeTitle from "../common/AnimatedHomeTitle";
-import SEO from "../seo";
+import AnimatedHomeTitle from "../../common/AnimatedHomeTitle";
+import SEO from "../../seo";
 
 const Home = () => {
   return (
@@ -10,8 +10,8 @@ const Home = () => {
         <div className="container mx-auto flex px-5 md:flex-row flex-col items-center">
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0 flex justify-center">
             <img
-              className="sm:w-full w-1/2 h-auto"
-              src={require("../../assets/img/pooja.png")}
+              className="md:w-3/4 lg:w-full  w-1/2 h-auto"
+              src={require("../../../assets/img/pooja.png")}
               alt="Pooja Gupta"
             />
           </div>

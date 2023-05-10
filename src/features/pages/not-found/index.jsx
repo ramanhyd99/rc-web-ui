@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import SEO from "../seo";
+import SEO from "../../seo";
 
 const PageNotFound = () => {
   return (

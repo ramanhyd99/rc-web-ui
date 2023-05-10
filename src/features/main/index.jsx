@@ -1,10 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Footer from "../footer";
 import NavBar from "../navbar";
-import PageNotFound from "../not-found";
-import { HomePage } from "./AsyncPages";
+import { AboutPage, HomePage, PageNotFound } from "./AsyncPages";
 import { useEffect } from "react";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 const Main = () => {
   const location = useLocation();
@@ -22,6 +21,7 @@ const Main = () => {
         <div className="flex-grow pt-20 min-h-screen">
           <Routes>
             <Route path="/home" element={<HomePage />} />
+            <Route path="/your-psychologist" element={<AboutPage />} />
             <Route path="*" element={<Navigate to="/not-found" />} />
             <Route path="/not-found" element={<PageNotFound />} />
           </Routes>

@@ -117,9 +117,12 @@ const NavBar = () => {
                       </motion.a>
                     </div>
 
-                    <button className=" hidden sm:ml-6 sm:block  ml-auto text-white bg-blue-500 border-0 py-3 px-6  text-sm   focus:outline-none hover:bg-blue-400 rounded-lg  ">
+                    <Link
+                      to="/booking"
+                      className=" hidden sm:ml-6 sm:block  ml-auto text-white bg-blue-500 border-0 py-3 px-6  text-sm   focus:outline-none hover:bg-blue-400 rounded-lg  "
+                    >
                       Book Session
-                    </button>
+                    </Link>
 
                     {/* Profile dropdown */}
                     <Menu as="div" className="relative ml-3">

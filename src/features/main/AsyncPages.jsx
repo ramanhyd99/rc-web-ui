@@ -3,5 +3,15 @@ import Loading from "../common/loading";
 
 export const HomePage = Loadable({
   loading: Loading,
-  loader: () => import("../home"),
+  loader: () => import("../pages/home"),
+});
+
+export const PageNotFound = Loadable({
+  loading: Loading,
+  loader: () => import("../pages/not-found"),
+});
+
+export const AboutPage = Loadable({
+  loading: Loading,
+  loader: () => import("../pages/about"),
 });
