@@ -6,7 +6,6 @@ const WhyRandomCapsule = ({ className }) => {
           <h2 class="mb-4 text-center text-4xl font-bold text-gray-800 md:mb-6 lg:text-5xl">
             Why Random Capsule?
           </h2>
-
           <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">
             Random Capsule has been made with the sole aim to bring afforadable
             and better mental health-care closer to you!

@@ -7,7 +7,7 @@ import SEO from "../../seo";
 const Home = () => {
   return (
     <>
-      <div className="flex py-10 text-black w-full min-h-screen justify-around">
+      <div className="flex py-10 text-black w-full justify-around">
         <SEO title="Home" />
         <div className="text-gray-600 body-font">
           <div className="container mx-auto flex px-5 md:flex-row flex-col items-center">
@@ -48,10 +48,10 @@ const Home = () => {
         </div>
       </div>
       <div>
-        <WhyRandomCapsule className={"mt-5 px-14"} />
+        <WhyRandomCapsule className={"mt-5 sm:px-14 px-4"} />
       </div>
       <div>
-        <BookNow className={"mt-5 px-14"} />
+        <BookNow className={"mt-5 sm:px-14 px-4"} />
       </div>
     </>
   );

@@ -15,3 +15,8 @@ export const AboutPage = Loadable({
   loading: Loading,
   loader: () => import("../pages/about"),
 });
+
+export const FAQsPage = Loadable({
+  loading: Loading,
+  loader: () => import("../pages/faqs"),
+});

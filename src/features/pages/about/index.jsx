@@ -73,7 +73,7 @@ const About = () => {
             style={{ boxShadow: "0px 0px 10px 2px rgba(0, 0, 0, 0.7)" }}
           >
             <img
-              className="h-1/2  lg:h-max border-2 border-black/70 rounded-2xl"
+              className="h-1/2 lg:h-max border-2 border-black/70 rounded-2xl"
               src={require("../../../assets/img/pooja.png")}
               alt="Pooja Gupta"
             />

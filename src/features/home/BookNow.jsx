@@ -15,9 +15,12 @@ const BookNow = ({ className }) => {
           </div>
 
           <div class="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-3/5">
-            <h2 class="mb-4 text-xl font-bold text-gray-800 md:text-2xl lg:text-4xl">
-              Sessions at ₹329 only!
+            <h2 class="flex sm:justify-start justify-center mb-4 text-xl font-bold text-gray-800 md:text-2xl lg:text-4xl">
+              Sessions at ₹329 only
             </h2>
+            <h3 class="flex sm:justify-start justify-center mb-4 text-md font-bold text-gray-500 md:text-xl lg:text-2xl">
+              Free follow-up sessions!
+            </h3>
 
             <p class="mb-4 max-w-md text-gray-600">
               We believe that mental well-being should be accessible to all,
@@ -25,12 +28,12 @@ const BookNow = ({ className }) => {
               compromising on the quality of care.
             </p>
 
-            <div class="mt-auto mb-4">
+            <div class="mt-4 mb-6">
               <Link
                 to="/booking"
-                class="inline-block rounded-lg bg-blue-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-blue-400 focus-visible:ring active:bg-gray-200 md:text-base"
+                class="flex justify-center sm:inline-block rounded-lg bg-blue-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-blue-400 focus-visible:ring active:bg-gray-200 md:text-base"
               >
-                Book Now
+                <span>Book Now</span>
               </Link>
             </div>
           </div>

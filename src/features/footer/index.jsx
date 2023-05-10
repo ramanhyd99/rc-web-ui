@@ -13,7 +13,10 @@ const Footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <Link to="/home" className="text-gray-400 hover:text-white">
+                  <Link
+                    to="/your-psychologist"
+                    className="text-gray-400 hover:text-white"
+                  >
                     Your Psychologist
                   </Link>
                 </li>
