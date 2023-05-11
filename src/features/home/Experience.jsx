@@ -4,9 +4,9 @@ import {
   NumberOfYearsExp,
 } from "../../utils/constants";
 
-const Experience = () => {
+const Experience = ({className}) => {
   return (
-    <div class="bg-white py-6 sm:py-8 lg:py-12">
+    <div className={`bg-white py-6 sm:py-8 lg:py-12 ${className}`}>
       <div class="mx-auto max-w-screen-xl px-4 md:px-8">
         <div class="mb-10 md:mb-16">
           <h2 class="mb-4 text-center text-4xl font-bold text-gray-800  md:mb-6 lg:text-5xl">

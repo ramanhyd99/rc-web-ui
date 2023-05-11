@@ -28,7 +28,7 @@ const NavBar = () => {
       <div>
         <Disclosure
           as="nav"
-          className="bg-white fixed top-0 w-full py-2 border-b -[1px]"
+          className="bg-white fixed top-0 w-full py-2 border-b -[1px] z-50"
         >
           {({ open }) => (
             <>

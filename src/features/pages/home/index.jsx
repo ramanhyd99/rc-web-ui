@@ -4,6 +4,7 @@ import BookNow from "../../home/BookNow";
 import WhyRandomCapsule from "../../home/WhyRandomCapsule";
 import Experience from "../../home/Experience";
 import SEO from "../../seo";
+import HowItWorks from "../../home/HowItWorks";
 
 const Home = () => {
   return (
@@ -52,10 +53,13 @@ const Home = () => {
         <WhyRandomCapsule className={"mt-5 sm:px-14 px-4"} />
       </div>
       <div>
-        <BookNow className={"mt-5 sm:px-14 px-4"} />
+        <BookNow className={"mt-8 sm:px-14 px-4"} />
       </div>
       <div>
-        <Experience />
+        <Experience className={"mt-8 sm:px-14 px-4"} />
+      </div>
+      <div>
+        <HowItWorks className={"mt-20 sm:px-14 px-4"} />
       </div>
     </>
   );
