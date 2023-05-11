@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import AnimatedHomeTitle from "../../common/AnimatedHomeTitle";
 import BookNow from "../../home/BookNow";
 import WhyRandomCapsule from "../../home/WhyRandomCapsule";
+import Experience from "../../home/Experience";
 import SEO from "../../seo";
 
 const Home = () => {
@@ -52,6 +53,9 @@ const Home = () => {
       </div>
       <div>
         <BookNow className={"mt-5 sm:px-14 px-4"} />
+      </div>
+      <div>
+        <Experience />
       </div>
     </>
   );

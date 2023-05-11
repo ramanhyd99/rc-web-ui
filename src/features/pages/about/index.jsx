@@ -1,5 +1,6 @@
 import { useInView, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useRef } from "react";
+import { NumberOfClients, NumberOfSessions, NumberOfYearsExp } from "../../../utils/constants";
 import PageTitle from "../../common/PageTitle";
 import SEO from "../../seo";
 
@@ -85,7 +86,7 @@ const About = () => {
           <div className="col-span-2 flex flex-col items-end justify-around pb-20">
             <div className="flex flex-col items-end justify-center ">
               <span className="inline-block text-7xl font-bold">
-                <AnimatedNumbers value={50} />+
+                <AnimatedNumbers value={NumberOfClients} />+
               </span>
               <h2 className="text-xl font-medium capitalize text-black/60">
                 Lives Impacted
@@ -93,7 +94,7 @@ const About = () => {
             </div>
             <div className="flex flex-col items-end justify-center ">
               <span className="inline-block text-7xl font-bold">
-                <AnimatedNumbers value={500} />+
+                <AnimatedNumbers value={NumberOfSessions} />+
               </span>
               <h2 className="text-xl font-medium capitalize text-black/60">
                 Sessions
@@ -101,7 +102,7 @@ const About = () => {
             </div>
             <div className="flex flex-col items-end justify-center ">
               <span className="inline-block text-7xl font-bold">
-                <AnimatedNumbers value={4} />+
+                <AnimatedNumbers value={NumberOfYearsExp} />+
               </span>
               <h2 className="text-xl font-medium capitalize text-black/60">
                 Years exp.

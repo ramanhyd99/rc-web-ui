@@ -12,9 +12,10 @@ import {
 import { motion } from "framer-motion";
 
 const navigation = [
-  { id: 1, name: "About Us", to: "/about", current: true },
-  { id: 2, name: "FAQS", to: "/faqs", current: false },
-  { id: 3, name: "Library", to: "/library", current: false },
+  { id: 1, name: "Your Psychologist", to: "/your-psychologist", current: true },
+  { id: 2, name: "Our Team", to: "/about", current: true },
+  { id: 3, name: "FAQS", to: "/faqs", current: false },
+  { id: 4, name: "Library", to: "/library", current: false },
 ];
 
 function classNames(...classes) {
