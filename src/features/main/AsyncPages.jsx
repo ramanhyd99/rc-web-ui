@@ -20,3 +20,13 @@ export const FAQsPage = Loadable({
   loading: Loading,
   loader: () => import("../pages/faqs"),
 });
+
+export const LoginPage = Loadable({
+  loading: Loading,
+  loader: () => import("../pages/login"),
+});
+
+export const OurTeamPage = Loadable({
+  loading: Loading,
+  loader: () => import("../pages/team"),
+});

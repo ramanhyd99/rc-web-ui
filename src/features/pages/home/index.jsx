@@ -5,6 +5,7 @@ import WhyRandomCapsule from "../../home/WhyRandomCapsule";
 import Experience from "../../home/Experience";
 import SEO from "../../seo";
 import HowItWorks from "../../home/HowItWorks";
+import ServicesProvided from "../../home/ServicesProvided";
 import Testimonials from "../../home/Testimonials";
 
 const Home = () => {
@@ -57,10 +58,13 @@ const Home = () => {
         <BookNow className={"mt-8 sm:px-14 px-4"} />
       </div>
       <div>
-        <Experience className={"mt-8 sm:px-14 px-4"} />
+        <ServicesProvided className={"mt-8 sm:px-14 px-4"} />
       </div>
       <div>
-        <HowItWorks className={"mt-20 sm:px-14 px-4"} />
+        <Experience className={"mt-0 sm:px-14 px-4"} />
+      </div>
+      <div>
+        <HowItWorks className={"mt-10 sm:px-14 px-4"} />
       </div>
       <div>
         <Testimonials />

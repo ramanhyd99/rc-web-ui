@@ -62,11 +62,11 @@ const FAQs = ({ className }) => {
   return (
     <div className={`${className}`}>
       <SEO title="FAQs" />
-      <div class="bg-white py-6 sm:py-8 lg:py-12">
-        <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-          <div class="mb-10 md:mb-16">
+      <div className="bg-white py-6 sm:py-8 lg:py-12">
+        <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
+          <div className="mb-10 md:mb-16">
             <PageTitle text="Frequently asked questions" className="mb-14" />
-            <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">
+            <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">
               Please reach out to us{" "}
               <Link
                 to="/contact-us"
@@ -77,26 +77,26 @@ const FAQs = ({ className }) => {
               if you have any further questions.
             </p>
           </div>
-          <div class="mx-auto flex max-w-screen-sm flex-col border-t">
+          <div className="mx-auto flex max-w-screen-sm flex-col border-t">
             {content.map((item, index) => (
-              <div class="border-b">
+              <div className="border-b">
                 <div
-                  class="flex cursor-pointer justify-between gap-2 py-4 text-black hover:text-blue-500 active:text-blue-600"
+                  className="flex cursor-pointer justify-between gap-2 py-4 text-black hover:text-blue-500 active:text-blue-600"
                   onClick={
                     selectedIndex !== index
                       ? () => handleOnDrop(index)
                       : () => handleOnUnDrop(index)
                   }
                 >
-                  <span class="font-semibold transition duration-100 md:text-lg">
+                  <span className="font-semibold transition duration-100 md:text-lg">
                     {item.question}
                   </span>
 
                   {selectedIndex !== index ? (
-                    <span class="text-blue-500">
+                    <span className="text-blue-500">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6"
+                        className="h-6 w-6"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -110,10 +110,10 @@ const FAQs = ({ className }) => {
                       </svg>
                     </span>
                   ) : (
-                    <span class="text-blue-500 transform rotate-180">
+                    <span className="text-blue-500 transform rotate-180">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6"
+                        className="h-6 w-6"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -130,7 +130,7 @@ const FAQs = ({ className }) => {
                 </div>
 
                 {selectedIndex === index && (
-                  <p class="mb-4 text-gray-500">{item.answer}</p>
+                  <p className="mb-4 text-gray-500">{item.answer}</p>
                 )}
               </div>
             ))}

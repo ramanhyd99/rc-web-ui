@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Footer from "../footer";
 import NavBar from "../navbar";
-import { AboutPage, FAQsPage, HomePage, PageNotFound } from "./AsyncPages";
+import { AboutPage, FAQsPage, HomePage, LoginPage, OurTeamPage, PageNotFound } from "./AsyncPages";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -23,6 +23,8 @@ const Main = () => {
             <Route path="/home" element={<HomePage />} />
             <Route path="/your-psychologist" element={<AboutPage />} />
             <Route path="/faqs" element={<FAQsPage />} />
+            <Route path="/our-team" element={<OurTeamPage />} />
+            <Route path="/login" element={<LoginPage/>} />
             <Route path="*" element={<Navigate to="/not-found" />} />
             <Route path="/not-found" element={<PageNotFound />} />
           </Routes>

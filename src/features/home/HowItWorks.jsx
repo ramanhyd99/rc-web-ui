@@ -1,26 +1,26 @@
 const HowItWorks = ({ className }) => {
   return (
-    <section class="text-gray-600 body-font">
-      <div class="container px-5 py-14 mx-auto flex flex-wrap">
+    <section className={`text-gray-600 body-font ${className}`}>
+      <div className="container px-5 py-14 mx-auto flex flex-wrap">
         <div className="w-full flex justify-center items-center content-center">
-          <h2 class="text-4xl font-bold text-gray-800  md:mb-6 lg:text-5xl">
+          <h2 className="text-4xl font-bold text-gray-800  md:mb-6 lg:text-5xl">
             How It Works
           </h2>
         </div>
-        <div class="flex flex-wrap md:mx-40 mt-4">
-          <div class="lg:w-1/3 md:w-1/2 w-full md:pr-10 md:py-6">
-            <div class="flex relative pb-12">
-              <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
-                <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+        <div className="flex flex-wrap md:mx-40 mt-4">
+          <div className="lg:w-1/3 md:w-1/2 w-full md:pr-10 md:py-6">
+            <div className="flex relative pb-12">
+              <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
+                <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
               </div>
-              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-400 inline-flex items-center justify-center text-white relative z-10">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gray-400 inline-flex items-center justify-center text-white relative z-10">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-6 h-6"
+                  className="w-6 h-6"
                 >
                   <path
                     stroke-linecap="round"
@@ -29,29 +29,29 @@ const HowItWorks = ({ className }) => {
                   />
                 </svg>
               </div>
-              <div class="flex-grow pl-4">
-                <h2 class="font-medium title-font text-medium text-gray-900 mb-1 tracking-wider">
+              <div className="flex-grow pl-4">
+                <h2 className="font-medium title-font text-medium text-gray-900 mb-1 tracking-wider">
                   Book Session
                 </h2>
-                <p class="leading-relaxed">
+                <p className="leading-relaxed">
                   Book a session as per your convenience. You can choose your
                   preferred mode such as <b>video, chat or call</b>.
                 </p>
               </div>
             </div>
 
-            <div class="flex relative pb-12">
-              <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
-                <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+            <div className="flex relative pb-12">
+              <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
+                <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
               </div>
-              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-500 inline-flex items-center justify-center text-white relative z-10">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-500 inline-flex items-center justify-center text-white relative z-10">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-6 h-6"
+                  className="w-6 h-6"
                 >
                   <path
                     stroke-linecap="round"
@@ -60,25 +60,25 @@ const HowItWorks = ({ className }) => {
                   />
                 </svg>
               </div>
-              <div class="flex-grow pl-4">
-                <h2 class="font-medium title-font text-medium text-gray-900 mb-1 tracking-wider">
+              <div className="flex-grow pl-4">
+                <h2 className="font-medium title-font text-medium text-gray-900 mb-1 tracking-wider">
                   Receive Confirmation
                 </h2>
-                <p class="leading-relaxed">
+                <p className="leading-relaxed">
                   You will receive an <b>email/sms</b> confirmation post booking
                   & details of how to join the session.
                 </p>
               </div>
             </div>
-            <div class="flex relative">
-              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500 inline-flex items-center justify-center text-white relative z-10">
+            <div className="flex relative">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500 inline-flex items-center justify-center text-white relative z-10">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-6 h-6"
+                  className="w-6 h-6"
                 >
                   <path
                     stroke-linecap="round"
@@ -87,11 +87,11 @@ const HowItWorks = ({ className }) => {
                   />
                 </svg>
               </div>
-              <div class="flex-grow pl-4">
-                <h2 class="font-medium title-font text-medium text-gray-900 mb-1 tracking-wider">
+              <div className="flex-grow pl-4">
+                <h2 className="font-medium title-font text-medium text-gray-900 mb-1 tracking-wider">
                   1 hr session
                 </h2>
-                <p class="leading-relaxed">
+                <p className="leading-relaxed">
                   The session will be an hour long and an option for free
                   follow-up session as your psychologist sees fit.
                 </p>
@@ -99,7 +99,7 @@ const HowItWorks = ({ className }) => {
             </div>
           </div>
 
-          <div class="lg:w-2/3 md:w-2/3 w-full md:mt-0 mt-12 flex items-center content-center justify-center">
+          <div className="lg:w-2/3 md:w-2/3 w-full md:mt-0 mt-12 flex items-center content-center justify-center">
             <img
               className="lg:w-3/4 lg:h-auto  w-3/4 h-auto "
               src={require("../../assets/img/talking_to_client.png")}
