@@ -30,3 +30,9 @@ export const OurTeamPage = Loadable({
   loading: Loading,
   loader: () => import("../pages/team"),
 });
+
+
+export const BookingPage = Loadable({
+  loading: Loading,
+  loader: () => import("../pages/booking"),
+});

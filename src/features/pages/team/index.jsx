@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PageTitle from "../../common/PageTitle";
 import { Facebook, Instagram, Twitter } from "../../common/svgs";
 import SEO from "../../seo";
 
@@ -8,9 +9,7 @@ const OurTeam = () => {
       <SEO title="Our team" />
       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="mb-10 md:mb-16">
-          <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">
-            Meet our Team!
-          </h2>
+          <PageTitle text="Meet Our Team" className="mb-2" />
 
           <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">
             We are a small, yet dedicated team of two.
@@ -19,7 +18,7 @@ const OurTeam = () => {
 
         <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-2 lg:gap-8">
           <div className="flex flex-col items-center rounded-lg bg-gray-100 p-4 lg:p-8">
-            <div className="mb-2 h-24 w-24 overflow-hidden rounded-full bg-gray-200 shadow-lg md:mb-4 md:h-32 md:w-auto">
+            <div className="mb-2 h-24 w-24 overflow-hidden rounded-full bg-gray-200 shadow-lg md:mb-4 md:h-36 md:w-auto">
               <img
                 src={require("../../../assets/img/pooja.png")}
                 loading="lazy"
@@ -90,7 +89,7 @@ const OurTeam = () => {
           </div>
 
           <div className="flex flex-col items-center rounded-lg bg-gray-100 p-4 lg:p-8">
-            <div className="mb-2 h-28 w-24 overflow-hidden rounded-full bg-gray-200 shadow-lg md:mb-4 md:h-32 md:w-auto">
+            <div className="mb-2 h-28 w-24 overflow-hidden rounded-full bg-gray-200 shadow-lg md:mb-4 md:h-36 md:w-auto">
               <img
                 src={require("../../../assets/img/raman.png")}
                 loading="lazy"

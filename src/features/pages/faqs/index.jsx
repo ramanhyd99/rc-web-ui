@@ -64,8 +64,8 @@ const FAQs = ({ className }) => {
       <SEO title="FAQs" />
       <div className="bg-white py-6 sm:py-8 lg:py-12">
         <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
-          <div className="mb-10 md:mb-16">
-            <PageTitle text="Frequently asked questions" className="mb-14" />
+          <div className="mb-10 md:mb-12">
+            <PageTitle text="Frequently asked questions" className="mb-2" />
             <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">
               Please reach out to us{" "}
               <Link
