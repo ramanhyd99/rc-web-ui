@@ -40,17 +40,17 @@ const About = () => {
         <div className="lg:grid w-full grid-cols-8 gap-16 flex flex-col lg:items-stretch  items-center">
           <div className="col-span-3 flex flex-col items-start justify-start">
             <h2 className="mb-4 text-lg font-bold uppercase text-black/60">
-              Biography
+              About Me
             </h2>
             <p className="font-medium text-gray-600">
               Hello! I am a psychologist, specialising in Clinical Psychology. I
-              am a behavioural therapist, certified cognitive behavioural
+              am a behavioural therapist, consultant child-psychologist, certified cognitive behavioural
               therapy practitioner, dream analyst, principal investigator in
               various research studies, a well trained counsellor and the
-              founder of (your own) Random Capsule. I use an empathetic approach
+              founder of (your very own) Random Capsule. I use an empathetic approach
               and focus on client centred therapy. My unique style of
               counselling is based on the principles of psychoanalytic and
-              humanistic schools of psychology. I am an active yoga and
+              humanistic schools of psychology and indegineous healing techniques. I am an active yoga and
               acupressure practitioner. I provide a safe, inclusive and a
               non-judgmental space for us to talk, vent, listen and understand.
             </p>

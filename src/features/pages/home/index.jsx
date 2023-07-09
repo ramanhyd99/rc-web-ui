@@ -1,19 +1,40 @@
 import { Link } from "react-router-dom";
 import AnimatedHomeTitle from "../../common/AnimatedHomeTitle";
-import BookNow from "../../home/BookNow";
-import WhyRandomCapsule from "../../home/WhyRandomCapsule";
-import Experience from "../../home/Experience";
+import BookNow from "./components/BookNow";
+import Experience from "./components/Experience";
+import HowItWorks from "./components/HowItWorks";
+import WhyRandomCapsule from "./components/WhyRandomCapsule";
+import ServicesProvided from "./components/ServicesProvided";
+import Testimonials from "./components/Testimonials";
+import { PhoneIcon } from "@heroicons/react/20/solid";
+import { useState } from "react";
+import ContactUsModal from "../../common/modals/ContactUsModal";
 import SEO from "../../seo";
-import HowItWorks from "../../home/HowItWorks";
-import ServicesProvided from "../../home/ServicesProvided";
-import Testimonials from "../../home/Testimonials";
 
 const Home = () => {
+  const [onPhoneClick, setPhoneClick] = useState(false);
+
+  const handlePhoneClick = () => {
+    setPhoneClick(!onPhoneClick);
+  };
+
   return (
     <>
-      <div className="flex py-10 text-black w-full justify-around">
+      <div className="flex py-10 text-black w-full justify-around !pt-2">
         <SEO title="Home" />
-        <div className="text-gray-600 body-font">
+        <div class="z-50 fixed bottom-1 left-2 p-4 bg-gradient-to-tr  from-pink-600 to-blue-400 text-white rounded-full flex items-center justify-center ">
+          <button onClick={handlePhoneClick} class="text-xs">
+            Need <br /> Support?
+          </button>
+        </div>
+
+        {onPhoneClick && <ContactUsModal setOpen={handlePhoneClick} />}
+
+        {/* <div class="z-50 fixed bottom-5 left-2 p-4 items-center justify-center">
+          <SpotifyIcon />
+        </div> */}
+
+        <div className="text-gray-600 body-font ">
           <div className="container mx-auto flex px-5 md:flex-row flex-col items-center">
             <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0 flex justify-center">
               <img
@@ -44,7 +65,7 @@ const Home = () => {
                   to="/contact-us"
                   className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"
                 >
-                  Contact
+                  Contact Us
                 </Link>
               </div>
             </div>

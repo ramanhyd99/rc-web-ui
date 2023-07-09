@@ -3,7 +3,7 @@ import SEO from "../../seo";
 
 const PageNotFound = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-screen !pt-0">
       <SEO title="404" />
       <div className="bg-white py-6 sm:py-8 lg:py-12">
         <div className="mx-auto max-w-screen-2xl px-4 md:px-8">

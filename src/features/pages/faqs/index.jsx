@@ -12,15 +12,15 @@ const content = [
   },
   {
     id: 2,
-    question: "What is the refund/cancellation policy?",
+    question: "What is the refund/cancellation/reschedule policy?",
     answer:
-      "We understand that unexpected situations may arise, but unfortunately, we do not currently offer refunds or cancellations. However, we are committed to working with you to find alternative solutions and accommodate any necessary adjustments to your appointments.",
+      "We understand that unexpected situations may arise, but unfortunately, we do not currently offer rescheduling, refunds or cancellations. However, we are committed to working with you to find alternative solutions and accommodate any necessary adjustments to your appointments.",
   },
   {
     id: 3,
-    question: "How frequently should I schedule sessions?",
+    question: "How frequently can I schedule sessions?",
     answer:
-      "The frequency of sessions can vary depending on your specific needs and goals. It is best to discuss this with your therapist or counselor to determine a schedule that works best for you. As a rule of thumb, it's best to keep a gap of at-least 3 days before booking a new session",
+      "The frequency of sessions can vary depending on your specific needs and goals. It is best to discuss this with your therapist or counselor to determine a schedule that works best for you. As a rule of thumb, it's best to keep a gap of at-least 3 days before booking a new session.",
   },
   {
     id: 4,
@@ -45,6 +45,12 @@ const content = [
     question: "How long does therapy or counseling usually last?",
     answer:
       "The duration of therapy or counseling can vary depending on individual needs and goals. Some people find benefit from short-term therapy, which may last a few weeks or months, while others may engage in longer-term therapy for ongoing support and personal growth.",
+  },
+  {
+    id: 8,
+    question: "Do you offer offline counselling sessions?",
+    answer:
+      "Please contact +91-7975897538 and based on your location the best option can be decided.",
   },
 ];
 

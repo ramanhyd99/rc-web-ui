@@ -1,5 +1,12 @@
+import { PhoneIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, LinkedIn, Twitter } from "../common/svgs";
+import {
+  Facebook,
+  Instagram,
+  LinkedIn,
+  Twitter,
+  WhatsappIcon,
+} from "../common/svgs";
 
 const Footer = () => {
   return (
@@ -21,17 +28,23 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/home" className="text-gray-400 hover:text-white">
-                    The Team
+                  <Link
+                    to="/our-team"
+                    className="text-gray-400 hover:text-white"
+                  >
+                    Our Team
                   </Link>
                 </li>
                 <li>
-                  <Link to="/home" className="text-gray-400 hover:text-white">
-                    FAQS/Help
+                  <Link to="/faqs" className="text-gray-400 hover:text-white">
+                    FAQS
                   </Link>
                 </li>
                 <li>
-                  <Link to="/home" className="text-gray-400 hover:text-white">
+                  <Link
+                    to="/contact-us"
+                    className="text-gray-400 hover:text-white"
+                  >
                     Contact Us
                   </Link>
                 </li>
@@ -42,21 +55,25 @@ const Footer = () => {
                 Library
               </h2>
               <nav className="list-none mb-10">
-                <li>
-                  <Link to="/home" className="text-gray-400 hover:text-white">
-                    Resources
-                  </Link>
-                </li>
-                <li>
+                {/* <li>
                   <Link to="/home" className="text-gray-400 hover:text-white">
                     Assessments
                   </Link>
-                </li>
+                </li> */}
                 <li>
+                  <Link
+                    to="https://ijcspub.org/viewfull.php?&p_id=IJCSP23A1290"
+                    className="text-gray-400 hover:text-white"
+                    target={"_blank"}
+                  >
+                    My Publications
+                  </Link>
+                </li>
+                {/* <li>
                   <Link to="/home" className="text-gray-400 hover:text-white">
                     Articles
                   </Link>
-                </li>
+                </li> */}
               </nav>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
@@ -75,7 +92,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/home" className="text-gray-400 hover:text-white">
+                  <Link to="/privacy-policy" className="text-gray-400 hover:text-white">
                     Privacy Policy
                   </Link>
                 </li>
@@ -114,10 +131,10 @@ const Footer = () => {
         </div>
         <div className="flex items-center justify-center">
           <p className="flex content-center justify-center text-xs mb-12 w-1/2 text-center text-gray-500 hover:text-white bg-opacity-75">
-            Random Capsule does not deal with medical/clinical emergencies. In
-            case of extreme suicidal crisis please visit your nearest mental
-            health professional or call the national mental helpline number
-            1800-599-0019.
+            Disclaimer: Random Capsule does not deal with medical/clinical
+            emergencies. In case of extreme suicidal crisis please visit your
+            nearest mental health professional or call the national mental
+            helpline number 1800-599-0019.
           </p>
         </div>
 
@@ -144,11 +161,12 @@ const Footer = () => {
               </a>
             </p>
             <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-              <Link className="text-gray-400">
-                <Facebook />
-              </Link>
-              <Link className="ml-3 text-gray-400">
-                <Twitter />
+              <Link
+                className="ml-3 text-gray-400"
+                to="/contact-us"
+                target="_blank"
+              >
+                <PhoneIcon className="h-5 w-auto" />
               </Link>
               <Link
                 to="https://www.instagram.com/random_capsule/"
