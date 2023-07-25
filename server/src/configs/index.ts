@@ -20,7 +20,7 @@ const DEV_CONFIG: APPConfig = {
   microservices: [
     {
       name: "backend",
-      base_url: "http://localhost:8000/api",
+      base_url: "http://localhost:8046/api",
     },
   ],
 };

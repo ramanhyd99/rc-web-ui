@@ -37,7 +37,7 @@ export const fetchUserProfile = async (
 
     res.status(200).json(customizedResponse);
   } catch (error) {
-    // console.error(error);
+    console.error(error);
     customizedResponse = {
       data: null,
       errorMessage: "Could not fetch user details.",

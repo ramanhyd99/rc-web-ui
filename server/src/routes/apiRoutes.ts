@@ -26,11 +26,15 @@ router.post(
   upload.single("files"),
   assignmentController.uploadAssignments
 );
+router.get("/assignments/", assignmentController.getAssignmentsForUserId);
+router.delete("/assignments/", assignmentController.deleteAssignmentsForAssignmentId);
 
 router.patch("/settings/updateDayTypes", settingsController.updateDayTypes);
 router.get("/settings/getDayTypes", settingsController.getDayTypes);
 
 router.get("/slots/", slotsController.getSlotsForDate);
-
+router.post("/slots/processSlot", slotsController.lockSlotForDate); 
+router.post("/slots/create/", slotsController.generateSlotsForDate); 
+router.delete("/slots/", slotsController.deleteSlotBySlotId); 
 
 export default router;

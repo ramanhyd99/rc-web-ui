@@ -24,5 +24,5 @@ export interface AuthorizedRequest extends Request {
 }
 
 export interface MulterRequest extends AuthorizedRequest {
-  files: any;
+  file: any;
 }
