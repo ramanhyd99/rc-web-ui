@@ -1,10 +1,9 @@
 import { CardBody } from "@material-tailwind/react";
-import { type } from "@testing-library/user-event/dist/type";
 import { useState } from "react";
 import {
   useGetDayTypesQuery,
   useUpdateDayTypesMutation,
-} from "../../../apis/user";
+} from "../../../apis/rtk-apis";
 import {
   convertTo12HourFormat,
   convertTo24HourFormat,
@@ -12,30 +11,30 @@ import {
 } from "../../../utils";
 import Loading from "../../common/loading";
 
-const DAY_TYPE_DATA = [
-  {
-    day_type_id: 3,
-    name: "Full-day (online)",
-    start: "19:00:00",
-    end: "21:00:00",
-    in_clinic: false,
-    updated_at: "2023-06-29 08:54:11",
-  },
-  {
-    day_type_id: 4,
-    name: "Full-day (in-clinic)",
-    start: "08:00:00",
-    end: "21:00:00",
-    in_clinic: true,
-    updated_at: "2023-06-29 08:54:11",
-  },
-];
+// const DAY_TYPE_DATA = [
+//   {
+//     day_type_id: 3,
+//     name: "Full-day (online)",
+//     start: "19:00:00",
+//     end: "21:00:00",
+//     in_clinic: false,
+//     updated_at: "2023-06-29 08:54:11",
+//   },
+//   {
+//     day_type_id: 4,
+//     name: "Full-day (in-clinic)",
+//     start: "08:00:00",
+//     end: "21:00:00",
+//     in_clinic: true,
+//     updated_at: "2023-06-29 08:54:11",
+//   },
+// ];
 const DayTypeSettings = () => {
   const [formData, setFormData] = useState({});
 
   let { data, isFetching } = useGetDayTypesQuery();
 
-  const [updateDayTypes, { isError }] = useUpdateDayTypesMutation();
+  const [updateDayTypes] = useUpdateDayTypesMutation();
 
   const handleValueChange = (event) => {
     // alert(event.target.value);
@@ -43,7 +42,7 @@ const DayTypeSettings = () => {
     const field = event.target.name;
     let value = event.target.value;
 
-    if (field == "start" || field == "end") {
+    if (field === "start" || field === "end") {
       value = convertTo24HourFormat(value);
     }
 
@@ -66,8 +65,6 @@ const DayTypeSettings = () => {
 
   const handleFormUpload = (event) => {
     event.preventDefault();
-    console.log(Object.values(formData));
-
     updateDayTypes({ formData: Object.values(formData) });
     setFormData([]);
   };
@@ -99,7 +96,7 @@ const DayTypeSettings = () => {
                           <input
                             name="name"
                             onChange={handleValueChange}
-                            class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id={day_type_id}
                             type="text"
                             defaultValue={name}
@@ -109,7 +106,7 @@ const DayTypeSettings = () => {
                           <input
                             name="start"
                             onChange={handleValueChange}
-                            class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id={day_type_id}
                             type="text"
                             defaultValue={convertTo12HourFormat(start)}
@@ -119,7 +116,7 @@ const DayTypeSettings = () => {
                           <input
                             name="end"
                             onChange={handleValueChange}
-                            class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id={day_type_id}
                             type="text"
                             defaultValue={convertTo12HourFormat(end)}
@@ -132,7 +129,7 @@ const DayTypeSettings = () => {
                             name="in_clinic"
                             autocomplete="in_clinic"
                             defaultValue={in_clinic.toString()}
-                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                           >
                             <option>true</option>
                             <option>false</option>
@@ -148,11 +145,11 @@ const DayTypeSettings = () => {
           </table>
         </CardBody>
         {Object.keys(formData).length > 0 && (
-          <div class="mt-6 flex items-center justify-center gap-x-6">
+          <div className="mt-6 flex items-center justify-center gap-x-6">
             <button
               onClick={clearFormUpload}
               type="button"
-              class="text-sm font-semibold leading-6 text-gray-900"
+              className="text-sm font-semibold leading-6 text-gray-900"
             >
               Clear
             </button>
@@ -160,7 +157,7 @@ const DayTypeSettings = () => {
               name="files"
               onClick={handleFormUpload}
               type="submit"
-              class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Save
             </button>

@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { googleLoginApiCall, logoutApiCall } from "../../apis/auth";
-import { getUserInfo } from "../../apis/users";
+import { getUserInfo, googleLoginApiCall, logoutApiCall } from "../../apis/non-rtk-apis";
 import { LocalStorageLoggedInKey } from "../../utils/constants";
 
 const initialState = {

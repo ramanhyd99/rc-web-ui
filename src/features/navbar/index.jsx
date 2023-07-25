@@ -1,6 +1,5 @@
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {
-  ArrowRightOnRectangleIcon,
   Bars3Icon,
   BookOpenIcon,
   DocumentMagnifyingGlassIcon,
@@ -9,19 +8,16 @@ import {
 import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  InstagramIcon,
-  SpotifyIcon,
-  TwitterIcon,
-  WhatsappIcon,
-} from "../common/svgs";
+import { InstagramIcon, SpotifyIcon, WhatsappIcon } from "../common/svgs";
 
+import { PhoneIcon } from "@heroicons/react/20/solid";
+import { Avatar } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 import { connect, useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import { fetchUserInfo, logout } from "../../redux/slices/authSlice";
 import { LocalStorageLoggedInKey } from "../../utils/constants";
-import { PhoneIcon, PowerIcon } from "@heroicons/react/20/solid";
+import Button1 from "../common/styled-components/button1";
 
 const navigation = [
   { id: 1, name: "Your Psychologist", to: "/your-psychologist", current: true },
@@ -46,7 +42,7 @@ const NavBar = ({ userInfo }) => {
         dispatch(fetchUserInfo());
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }, []);
 
@@ -79,7 +75,7 @@ const NavBar = ({ userInfo }) => {
     try {
       dispatch(logout());
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -141,7 +137,7 @@ const NavBar = ({ userInfo }) => {
                             {item.name}
                           </Link>
                         ))}
-                        <div class="relative group">
+                        <div className="relative group">
                           <div className="flex items-center">
                             <button
                               className="flex items-center gap-x-1 text-sm font-medium leading-6 text-black"
@@ -163,39 +159,40 @@ const NavBar = ({ userInfo }) => {
                             </svg>
                           </div>
                           <div className="group-hover:block dropdown-menu absolute hidden h-auto w-screen max-w-sm rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5 ">
-                            <div class="p-1">
-                              <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-                                <div class="flex h-7 w-7 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                            <div className="p-1">
+                              <div className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
+                                <div className="flex h-7 w-7 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                   <DocumentMagnifyingGlassIcon />
                                 </div>
-                                <div class="flex-auto">
+                                <div className="flex-auto">
                                   <a
                                     href="https://ijcspub.org/viewfull.php?&p_id=IJCSP23A1290"
-                                    class="block font-semibold text-gray-900"
+                                    className="block font-semibold text-gray-900"
                                     target={"_blank"}
+                                    rel="noopener noreferrer"
                                   >
                                     My Publications
-                                    <span class="absolute inset-0"></span>
+                                    <span className="absolute inset-0"></span>
                                   </a>
-                                  <p class="mt-1 text-gray-600">
+                                  <p className="mt-1 text-gray-600">
                                     View my publications to international
                                     journal of current science
                                   </p>
                                 </div>
                               </div>
-                              <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-                                <div class="flex h-7 w-7 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                              <div className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
+                                <div className="flex h-7 w-7 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                   <BookOpenIcon />
                                 </div>
-                                <div class="flex-auto">
+                                <div className="flex-auto">
                                   <a
                                     href="/library"
-                                    class="block font-semibold text-gray-900"
+                                    className="block font-semibold text-gray-900"
                                   >
                                     Library
-                                    <span class="absolute inset-0"></span>
+                                    <span className="absolute inset-0"></span>
                                   </a>
-                                  <p class="mt-1 text-gray-600">
+                                  <p className="mt-1 text-gray-600">
                                     Checkout a variety of online & free
                                     psychology resources to read and download.
                                   </p>
@@ -211,6 +208,7 @@ const NavBar = ({ userInfo }) => {
                       <motion.a
                         href="/contact-us"
                         target={"_blank"}
+                        rel="noopener noreferrer"
                         whileHover={{ y: -2 }}
                         whileTap={{ scale: 0.9 }}
                       >
@@ -242,27 +240,30 @@ const NavBar = ({ userInfo }) => {
                         <InstagramIcon />
                       </motion.a>
                     </div>
-
-                    <Link
-                      to="/booking"
-                      className=" hidden sm:ml-6 sm:block  ml-auto text-white bg-blue-600 border-0 py-3 px-6  text-sm focus:outline-none hover:bg-blue-500 rounded-lg shadow-[0_0_3px_blue]"
-                    >
-                      Book Session
-                    </Link>
-
+                    <Button1 text="Book Session" />
                     {/* Profile dropdown */}
                     <Menu as="div" className="relative ml-3">
                       <div>
                         <Menu.Button className="flex rounded-full bg-gray-1000 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-1 focus:ring-offset-gray-800">
                           <span className="sr-only">Open user menu</span>
                           {userInfo != null && userInfo.profile_picture ? (
-                            <img
+                            <Avatar
                               className="h-9 w-9 rounded-full"
                               src={userInfo.profile_picture}
-                              alt="Profile picture"
-                              referrerPolicy="no-referrer"
+                              alt="profile picture"
                             />
                           ) : (
+                            // uncomment for notifications
+                            // <Badge
+                            //   content="5"
+                            //   overlap="circular"
+                            //   placement="bottom-end"
+                            // >
+                            //   <Avatar
+                            //     src={userInfo.profile_picture}
+                            //     alt="profile picture"
+                            //   />
+                            // </Badge>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 24 24"
@@ -292,10 +293,10 @@ const NavBar = ({ userInfo }) => {
                             {({ active }) => (
                               <div className="w-32">
                                 {userInfo ? (
-                                  <div class="absolute right-0 z-10 mt-2 w-auto origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                  <div className="absolute right-0 z-10 mt-2 w-auto origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                     <div>
-                                      <a
-                                        class="text-gray-700 block px-4 py-2 text-sm justify-center"
+                                      <span
+                                        className="text-gray-700 block px-4 py-2 text-sm justify-center"
                                         role="menuitem"
                                         tabindex="-1"
                                         id="menu-item-0"
@@ -304,7 +305,7 @@ const NavBar = ({ userInfo }) => {
                                           Signed in as
                                         </span>
                                         <b>{userInfo.email}</b>
-                                      </a>
+                                      </span>
                                     </div>
                                     <div>
                                       <button
@@ -351,7 +352,7 @@ const NavBar = ({ userInfo }) => {
                       {item.name}
                     </Link>
                   ))}
-                  <div class="relative group px-3 py-2 ">
+                  <div className="relative group px-3 py-2 ">
                     <div className="flex items-center">
                       <button
                         type="button"
@@ -374,21 +375,22 @@ const NavBar = ({ userInfo }) => {
                       </svg>
                     </div>
                     <div className="group-hover:block dropdown-menu absolute hidden h-auto w-4/5 max-w-md rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
-                      <div class="p-1">
-                        <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-                          <div class="flex h-7 w-7 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                      <div className="p-1">
+                        <div className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
+                          <div className="flex h-7 w-7 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                             <BookOpenIcon />
                           </div>
-                          <div class="flex-auto">
+                          <div className="flex-auto">
                             <a
                               href="https://ijcspub.org/viewfull.php?&p_id=IJCSP23A1290"
-                              class="block font-semibold text-gray-900"
+                              className="block font-semibold text-gray-900"
                               target={"_blank"}
+                              rel="noopener noreferrer"
                             >
                               My Publications
-                              <span class="absolute inset-0"></span>
+                              <span className="absolute inset-0"></span>
                             </a>
-                            <p class="mt-1 text-gray-600">
+                            <p className="mt-1 text-gray-600">
                               View my publications to international journal of
                               current science
                             </p>

@@ -1,13 +1,11 @@
-import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import { PhoneIcon } from "@heroicons/react/20/solid";
 import {
   Popover,
-  PopoverHandler,
   PopoverContent,
-  Button,
+  PopoverHandler,
 } from "@material-tailwind/react";
+import { Fragment, useRef, useState } from "react";
 
 export default function ContactUsModal(props) {
   const [open, setOpen] = useState(true);
@@ -57,12 +55,6 @@ export default function ContactUsModal(props) {
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm">
                 <div className="bg-white px-6 pb-4 pt-5 sm:p-6 sm:pb-4">
                   <div className="">
-                    {/* <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
-                      <PhoneIcon
-                        className="h-6 w-6 text-blue-600"
-                        aria-hidden="true"
-                      />
-                    </div> */}
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                       <Dialog.Title
                         as="h3"

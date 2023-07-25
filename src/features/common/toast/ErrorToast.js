@@ -5,7 +5,7 @@ export const ErrorToast = (
 ) => {
   return toast.error(msg, {
     position: "bottom-right",
-    autoClose: 5000,
+    autoClose: 3000,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
@@ -18,7 +18,7 @@ export const ErrorToast = (
 export const SuccessToast = (msg = "Success!") => {
   return toast.success(msg, {
     position: "bottom-right",
-    autoClose: 5000,
+    autoClose: 2000,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
@@ -31,7 +31,7 @@ export const SuccessToast = (msg = "Success!") => {
 export const InfoToast = (msg) => {
   return toast.success(msg, {
     position: "bottom-right",
-    autoClose: 5000,
+    autoClose: 3000,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,

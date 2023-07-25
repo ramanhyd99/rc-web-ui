@@ -1,20 +1,22 @@
 import {
   NumberOfClients,
   NumberOfSessions,
-  NumberOfYearsExp,
+  NumberOfYearsExp
 } from "../../../../utils/constants";
 
 const Experience = ({ className }) => {
   return (
-    <div className={`bg-white ${className}`}>
+    <div
+      className={` py-24 ${className} bg-desk bg-cover bg-no-repeat bg-center w-full h-[550px]`}
+    >
       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="mb-10 md:mb-16">
           <h2 className="mb-4 text-center text-4xl font-bold text-gray-800  md:mb-6 lg:text-5xl">
             Prior Experience
           </h2>
           <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">
-            We have helped many feel better and hopes to reach and impact
-            even more lives in a positive way.
+            We have helped many feel better and hopes to reach and impact even
+            more lives in a positive way.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 md:gap-0 md:divide-x">

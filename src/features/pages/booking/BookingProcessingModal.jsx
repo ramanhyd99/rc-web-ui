@@ -1,8 +1,12 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
+import { useLockSlotForDateMutation } from "../../../apis/rtk-apis";
 
 export default function BookingProcessingModal(props) {
   let [isOpen, setIsOpen] = useState(true);
+
+  const [lockSlotForDate, { data, error, isLoading }] =
+    useLockSlotForDateMutation();
 
   function closeModal() {
     // setIsOpen(false)
@@ -13,10 +17,10 @@ export default function BookingProcessingModal(props) {
   }
 
   useEffect(() => {
-    const delay = 3000; // Delay in milliseconds (3 seconds in this example)
+    const delay = 2000;
 
     const timer = setTimeout(() => {
-      props.setProcessingSlot(false);
+      lockSlotForDate({ slot_id: props.slotData.id });
     }, delay);
 
     return () => {
@@ -24,13 +28,25 @@ export default function BookingProcessingModal(props) {
     };
   }, []);
 
+  useEffect(() => {
+    if (!error && data) {
+      props.setSlotData({
+        ...props.slotData,
+        lock_uuid: data.data.lock_uuid,
+      });
+      props.setProcessingSlot("done");
+    } else if (error) {
+      props.setSlotData(null);
+    }
+  }, [data, error, isLoading]);
+
   return (
     <>
-      <div className="fixed inset-0 flex items-center justify-center !bg-blue-200">
+      <div className="fixed inset-0 flex items-center justify-center !bg-blue-50">
         <button
           type="button"
           onClick={openModal}
-          className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          className="rounded-lg bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
         >
           Open dialog
         </button>
@@ -72,7 +88,7 @@ export default function BookingProcessingModal(props) {
                       alt="Booking..."
                       className="h-full w-full object-cover object-center"
                     />
-                    <div className="text-center">Booking your slot...</div>
+                    <div className="text-center text-xl ">Booking your slot...</div>
                   </Dialog.Title>
                 </Dialog.Panel>
               </Transition.Child>

@@ -3,7 +3,7 @@ import BookingComponent from "../pages/booking/BookingComponent";
 import SetAvailabilityComponent from "./SetAvailabilityComponent";
 
 const Availability = () => {
-  const [date, setDate] = useState(null);
+  const [date] = useState(null);
 
   return (
     <>

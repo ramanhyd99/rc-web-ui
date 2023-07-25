@@ -80,3 +80,18 @@ export const PrivacyPolicyPage = Loadable({
   loading: Loading,
   loader: () => import("../pages/privacy-policy"),
 });
+
+export const DashboardPage = Loadable({
+  loading: Loading,
+  loader: () => import("../pages/dashboard"),
+});
+
+export const ClientPage = Loadable({
+  loading: Loading,
+  loader: () => import("../pages/client-page"),
+});
+
+export const FeedbackPage = Loadable({
+  loading: Loading,
+  loader: () => import("../pages/feedback-page"),
+});

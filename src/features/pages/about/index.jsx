@@ -1,6 +1,10 @@
 import { useInView, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useRef } from "react";
-import { NumberOfClients, NumberOfSessions, NumberOfYearsExp } from "../../../utils/constants";
+import {
+  NumberOfClients,
+  NumberOfSessions,
+  NumberOfYearsExp,
+} from "../../../utils/constants";
 import PageTitle from "../../common/PageTitle";
 import SEO from "../../seo";
 
@@ -44,13 +48,14 @@ const About = () => {
             </h2>
             <p className="font-medium text-gray-600">
               Hello! I am a psychologist, specialising in Clinical Psychology. I
-              am a behavioural therapist, consultant child-psychologist, certified cognitive behavioural
-              therapy practitioner, dream analyst, principal investigator in
-              various research studies, a well trained counsellor and the
-              founder of (your very own) Random Capsule. I use an empathetic approach
-              and focus on client centred therapy. My unique style of
-              counselling is based on the principles of psychoanalytic and
-              humanistic schools of psychology and indegineous healing techniques. I am an active yoga and
+              am a behavioural therapist, consultant child-psychologist,
+              certified cognitive behavioural therapy practitioner, dream
+              analyst, principal investigator in various research studies, a
+              well trained counsellor and the founder of (your very own) Random
+              Capsule. I use an empathetic approach and focus on client centred
+              therapy. My unique style of counselling is based on the principles
+              of psychoanalytic and humanistic schools of psychology and
+              indegineous healing techniques. I am an active yoga and
               acupressure practitioner. I provide a safe, inclusive and a
               non-judgmental space for us to talk, vent, listen and understand.
             </p>

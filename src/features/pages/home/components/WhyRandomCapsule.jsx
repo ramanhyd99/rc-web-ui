@@ -2,11 +2,11 @@ import { StarIcon } from "@heroicons/react/20/solid";
 
 const WhyRandomCapsule = ({ className }) => {
   return (
-    <div className={`bg-white py-6 sm:py-8 lg:py-12 ${className}`}>
+    <div className={`bg-white py-6 sm:py-8 lg:py-12 ${className} bg-confetti`}>
       <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
         <div className="mb-10 md:mb-16">
           <h2 className="mb-4 text-center text-4xl font-bold text-gray-800 md:mb-6 lg:text-5xl">
-            Why Random Capsule?
+              Why Random Capsule?
           </h2>
           <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">
             Random Capsule has been made with the sole aim to bring afforadable
@@ -14,9 +14,9 @@ const WhyRandomCapsule = ({ className }) => {
           </p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 md:gap-8 xl:grid-cols-2">
-          <div className="flex divide-x rounded-lg border bg-gray-50">
+          <div className="flex divide-x rounded-lg border bg-red-50">
             <div className="flex items-center p-2 md:p-4">
-              <StarIcon className="h-6 w-6 text-yellow-400 " />
+              <StarIcon className="h-6 w-6 text-yellow-300 " />
             </div>
 
             <div className="p-4 md:p-6">
@@ -31,9 +31,9 @@ const WhyRandomCapsule = ({ className }) => {
               </p>
             </div>
           </div>
-          <div className="flex divide-x rounded-lg border bg-gray-50">
+          <div className="flex divide-x rounded-lg border bg-blue-50">
             <div className="flex items-center p-2 md:p-4">
-              <StarIcon className="h-6 w-6 text-yellow-400" />
+              <StarIcon className="h-6 w-6 text-yellow-300" />
             </div>
 
             <div className="p-4 md:p-6">
@@ -49,9 +49,9 @@ const WhyRandomCapsule = ({ className }) => {
             </div>
           </div>
 
-          <div className="flex divide-x rounded-lg border bg-gray-50">
+          <div className="flex divide-x rounded-lg border bg-green-50">
             <div className="flex items-center p-2 md:p-4">
-              <StarIcon className="h-6 w-6 text-yellow-400" />
+              <StarIcon className="h-6 w-6 text-yellow-300" />
             </div>
 
             <div className="p-4 md:p-6">
@@ -67,9 +67,9 @@ const WhyRandomCapsule = ({ className }) => {
             </div>
           </div>
 
-          <div className="flex divide-x rounded-lg border bg-gray-50">
+          <div className="flex divide-x rounded-lg border bg-orange-50">
             <div className="flex items-center p-2 md:p-4">
-              <StarIcon className="h-6 w-6 text-yellow-400" />
+              <StarIcon className="h-6 w-6 text-yellow-300" />
             </div>
 
             <div className="p-4 md:p-6">

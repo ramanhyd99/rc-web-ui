@@ -9,7 +9,6 @@ export const rtkQueryErrorLogger = (api) => (next) => (action) => {
   // RTK Query uses `createAsyncThunk` from redux-toolkit under the hood, so we're able to utilize these use matchers!
 
   if (isFulfilled(action)) {
-    console.log(action);
     if (action.payload && action.payload.infoMessage) {
       toast.info(action.payload.infoMessage, {
         position: "bottom-right",

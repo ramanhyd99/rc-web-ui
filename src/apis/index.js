@@ -23,7 +23,8 @@ api.interceptors.request.use(
         })
       );
     }
-    config.headers["Content-Type"] = "application/json";
+    // needed to prevent csrf attacks
+    config.headers["X-Requested-By"] = "Radhe-Krishna";
     config.withCredentials = true;
     return config;
   },
@@ -45,8 +46,16 @@ api.interceptors.response.use(
     return response;
   },
   (error) => {
-    console.log(error);
-    if (error.response && error.response.status === 401) {
+    if (error.response && error.response.status === 400) {
+      store.dispatch(
+        setToast({
+          msg: error.response?.data?.errorMessage
+            ? error.response?.data?.errorMessage
+            : "Bad request.",
+          isError: true,
+        })
+      );
+    } else if (error.response && error.response.status === 401) {
       store.dispatch(
         setToast({
           msg: "Session expired.",
@@ -57,14 +66,18 @@ api.interceptors.response.use(
     } else if (error.response && error.response.status === 404) {
       store.dispatch(
         setToast({
-          msg: "Unable to fetch details. Please try again later.",
+          msg: error.response?.data?.errorMessage
+            ? error.response?.data?.errorMessage
+            : "Could not perform that action, please try again.",
           isError: true,
         })
       );
     } else if (error.response && error.response.status === 500) {
       store.dispatch(
         setToast({
-          msg: "Internal server error. ",
+          msg: error.response?.data?.errorMessage
+            ? error.response?.data?.errorMessage
+            : "Oops, something went wrong.",
           isError: true,
         })
       );

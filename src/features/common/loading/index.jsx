@@ -1,13 +1,13 @@
 import "./index.css";
 
-const Loading = () => {
+const Loading = (props) => {
   return (
-    <div class="dotted-div">
-      Take deep breaths &nbsp;
-      <div class="dotted">
-        <li class="dotted-li"></li>
-        <li class="dotted-li"></li>
-        <li class="dotted-li"></li>
+    <div className="dotted-div">
+      {props.text ? props.text : "Take deep breaths"} &nbsp;
+      <div className="dotted">
+        <li className="dotted-li"></li>
+        <li className="dotted-li"></li>
+        <li className="dotted-li"></li>
       </div>
     </div>
   );

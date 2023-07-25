@@ -30,7 +30,7 @@ const HowItWorks = ({ className }) => {
                 </svg>
               </div>
               <div className="flex-grow pl-4">
-                <h2 className="font-medium title-font text-medium text-gray-900 mb-1 tracking-wider">
+                <h2 className="font-medium title-font text-lg text-gray-900 mb-1 tracking-wider">
                   Book Session
                 </h2>
                 <p className="leading-relaxed">
@@ -63,8 +63,8 @@ const HowItWorks = ({ className }) => {
                   Receive Confirmation
                 </h2>
                 <p className="leading-relaxed">
-                  You will receive an <b>email/sms</b> confirmation post booking
-                  & details of how to join the session.
+                  You will receive an <b>email</b> confirmation post booking &
+                  details of how to join the session.
                 </p>
               </div>
             </div>

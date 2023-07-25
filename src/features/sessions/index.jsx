@@ -1,10 +1,5 @@
 import React from "react";
-import Table, { SelectColumnFilter } from "../common/table";
-import {
-  AvatarCell,
-  StatusPill,
-  BookedForCell,
-} from "../common/table/TableUtils";
+import Table from "../common/table";
 
 const getData = () => {
   const data = [

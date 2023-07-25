@@ -17,7 +17,7 @@ const Login = ({ userInfo }) => {
 
   useEffect(() => {
     if (userInfo) navigate("/booking");
-  }, [userInfo]);
+  }, [userInfo, navigate]);
 
   const handleGoogleSuccess = (response) => {
     try {
@@ -27,24 +27,24 @@ const Login = ({ userInfo }) => {
         if (result.type === "auth/googleLogin/fulfilled") {
           localStorage.setItem(LocalStorageLoggedInKey, "16108");
         }
-      setIsLoading(false);
+        setIsLoading(false);
       });
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
+      console.error(error);
     }
   };
 
   const handleGoogleError = (error) => {
     ErrorToast(error);
-    console.log(error);
+    console.error(error);
   };
 
   return (
     <>
-    {isLoading && <Loading/>}
+      {isLoading && <Loading />}
       {!isLoading && !userInfo && (
-        <div className="bg-white py-6 sm:py-8 lg:py-12 min-h-screen flex items-center !pt-0">
+        <div className="py-6 sm:py-8 lg:py-12 h-screen flex items-center !pt-0">
           <SEO title="Login/Sign-up" />
           <div className="mx-auto max-w-screen-2xl px-4 md:px-8 mb-20">
             <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl">
@@ -61,6 +61,7 @@ const Login = ({ userInfo }) => {
                 </div>
                 <div className="flex justify-center mt-2">
                   <GoogleLogin
+                    size="large"
                     onSuccess={handleGoogleSuccess}
                     onError={handleGoogleError}
                   />
@@ -71,7 +72,7 @@ const Login = ({ userInfo }) => {
                   We respect your privacy & data. &nbsp;
                   <Link
                     to="/privacy-policy"
-                    className="text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700"
+                    className="text-blue-500 transition duration-100 hover:text-blue-600 active:text-blue-700"
                   >
                     Privacy policy
                   </Link>

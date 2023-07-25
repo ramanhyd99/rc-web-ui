@@ -1,15 +1,14 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import AnimatedHomeTitle from "../../common/AnimatedHomeTitle";
+import ContactUsModal from "../../common/modals/ContactUsModal";
+import SEO from "../../seo";
 import BookNow from "./components/BookNow";
 import Experience from "./components/Experience";
 import HowItWorks from "./components/HowItWorks";
-import WhyRandomCapsule from "./components/WhyRandomCapsule";
 import ServicesProvided from "./components/ServicesProvided";
 import Testimonials from "./components/Testimonials";
-import { PhoneIcon } from "@heroicons/react/20/solid";
-import { useState } from "react";
-import ContactUsModal from "../../common/modals/ContactUsModal";
-import SEO from "../../seo";
+import WhyRandomCapsule from "./components/WhyRandomCapsule";
 
 const Home = () => {
   const [onPhoneClick, setPhoneClick] = useState(false);
@@ -20,25 +19,18 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex py-10 text-black w-full justify-around !pt-2">
+      <div className="flex py-10 text-black w-full justify-around !pt-2 bg-gradient-to-r from-blue-300 to-cyan-100  ">
         <SEO title="Home" />
-        <div class="z-50 fixed bottom-1 left-2 p-4 bg-gradient-to-tr  from-pink-600 to-blue-400 text-white rounded-full flex items-center justify-center ">
-          <button onClick={handlePhoneClick} class="text-xs">
-            Need <br /> Support?
-          </button>
-        </div>
 
         {onPhoneClick && <ContactUsModal setOpen={handlePhoneClick} />}
-
-        {/* <div class="z-50 fixed bottom-5 left-2 p-4 items-center justify-center">
-          <SpotifyIcon />
-        </div> */}
-
         <div className="text-gray-600 body-font ">
           <div className="container mx-auto flex px-5 md:flex-row flex-col items-center">
             <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0 flex justify-center">
               <img
-                className="md:w-3/4 lg:w-full  w-1/2 h-auto"
+                style={{
+                  "border-radius": "46% 43% 47% 53% / 40% 34% 64% 61% ",
+                }}
+                className="md:w-3/4 lg:w-full  h-auto bg-blue-50"
                 src={require("../../../assets/img/pooja.png")}
                 alt="Pooja Gupta"
               />

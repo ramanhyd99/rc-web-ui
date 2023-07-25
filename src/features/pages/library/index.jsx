@@ -1,15 +1,5 @@
 import PageTitle from "../../common/PageTitle";
 import SEO from "../../seo";
-import {
-  Avatar,
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Input,
-  Typography,
-} from "@material-tailwind/react";
 import LibraryTable from "./LibraryTable";
 
 const Library = () => {

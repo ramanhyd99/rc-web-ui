@@ -5,9 +5,9 @@ import SEO from "../../seo";
 
 const OurTeam = () => {
   return (
-    <div className="bg-white py-6 sm:py-8 lg:py-12">
+    <div className="bg-white py-6 sm:py-8 lg:py-12 ">
       <SEO title="Our team" />
-      <div className="mx-auto max-w-screen-xl px-4 md:px-8">
+      <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
         <div className="mb-10 md:mb-16">
           <PageTitle text="Meet Our Team" className="mb-2" />
           <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">
@@ -15,9 +15,9 @@ const OurTeam = () => {
           </p>
         </div>
 
-        <div className="grid block gap-4 md:grid-cols-2 lg:grid-cols-2 lg:gap-8">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 lg:gap-8 xl:gap-12">
           <div className="flex flex-col items-center rounded-lg bg-gray-100 p-4 lg:p-8">
-            <div className="mb-2 h-24 w-24 overflow-hidden rounded-full bg-gray-200 shadow-lg md:mb-4 md:h-36 md:w-auto">
+            <div className="mb-2 h-24 w-24 overflow-hidden rounded-full bg-gray-200 shadow-lg md:mb-4 md:h-36 md:w-auto lg:h-64">
               <img
                 src={require("../../../assets/img/pooja.png")}
                 loading="lazy"
@@ -88,7 +88,7 @@ const OurTeam = () => {
           </div>
 
           <div className="flex flex-col items-center rounded-lg bg-gray-100 p-4 lg:p-8">
-            <div className="mb-2 h-28 w-24 overflow-hidden rounded-full bg-gray-200 shadow-lg md:mb-4 md:h-36 md:w-auto">
+            <div className="mb-2 h-28 w-24 overflow-hidden rounded-full bg-gray-200 shadow-lg md:mb-4 md:h-36 md:w-auto lg:h-64">
               <img
                 src={require("../../../assets/img/raman.png")}
                 loading="lazy"

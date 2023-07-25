@@ -1,10 +1,9 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import reducers from "./reducers";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { userApi } from "../apis/user";
-import { rtkQueryErrorLogger } from "../middleware";
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import { userApi } from "../apis/rtk-apis";
+import reducers from "./reducers";
 
 const persistConfig = {
   key: "root",
@@ -19,9 +18,7 @@ let store = configureStore({
     [userApi.reducerPath]: userApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
-      .concat(userApi.middleware)
-      // .concat(rtkQueryErrorLogger),
+    getDefaultMiddleware().concat(userApi.middleware),
 });
 
 let persistor = persistStore(store);

@@ -1,7 +1,4 @@
-import { RadioGroup, Tab } from "@headlessui/react";
-import { useEffect, useState } from "react";
-import { classNames } from "../../../utils";
-import { Switch } from "@headlessui/react";
+import { RadioGroup, Switch, Tab } from "@headlessui/react";
 import {
   ChatBubbleBottomCenterIcon,
   ClockIcon,
@@ -9,16 +6,24 @@ import {
   HomeIcon,
   PhoneIcon,
 } from "@heroicons/react/24/outline";
-import { connect } from "react-redux";
-import { isValidEmail, isValidName, isValidNumber } from "./FormValidations";
-import { useNavigate } from "react-router-dom";
+import { LockClosedIcon } from "@heroicons/react/24/solid";
+import { useEffect, useState } from "react";
+import { classNames } from "../../../utils";
 
-const genders = [
-  { value: "Female" },
-  { value: "Male" },
-  { value: "Other" },
-  { value: "Prefer not say" },
-];
+import { Typography } from "@material-tailwind/react";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { isValidEmail, isValidName, isValidNumber } from "./FormValidations";
+
+const secondsToMMSS = (seconds) => {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+
+  const formattedMinutes = minutes.toString().padStart(2, "0");
+  const formattedSeconds = remainingSeconds.toString().padStart(2, "0");
+
+  return `${formattedMinutes}:${formattedSeconds}`;
+};
 
 const Checkout = ({ userInfo, ...props }) => {
   const [mode, setMode] = useState("video");
@@ -28,8 +33,10 @@ const Checkout = ({ userInfo, ...props }) => {
     userInfo && userInfo.free_follow_up
   );
   const [finalPrice, setFinalPrice] = useState(
-    selectedFreeFollowUp ? "0" : "329"
+    selectedFreeFollowUp ? "0" : "329" // Modify here for the price and different prices for different modes.
   );
+  const [timer, setTimer] = useState(600); // Modify here to adjust booking session time in seconds
+
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -42,33 +49,51 @@ const Checkout = ({ userInfo, ...props }) => {
     their_phone: "",
   });
 
+  useEffect(() => {
+    if (!userInfo) navigate("/booking");
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (timer > 0) {
+      const countdown = setInterval(() => {
+        setTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+
+      return () => clearInterval(countdown);
+    } else {
+      alert("Booking session expired!");
+      props.setSlotData(null);
+    }
+  }, [timer]);
+
   const handleForMyselfFormChange = (event) => {
-    if (event.target.name == "name" && !isValidName(event.target.value)) {
+    if (event.target.name === "name" && !isValidName(event.target.value)) {
       setAgreementAccepted(false);
     }
 
-    if (event.target.name == "phone" && !isValidNumber(event.target.value)) {
+    if (event.target.name === "phone" && !isValidNumber(event.target.value)) {
       setAgreementAccepted(false);
     }
 
     // using for someone else form
-    if (selectedTab == 1) {
+    if (selectedTab === 1) {
       if (
-        event.target.name == "their_name" &&
+        event.target.name === "their_name" &&
         !isValidName(event.target.value)
       ) {
         setAgreementAccepted(false);
       }
 
       if (
-        event.target.name == "their_phone" &&
+        event.target.name === "their_phone" &&
         !isValidNumber(event.target.value)
       ) {
         setAgreementAccepted(false);
       }
 
       if (
-        event.target.name == "their_email" &&
+        event.target.name === "their_email" &&
         !isValidEmail(event.target.value)
       ) {
         setAgreementAccepted(false);
@@ -79,13 +104,10 @@ const Checkout = ({ userInfo, ...props }) => {
       ...formData,
       [event.target.name]: event.target.value,
     });
-
-    console.log(formData);
   };
 
   const handleAgreementAccepted = () => {
-    console.log(selectedTab);
-    if (selectedTab == 0) {
+    if (selectedTab === 0) {
       if (
         isValidName(formData.name) &&
         isValidNumber(formData.phone) &&
@@ -93,7 +115,7 @@ const Checkout = ({ userInfo, ...props }) => {
       ) {
         setAgreementAccepted(!agreementAccepted);
       }
-    } else if (selectedTab == 1) {
+    } else if (selectedTab === 1) {
       if (
         isValidName(formData.name) &&
         isValidNumber(formData.phone) &&
@@ -124,30 +146,8 @@ const Checkout = ({ userInfo, ...props }) => {
     setAgreementAccepted(false);
   };
 
-  useEffect(() => {
-    console.log(props.slotData);
-    if (!userInfo) navigate("/booking");
-    window.scrollTo(0, 0);
-  }, []);
-
-  // useEffect(() => {
-  //   const handleBeforeUnload = (event) => {
-  //     event.preventDefault();
-  //     const confirmationMessage = "Are you sure you want to leave this page?";
-  //     event.returnValue = confirmationMessage;
-  //     return event.returnValue;
-  //   };
-
-  //   window.addEventListener("beforeunload", handleBeforeUnload);
-
-  //   return () => {
-  //     window.removeEventListener("beforeunload", handleBeforeUnload);
-  //   };
-  // }, []);
-
   return (
     <>
-
       {userInfo && props.slotData && (
         <div className="bg-white">
           <div className="">
@@ -156,13 +156,13 @@ const Checkout = ({ userInfo, ...props }) => {
               <div className=" lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 ">
                 <div>
                   <div className="space-y-6">
-                    <div class="bg-white">
-                      <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-                        <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl">
+                    <div className="bg-white">
+                      <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
+                        <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl">
                           Who's this booking for?
                         </h2>
 
-                        <form class="mx-auto max-w-lg rounded-lg border">
+                        <form className="mx-auto max-w-lg rounded-lg border">
                           <Tab.Group
                             selectedIndex={selectedTab}
                             defaultIndex={1}
@@ -173,7 +173,7 @@ const Checkout = ({ userInfo, ...props }) => {
                                 className={classNames(
                                   "w-full rounded-lg py-2.5 text-md leading-5 text-black font-semibold",
                                   "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2",
-                                  selectedTab == 0
+                                  selectedTab === 0
                                     ? "bg-white shadow"
                                     : "text-gray-50 hover:bg-white/[0.12] hover:text-white"
                                 )}
@@ -184,7 +184,7 @@ const Checkout = ({ userInfo, ...props }) => {
                                 className={classNames(
                                   "w-full rounded-lg py-2.5 text-md leading-5 text-black font-semibold",
                                   "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2",
-                                  selectedTab == 1
+                                  selectedTab === 1
                                     ? "bg-white shadow"
                                     : "text-gray-50 hover:bg-white/[0.12] hover:text-white"
                                 )}
@@ -193,7 +193,7 @@ const Checkout = ({ userInfo, ...props }) => {
                               </Tab>
                             </Tab.List>
                             <Tab.Panels>
-                              <div class="flex flex-col gap-4 p-4 md:p-8 ">
+                              <div className="flex flex-col gap-4 p-4 md:p-8 ">
                                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                                   <div>
                                     <label
@@ -246,6 +246,7 @@ const Checkout = ({ userInfo, ...props }) => {
                                     >
                                       Your Number{" "}
                                       <span className="text-red-400">*</span>
+                                      <span></span>
                                     </label>
                                     <div className="mt-2.5">
                                       <input
@@ -263,7 +264,7 @@ const Checkout = ({ userInfo, ...props }) => {
                                     </div>
                                   </div>
 
-                                  {selectedTab == 1 && (
+                                  {selectedTab === 1 && (
                                     <div>
                                       <label
                                         htmlFor="last-name"
@@ -289,7 +290,7 @@ const Checkout = ({ userInfo, ...props }) => {
                                   )}
                                 </div>
 
-                                {selectedTab == 1 && (
+                                {selectedTab === 1 && (
                                   <>
                                     {" "}
                                     <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
@@ -378,9 +379,9 @@ const Checkout = ({ userInfo, ...props }) => {
                                   </>
                                 )}
 
-                                <div class="relative flex items-center justify-center">
-                                  <span class="absolute inset-x-0 h-px bg-gray-300"></span>
-                                  <span class="relative bg-white px-4 text-sm text-gray-400">
+                                <div className="relative flex items-center justify-center">
+                                  <span className="absolute inset-x-0 h-px bg-gray-300"></span>
+                                  <span className="relative bg-white px-4 text-sm text-gray-400">
                                     Please briefly describe the issue
                                   </span>
                                 </div>
@@ -436,13 +437,13 @@ const Checkout = ({ userInfo, ...props }) => {
                             </Tab.Panels>
                           </Tab.Group>
 
-                          <div class="flex items-center justify-center bg-gray-100 p-4">
-                            <p class="text-center text-sm text-gray-500">
+                          <div className="flex items-center justify-center bg-gray-100 p-4">
+                            <p className="text-center text-sm text-gray-500">
                               We respect your personal details.{" "}
                               <a
                                 href="/privacy-policy"
                                 target={"_blank"}
-                                class="text-blue-400 transition duration-100 hover:text-blue-600 active:text-blue-700"
+                                className="text-blue-400 transition duration-100 hover:text-blue-600 active:text-blue-700"
                               >
                                 Our privacy policy
                               </a>
@@ -460,13 +461,17 @@ const Checkout = ({ userInfo, ...props }) => {
                 </p>
                 <div className="md:text-left text-center">
                   <span
-                    class={`rounded-md bg-blue-50 px-2 py-1 text-md font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20 
+                    className={`rounded-md bg-blue-50 px-2 py-1 text-md font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20 
    `}
                   >
                     {props.slotData.formattedStartTime} -{" "}
                     {props.slotData.formattedToTime}
                   </span>
-                  <small>{" ("}{props.slotData.timeZone}{")"}</small>
+                  <small>
+                    {" ("}
+                    {props.slotData.timeZone}
+                    {")"}
+                  </small>
                 </div>
                 <form className="mt-10">
                   <div className="md:text-left text-center">
@@ -566,7 +571,7 @@ const Checkout = ({ userInfo, ...props }) => {
                         </h3>
                       </div>
                       <a
-                        href="/faqs#"
+                        href="/faqs?index=2"
                         target={"_blank"}
                         className="text-sm font-medium text-blue-400 hover:text-blue-500"
                       >
@@ -582,16 +587,25 @@ const Checkout = ({ userInfo, ...props }) => {
                       "mt-10 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white ",
                       !agreementAccepted
                         ? "bg-gray-500 cursor-not-allowed"
-                        : "bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        : "bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     )}
                   >
                     Pay ₹ <span className="text-lg">{finalPrice}</span>
                   </button>
                 </form>
-                <div className="mt-4 flex">
+                <Typography
+                  variant="small"
+                  color="gray"
+                  className="mt-2 flex items-center justify-center gap-2 font-normal opacity-60"
+                >
+                  <LockClosedIcon className="-mt-0.5 h-4 w-4" /> Payments are
+                  secure and encrypted
+                </Typography>
+                <div className="mt-6 flex">
                   <ClockIcon className="h-6 mr-2" />
                   <span>
-                    Session expires in: <span className="font-bold">10</span>{" "}
+                    Session expires in:{" "}
+                    <span className="font-bold">{secondsToMMSS(timer)}</span>{" "}
                     mins
                   </span>
                 </div>

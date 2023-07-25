@@ -267,7 +267,7 @@ const Testimonials = ({ className }) => {
               <ul key={index} className="space-y-8">
                 {chunk.map((testimonial) => (
                   <li key={testimonial.id % 3}>
-                    <div className="flex flex-col items-center  gap-4 rounded-lg bg-gray-700 px-8 py-6 md:gap-6">
+                    <div className="flex flex-col items-center  gap-4 rounded-lg bg-black px-8 py-6 md:gap-6">
                       <div className="max-w-md text-center text-white lg:text-md">
                         {testimonial.message}
                       </div>
@@ -300,18 +300,18 @@ const Testimonials = ({ className }) => {
             ))}
           </div>
           {!loadMore ? (
-            <div className="inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-white pt-32 pb-8 pointer-events-none dark:from-slate-100/70 absolute">
+            <div className="inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-white pt-32 pb-8 pointer-events-none dark:from-gray-100/70 absolute">
               <button
-                className="relative bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 text-sm text-white font-semibold h-12 px-6 rounded-lg flex items-center dark:bg-slate-700 dark:hover:bg-slate-600 pointer-events-auto"
+                className="relative bg-gray-900 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 text-sm text-white font-semibold h-12 px-6 rounded-lg flex items-center dark:bg-gray-700 dark:hover:bg-gray-600 pointer-events-auto"
                 onClick={handleLoadMore}
               >
                 Show more...
               </button>
             </div>
           ) : (
-            <div className="inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-white pt-32 pb-8 pointer-events-none dark:from-slate-900 sticky -mt-42 transition-opacity duration-300 opacity-100">
+            <div className="inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-white pt-32 pb-8 pointer-events-none dark:from-gray-900 sticky -mt-42 transition-opacity duration-300 opacity-100">
               <button
-                className="relative bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 text-sm text-white font-semibold h-12 px-6 rounded-lg flex items-center dark:bg-slate-700 dark:hover:bg-slate-600 transition-transform pointer-events-auto"
+                className="relative bg-gray-900 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 text-sm text-white font-semibold h-12 px-6 rounded-lg flex items-center dark:bg-gray-700 dark:hover:bg-gray-600 transition-transform pointer-events-auto"
                 onClick={handleLoadMore}
               >
                 Got it !

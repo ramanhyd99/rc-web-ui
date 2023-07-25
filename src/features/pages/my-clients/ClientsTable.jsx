@@ -7,16 +7,15 @@ import {
   CardFooter,
   CardHeader,
   Input,
+  Spinner,
   Typography,
 } from "@material-tailwind/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useGetAllUsersQuery } from "../../../apis/user";
+import { useNavigate } from "react-router-dom";
+import { useGetAllUsersQuery } from "../../../apis/rtk-apis";
 import { getRandomImageString, prettyDate } from "../../../utils";
-import ClientInfo from "./ClientInfo";
 import FreeSessionToggle from "./ToggleButton";
-
-const TABLE_HEAD = ["Client", "Joining Date", "Free follow-up"];
 
 const headers = [
   { id: 1, name: "Client", direction: "desc", sorting_field: "name" },
@@ -30,17 +29,17 @@ const headers = [
 ];
 
 const ClientsTable = () => {
-  const [clients, setClients] = useState([]);
-  const [clientInfo, setClientInfo] = useState(null);
+  const [clients] = useState([]);
   const [search, setSearch] = useState("");
-  const [limit, setLimit] = useState(5);
+  const navigate = useNavigate();
+  const [limit] = useState(5);
   const [page, setPage] = useState(0);
   const [sorting, setSorting] = useState({
     field: "name",
     direction: "asc",
   });
 
-  const { data, error, isLoading } = useGetAllUsersQuery({
+  const { data, isFetching } = useGetAllUsersQuery({
     role: "client",
     search: search,
     limit: limit,
@@ -63,12 +62,8 @@ const ClientsTable = () => {
   };
 
   const handleSort = (index) => {
-    console.log(sorting);
     setSorting((prevSorting) => {
       let direction = "desc";
-      // if (prevSorting.field === headers[index].sorting_field) {
-      //   direction = prevSorting.direction === "desc" ? "asc" : "desc";
-      // }
       direction = prevSorting.direction === "desc" ? "asc" : "desc";
 
       return {
@@ -78,30 +73,34 @@ const ClientsTable = () => {
     });
   };
 
-  const handleClientClick = (id) => {
-    setClientInfo(id);
+  const handleClientClick = (id, name, joining_date, email) => {
+    let searchTerm = search ? search : ""; // don't send null as search term
+
+    navigate(
+      `/client?id=${id}&name=${name}&joining_date=${prettyDate(
+        joining_date
+      )}&email=${email}&search=${searchTerm}`
+    );
   };
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    setSearch(queryParams.get("search"));
+  }, []);
 
   return (
     <Card className="h-full w-full">
       <CardHeader floated={false} shadow={false} className="rounded-none ">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row ">
-          <div className="flex gap-4">
-            <div className="w-full md:w-72">
-              <Input
-                placeholder="search"
-                className="ml-2 rounded-lg"
-                value={search}
-                onChange={(e) => handleSearch(e.target.value)}
-              />
-            </div>
-            {isLoading && (
-              <div
-                class="inline-block text-blue-400 h-7 w-7 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-                role="status"
-              ></div>
-            )}
+          <div className="w-72 pt-1 flex">
+            <Input
+              label="search"
+              value={search}
+              onChange={(e) => handleSearch(e.target.value)}
+              icon={isFetching && <Spinner className="h-5" />}
+            />
           </div>
+
           <div className="mr-2">
             <b>Total</b>: {data ? data.data.total : 0}
           </div>
@@ -156,11 +155,13 @@ const ClientsTable = () => {
 
                   return (
                     <>
-                      <tr key={name}>
+                      <tr key={name} className="even:bg-blue-gray-50/50">
                         <td className={classes}>
                           <div className="flex items-center gap-3">
                             <button
-                              onClick={() => handleClientClick(id)}
+                              onClick={() =>
+                                handleClientClick(id, name, created_at, email)
+                              }
                               className="transform transition-all hover:scale-110"
                             >
                               <Avatar
@@ -219,11 +220,8 @@ const ClientsTable = () => {
               )}
           </tbody>
         </table>
-        {data?.data.total == 0 && (
-          <div
-            //   style={{ border: "2px solid red" }}
-            className="flex justify-center"
-          >
+        {data?.data.total === 0 && (
+          <div className="flex justify-center">
             <img
               src={require("../../../assets/img/empty.png")}
               loading="lazy"
@@ -243,7 +241,7 @@ const ClientsTable = () => {
             variant="outlined"
             color="blue-gray"
             size="sm"
-            disabled={page == 0}
+            disabled={page === 0}
             onClick={handlePrevious}
           >
             Previous
@@ -259,9 +257,6 @@ const ClientsTable = () => {
           </Button>
         </div>
       </CardFooter>
-      {clientInfo && (
-        <ClientInfo userId={clientInfo} setClientInfo={setClientInfo} />
-      )}
     </Card>
   );
 };

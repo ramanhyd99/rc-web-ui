@@ -38,7 +38,7 @@ export const userApi = createApi({
     },
     credentials: "include",
   }),
-  tagTypes: ["Users", "DayTypes"],
+  tagTypes: ["Users", "DayTypes", "Slots", "Assignments"],
   endpoints: (builder) => ({
     getAllUsers: builder.query({
       query: ({ role, search, offset, limit, sort_field, sort_dir }) => ({
@@ -66,17 +66,48 @@ export const userApi = createApi({
       }),
       invalidatesTags: ["Users"],
     }),
-    uploadAssignments: builder.mutation({
-      query: ({ fileList }) => ({
-        headers: {
-          "Content-Type": null,
-        },
-        url: "assignments/upload",
-        method: "POST",
+    getAssignmentsForUserId: builder.query({
+      query: ({ userId }) => ({
+        url: "assignments/",
         timeout: 20000,
-        data: fileList,
+        params: {
+          userId,
+        },
       }),
-      // invalidatesTags: ["Users"],
+      providesTags: ["Assignments"],
+    }),
+    uploadAssignments: builder.mutation({
+      query: ({ file }) => {
+        const bodyFormData = new FormData();
+        bodyFormData.append("files", file);
+        return {
+          method: "POST",
+          url: "assignments/upload",
+          headers: {
+            "Content-Type": "multipart/form-data;",
+          },
+          timeout: 20000,
+          data: bodyFormData,
+          formData: true,
+        };
+      },
+      invalidatesTags: ["Assignments"],
+    }),
+    deleteAssignmentForAssignmentId: builder.mutation({
+      query: ({ assignmentId }) => {
+        return {
+          method: "DELETE",
+          url: "assignments/",
+          headers: {
+            "Content-Type": "multipart/form-data;",
+          },
+          params: {
+            assignmentId,
+          },
+          timeout: 20000,
+        };
+      },
+      invalidatesTags: ["Assignments"],
     }),
     getDayTypes: builder.query({
       query: () => ({
@@ -105,6 +136,46 @@ export const userApi = createApi({
           date_str,
         },
       }),
+      providesTags: ["Slots"],
+    }),
+    lockSlotForDate: builder.mutation({
+      query: ({ slot_id }) => ({
+        url: "slots/processSlot",
+        method: "POST",
+        timeout: 10000,
+        params: {
+          slot_id,
+        },
+      }),
+      invalidatesTags: ["Slots"],
+    }),
+    deleteSlotBySlotId: builder.mutation({
+      query: ({ slotId }) => {
+        return {
+          method: "DELETE",
+          url: "slots/",
+          params: {
+            slotId,
+          },
+          timeout: 20000,
+        };
+      },
+      invalidatesTags: ["Slots"],
+    }),
+    generateSlotForDate: builder.mutation({
+      query: ({ date_str, start_str, end_str }) => {
+        return {
+          method: "POST",
+          url: "slots/create",
+          params: {
+            date_str,
+            start_str,
+            end_str,
+          },
+          timeout: 20000,
+        };
+      },
+      invalidatesTags: ["Slots"],
     }),
   }),
 });
@@ -113,8 +184,13 @@ export const userApi = createApi({
 export const {
   useGetAllUsersQuery,
   useUpdateFreeFollowUpMutation,
+  useGetAssignmentsForUserIdQuery,
   useUploadAssignmentsMutation,
+  useDeleteAssignmentForAssignmentIdMutation,
   useGetDayTypesQuery,
   useUpdateDayTypesMutation,
-  useGetSlotsForDateQuery
+  useGetSlotsForDateQuery,
+  useLockSlotForDateMutation,
+  useDeleteSlotBySlotIdMutation,
+  useGenerateSlotForDateMutation,
 } = userApi;

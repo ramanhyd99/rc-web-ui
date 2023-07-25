@@ -3,7 +3,7 @@ export const isValidName = (name_str) => {
     const trimmedName = name_str.trim();
   
     // Check if the name contains any invalid characters
-    const regex = /^[A-Za-z\s]+$/;
+    const regex = /^[A-Za-z\s]+$/; // eslint-disable-line
     const isValid = regex.test(trimmedName);
   
     return isValid;
@@ -15,7 +15,7 @@ export const isValidName = (name_str) => {
     const trimmedNumber = number_str.trim();
   
     // Check if the number contains any invalid characters
-    const regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    const regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im; // eslint-disable-line
     const isValid = regex.test(trimmedNumber);
   
     return isValid;
@@ -27,7 +27,7 @@ export const isValidName = (name_str) => {
     const trimmedEmail = email.trim();
   
     // Regular expression for email validation
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // eslint-disable-line
     const isValid = regex.test(trimmedEmail);
   
     return isValid;

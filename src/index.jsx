@@ -1,15 +1,16 @@
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import Loading from "./features/common/loading";
-import Loadable from "react-loadable";
-import { HelmetProvider } from "react-helmet-async";
-import "./index.css";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import { store, persistor } from "./redux/store";
+import { ThemeProvider } from "@material-tailwind/react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { CookiesProvider } from "react-cookie";
+import ReactDOM from "react-dom/client";
+import { HelmetProvider } from "react-helmet-async";
+import Loadable from "react-loadable";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import { PersistGate } from "redux-persist/integration/react";
 import { injectStore } from "./apis/index";
+import Loading from "./features/common/loading";
+import "./index.css";
+import { persistor, store } from "./redux/store";
 
 injectStore(store); // needed to inject Redux store into axios calls
 
@@ -28,7 +29,9 @@ async function bootStrap(preloadedState = {}) {
           <CookiesProvider>
             <GoogleOAuthProvider clientId="362955312743-2igqvv7odpc8snj388fmo95k00o7ffvl.apps.googleusercontent.com">
               <BrowserRouter>
-                <Main />
+                <ThemeProvider>
+                  <Main />
+                </ThemeProvider>
               </BrowserRouter>
             </GoogleOAuthProvider>
           </CookiesProvider>

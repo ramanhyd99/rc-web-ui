@@ -35,7 +35,7 @@ export const toTimeSlotsIn24HRFormat = [
   "21:00",
   "22:00",
   "23:00",
-  "24:00"
+  "24:00",
 ];
 
 export const typesOfDays = [
@@ -98,10 +98,8 @@ export class TimeSlot {
 }
 
 export const generateTimeSlots = (timeSlots) => {
-  
   // Sort the time slots based on the starting time
   const sortedSlots = timeSlots.sort((a, b) => {
-    console.log('here2', a,b)
     const aStartTime = parseInt(a.from.split(":")[0]);
     const bStartTime = parseInt(b.from.split(":")[0]);
     return aStartTime - bStartTime;
@@ -111,13 +109,10 @@ export const generateTimeSlots = (timeSlots) => {
 
   // Generate the individual time slots for each time slot object
   for (const slot of sortedSlots) {
-    console.log('here', slot.from, slot.to)
-
     const startTime = parseInt(slot.from.split(":")[0]);
     const endTime = parseInt(slot.to.split(":")[0]);
 
     for (let i = startTime; i < endTime; i++) {
-      const timeSlot = `${i}:00-${i + 1}:00`;
       generatedSlots.add(new TimeSlot(`${i}:00`, `${i + 1}:00`));
     }
   }

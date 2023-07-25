@@ -1,11 +1,8 @@
 import { connect } from "react-redux";
 import AccountNav from "../../account-nav";
-import LoggedInPageHeader from "../../common/layout/LoggedInPageHeader";
+import PageTitle from "../../common/PageTitle";
 import SEO from "../../seo";
 import UnauthorizedPage from "../unauthorized";
-import DayTypeSettings from "./DayTypeSettings";
-import SettingsLayout from "./SettingsLayout";
-import SlotGenerationSettings from "./SlotGenerationSettings";
 
 const SettingsPage = ({ userInfo }) => {
   return (
@@ -15,7 +12,8 @@ const SettingsPage = ({ userInfo }) => {
           <div className="bg-white">
             <SEO title="Settings" />
             <div>
-              <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <PageTitle text="Under Development" />
+              {/* <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <LoggedInPageHeader title="Settings" className="" />
                 <div className="mx-4">
                   <SettingsLayout title="Day type settings">
@@ -26,7 +24,7 @@ const SettingsPage = ({ userInfo }) => {
                   </SettingsLayout>
                   <SettingsLayout title="Price Settings" />
                 </div>
-              </main>
+              </main> */}
             </div>
           </div>
         ) : (

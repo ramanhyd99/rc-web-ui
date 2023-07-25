@@ -14,10 +14,6 @@ export const getBookingExpiryTime = () => {
   } else return 30 * 60;
 };
 
-const API_BASE_URL = isDev
-  ? "localhost:3001/api"
-  : "web.random-capsule.com/api";
-
 const DEV_CONFIG = {
   port: 3001,
   env: "dev",
@@ -32,7 +28,6 @@ const PROD_CONFIG = {
 
 let CONFIG;
 
-console.log("USING", process.env.STAGE || "CONFIG_DEV", "Configuration");
 switch (process.env.NODE_ENV) {
   case "production":
     CONFIG = PROD_CONFIG;

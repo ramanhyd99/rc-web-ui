@@ -4,13 +4,19 @@ import CookieModal from "../common/modals/CookieModal";
 import ErrorNotification from "../errors/ErrorNotification";
 import Footer from "../footer";
 import NavBar from "../navbar";
+import ClientPage from "../pages/client-page";
+import SpeedDialComp from "../pages/home/components/SpeedDialComp";
 import {
   AboutPage,
-  BookingPage, ContactUsPage,
+  BookingPage,
+  ContactUsPage,
+  DashboardPage,
   FAQsPage,
+  FeedbackPage,
   HomePage,
   LibraryPage,
-  LoginPage, MyAssignmentsPage,
+  LoginPage,
+  MyAssignmentsPage,
   MyClientsPage,
   MySessionsPage,
   OurTeamPage,
@@ -18,7 +24,7 @@ import {
   PaymentPage,
   PrivacyPolicyPage,
   SetSchedulePage,
-  SettingsPage
+  SettingsPage,
 } from "./AsyncPages";
 
 const Main = () => {
@@ -27,13 +33,16 @@ const Main = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Scrolls to top whenever the route changes
   }, [location]);
-  
+
   return (
     <>
+      <div className="fixed bottom-2 left-2">
+        <SpeedDialComp />
+      </div>
       <div className="flex flex-col">
         <div>
           <NavBar />
-          <ErrorNotification/>
+          <ErrorNotification />
         </div>
         <div className="flex-grow pt-20 min-h-screen">
           <Routes>
@@ -49,16 +58,19 @@ const Main = () => {
             <Route path="/my-sessions" element={<MySessionsPage />} />
             <Route path="/my-assignments" element={<MyAssignmentsPage />} />
             <Route path="/my-clients" element={<MyClientsPage />} />
+            <Route path="/client" element={<ClientPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="*" element={<Navigate to="/not-found" />} />
             <Route path="/not-found" element={<PageNotFound />} />
             <Route path="/library" element={<LibraryPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/feedback" element={<FeedbackPage />} />
           </Routes>
         </div>
         <div>
-          <CookieModal/>
+          <CookieModal />
         </div>
         <div>
           <Footer />

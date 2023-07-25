@@ -23,36 +23,20 @@ const services = [
     id: 6,
     service: "Attention-deficit/hyperactivity disorder (ADHD)",
   },
-  // {
-  //   id: 7,
-  //   service: "Schizophrenia",
-  // },
-  // {
-  //   id: 8,
-  //   service: "Organizational/Work-related stress",
-  // },
   {
-    id: 9,
+    id: 7,
     service: "Career & Student counselling",
   },
   {
-    id: 9,
+    id: 8,
     service: "Couple & Family Counselling",
   },
-  // {
-  //   id: 9,
-  //   service: "Bi-polar Disorder",
-  // },
   {
-    id: 10,
+    id: 9,
     service: "Obsesssive Compulsive Disorder",
   },
-  // {
-  //   id: 11,
-  //   service: "Eating disorders",
-  // },
   {
-    id: 12,
+    id: 10,
     service: "And more (PTSD, Grief counselling etc.)",
   },
 ];
@@ -73,7 +57,7 @@ const ServicesProvided = () => {
         <div className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
           {services.map((item, index) => (
             <div className="p-2 sm:w-1/2 w-full">
-              <div className="bg-gray-100 rounded flex p-4 h-full items-center">
+              <div className="bg-gray-50 rounded flex p-4 h-full items-center">
                 <svg
                   fill="none"
                   stroke="currentColor"
@@ -91,50 +75,16 @@ const ServicesProvided = () => {
             </div>
           ))}
         </div>
-
         <div className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 mt-8">
           <div className="mx-auto max-w-screen-2xl px-4 pb-4 md:px-8 ">
-            <div className="relative flex flex-wrap rounded-lg bg-blue-400 px-4 py-3 shadow-lg sm:flex-nowrap sm:items-center sm:justify-center sm:gap-3 sm:pr-8 md:px-8">
+            <div className="relative flex flex-wrap rounded-lg bg-blue-600 px-4 py-3 shadow-lg sm:flex-nowrap sm:items-center sm:justify-center sm:gap-3 sm:pr-8 md:px-8">
               <div className="order-1 mb-2 inline-block w-11/12 max-w-screen-sm text-sm text-white sm:order-none sm:mb-0 sm:w-auto md:text-lg text-center">
                 Don't worry if you're unsure about what you need, we're here to
                 help you discover and navigate it in our sessions.
               </div>
-
-              {/* <a
-                href="#"
-                className="order-last inline-block w-full whitespace-nowrap rounded-lg  bg-gray-900 px-4 py-2 text-center text-xs font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-gray-800 focus-visible:ring active:bg-indigo-800 sm:order-none sm:w-auto md:text-sm"
-              >
-                Learn more
-              </a> */}
-
-              {/* <div className="order-2 flex w-1/12 items-start justify-end sm:absolute sm:right-0 sm:order-none sm:mr-2 sm:w-auto xl:mr-3">
-                <button
-                  type="button"
-                  className="text-white transition duration-100 hover:text-indigo-100 active:text-indigo-200"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 xl:h-6 xl:w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div> */}
             </div>
           </div>
         </div>
-
-        {/* <button className="flex mx-auto mt-16 text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">
-          Button
-        </button> */}
       </div>
     </section>
   );

@@ -9,7 +9,6 @@ const ErrorNotification = ({ toast, toastData }) => {
 
   useEffect(() => {
     if (toast) {
-      console.log(toastData);
       if (toastData.isError) ErrorToast(toastData.msg);
       else InfoToast(toastData.msg);
       dispatch(clearToast());

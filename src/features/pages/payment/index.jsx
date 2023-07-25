@@ -4,84 +4,80 @@ import {
   ClockIcon,
   MapPinIcon,
 } from "@heroicons/react/24/outline";
-import axios from "axios";
 
 const PaymentPage = () => {
-  function loadScript(src) {
-    return new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = src;
-      script.onload = () => {
-        resolve(true);
-      };
-      script.onerror = () => {
-        resolve(false);
-      };
-      document.body.appendChild(script);
-    });
-  }
+  // function loadScript(src) {
+  //   return new Promise((resolve) => {
+  //     const script = document.createElement("script");
+  //     script.src = src;
+  //     script.onload = () => {
+  //       resolve(true);
+  //     };
+  //     script.onerror = () => {
+  //       resolve(false);
+  //     };
+  //     document.body.appendChild(script);
+  //   });
+  // }
 
-  async function displayRazorpay() {
-    const res = await loadScript(
-      "https://checkout.razorpay.com/v1/checkout.js"
-    );
+  // async function displayRazorpay() {
+  //   const res = await loadScript(
+  //     "https://checkout.razorpay.com/v1/checkout.js"
+  //   );
 
-    if (!res) {
-      alert("Razorpay SDK failed to load. Are you online?");
-      return;
-    }
+  //   if (!res) {
+  //     alert("Razorpay SDK failed to load. Are you online?");
+  //     return;
+  //   }
 
-    const result = await axios.post("http://localhost:3001/api/payment/orders");
+  //   const result = await axios.post("http://localhost:3001/api/payment/orders");
 
-    if (!result) {
-      alert("Server error. Are you online?");
-      return;
-    }
+  //   if (!result) {
+  //     alert("Server error. Are you online?");
+  //     return;
+  //   }
 
-    const { amount, id, currency } = result.data;
+  //   const { amount, id, currency } = result.data;
 
-    console.log(id);
+  //   const options = {
+  //     key: "rzp_test_haDcqaXJTAHffW", // Enter the Key ID generated from the Dashboard
+  //     amount: amount.toString(),
+  //     currency: currency,
+  //     name: "Random Capsule",
+  //     description: "Test Transaction",
+  //     //   image: { logo },
+  //     order_id: id,
+  //     handler: async function (response) {
+  //       const data = {
+  //         orderCreationId: id,
+  //         razorpayPaymentId: response.razorpay_payment_id,
+  //         razorpayOrderId: response.razorpay_order_id,
+  //         razorpaySignature: response.razorpay_signature,
+  //       };
 
-    const options = {
-      key: "rzp_test_haDcqaXJTAHffW", // Enter the Key ID generated from the Dashboard
-      amount: amount.toString(),
-      currency: currency,
-      name: "Random Capsule",
-      description: "Test Transaction",
-      //   image: { logo },
-      order_id: id,
-      handler: async function (response) {
-        const data = {
-          orderCreationId: id,
-          razorpayPaymentId: response.razorpay_payment_id,
-          razorpayOrderId: response.razorpay_order_id,
-          razorpaySignature: response.razorpay_signature,
-        };
+  //       const result = await axios.post(
+  //         "http://localhost:3001/api/payment/success",
+  //         data
+  //       );
 
-        console.log(data);
-        const result = await axios.post(
-          "http://localhost:3001/api/payment/success",
-          data
-        );
+  //       alert(result.data.msg);
+  //     },
+  //     prefill: {
+  //       name: "Raman Sharma",
+  //       email: "ramanhyd99@gmail.com",
+  //       contact: "8712384274",
+  //     },
+  //     notes: {
+  //       address: "Hyderabad",
+  //     },
+  //     theme: {
+  //       color: "#61dafb",
+  //     },
+  //   };
 
-        alert(result.data.msg);
-      },
-      prefill: {
-        name: "Raman Sharma",
-        email: "ramanhyd99@gmail.com",
-        contact: "8712384274",
-      },
-      notes: {
-        address: "Hyderabad",
-      },
-      theme: {
-        color: "#61dafb",
-      },
-    };
-
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.open();
-  }
+  //   const paymentObject = new window.Razorpay(options);
+  //   paymentObject.open();
+  // }
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -89,10 +85,10 @@ const PaymentPage = () => {
         Pay ₹500
        
       </button> */}
-      <div class="md:w-1/4 flex flex-col rounded-lg overflow-hidden bg-white shadow">
+      <div className="md:w-1/4 flex flex-col rounded-lg overflow-hidden bg-white shadow">
         <CheckBadgeIcon className="h-12 mt-4 text-green-500 animate-pulse-end" />
-        <div class="flex-1 px-6 py-4">
-          <div class="font-bold text-2xl mb-2 text-center">
+        <div className="flex-1 px-6 py-4">
+          <div className="font-bold text-2xl mb-2 text-center">
             Booking Confirmed!
           </div>
           <div className="text-center">
@@ -100,7 +96,7 @@ const PaymentPage = () => {
             <small>
               {" "}
               <span
-                class={` rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20
+                className={` rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20
    `}
               >
                 RC-0010
@@ -124,23 +120,28 @@ const PaymentPage = () => {
               <div className="text-gray-700 ">Video</div>
             </div>
             <div className="mt-2">
-            <a className="text-blue-500 hover:underline" href="https://meet.google.com/_meet/jvw-pmtd-kpr?ijlm=1687800377618&adhoc=1&hs=187">https://meet.google.com/_meet/jvw-pmtd-kpr?ijlm=1687800377618&adhoc=1&hs=187</a>
+              <a
+                className="text-blue-500 hover:underline"
+                href="https://meet.google.com/_meet/jvw-pmtd-kpr?ijlm=1687800377618&adhoc=1&hs=187"
+              >
+                https://meet.google.com/_meet/jvw-pmtd-kpr?ijlm=1687800377618&adhoc=1&hs=187
+              </a>
             </div>
           </div>
         </div>
-        <div class="px-6 py-4 bg-gray-100 flex justify-center">
+        <div className="px-6 py-4 bg-gray-100 flex justify-center">
           <a
             href="/my-sessions"
-            class="bg-blue-600 hover:bg-blue-700 py-2 px-4 text-sm font-medium text-white border border-transparent rounded-lg focus:outline-none"
+            className="bg-blue-600 hover:bg-blue-700 py-2 px-4 text-sm font-medium text-white border border-transparent rounded-lg focus:outline-none"
           >
             Got it!
           </a>
           <div
-            class="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6"
+            className="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6"
             aria-hidden="true"
           >
             {/* <div
-              class="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
+              className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
               style={{
                 "clip-path":
                   "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
@@ -186,8 +187,6 @@ export default PaymentPage;
 //       const data = await fetch('http://localhost:1769/razorpay', {method: 'POST'}).then((t) =>
 //         t.json()
 //       )
-
-//       console.log(data)
 
 //     const options = {
 //       "key": "YOUR_KEY_ID", // Enter the Key ID generated from the Dashboard
