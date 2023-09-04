@@ -10,7 +10,7 @@ const ClientPage = ({ userInfo }) => {
         <>
           {userInfo.role === "admin" ? (
             <div>
-              <ClientInfo />
+              <ClientInfo defaultId={userInfo.id}/>
             </div>
           ) : (
             <UnauthorizedPage />

@@ -12,9 +12,9 @@ const content = [
   },
   {
     index: 2,
-    question: "What is the refund/cancellation/reschedule policy?",
+    question: "What is the refund/cancellation policy?",
     answer:
-      "We understand that unexpected situations may arise, but unfortunately, we do not currently offer rescheduling, refunds or cancellations. However, we are committed to working with you to find alternative solutions and accommodate any necessary adjustments to your appointments.",
+      "We understand that unexpected situations may arise and that's we provide you with the option to cancel the session. You will be refunded the paid amount at the earliest via the mode you have paid it.",
   },
   {
     index: 9,
@@ -38,26 +38,27 @@ const content = [
     index: 5,
     question: "Do you offer online therapy or counseling?",
     answer:
-      "Yes, we offer online therapy or counseling sessions for individuals who prefer remote access or are unable to attend in-person sessions. Online sessions provide convenience and accessibility while maintaining the same level of professional support.",
+      "Yes, we primarily offer online therapy or counseling sessions. Online sessions provide convenience and accessibility while maintaining the same level of professional support as of in-person counseling.",
   },
   {
     index: 6,
+    question: "Do you offer offline counselling sessions?",
+    answer:
+      "Please contact +91-7975897538 and based on your location the best option can be decided.",
+  },
+  {
+    index: 7,
     question: "What can I expect during the first session?",
     answer:
       "During the initial session, your therapist or counselor will work with you to gather information about your background, current concerns, and goals for therapy. This helps them develop an understanding of your unique situation and create a tailored treatment plan.",
   },
   {
-    index: 7,
+    index: 8,
     question: "How long does therapy or counseling usually last?",
     answer:
       "The duration of therapy or counseling can vary depending on individual needs and goals. Some people find benefit from short-term therapy, which may last a few weeks or months, while others may engage in longer-term therapy for ongoing support and personal growth.",
   },
-  {
-    index: 8,
-    question: "Do you offer offline counselling sessions?",
-    answer:
-      "Please contact +91-7975897538 and based on your location the best option can be decided.",
-  },
+  
 ];
 
 const FAQs = ({ className }) => {
@@ -78,26 +79,26 @@ const FAQs = ({ className }) => {
   }, []);
 
   return (
-    <div className={`${className}`}>
+    <div className="py-2">
       <SEO title="FAQs" />
-      <div className="bg-white py-6 sm:py-8 lg:py-12">
+      <div className="bg-white">
         <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
           <div className="mb-10 md:mb-12">
             <PageTitle text="Frequently asked questions" className="mb-2" />
-            <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">
+            <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg pt-2">
               Please reach out to us{" "}
               <Link
                 to="/contact-us"
-                className="underline font-bold text-black hover:text-black/60"
+                className="underline font-bold text-black hover:text-black/60  highlight highlight-pink-50 highlight-spread-sm highlight-variant-5"
               >
                 here
               </Link>{" "}
               if you have any further questions.
             </p>
           </div>
-          <div className="mx-auto flex max-w-screen-sm flex-col border-t">
+          <div className="mx-auto flex max-w-screen-md flex-col">
             {content.map((item, index) => (
-              <div className="border-b">
+              <div className="border-b rounded-xl px-5 bg-gray-50 mt-4">
                 <div
                   className="flex cursor-pointer justify-between gap-2 py-4 text-black hover:text-blue-500 active:text-blue-600"
                   onClick={
@@ -106,7 +107,11 @@ const FAQs = ({ className }) => {
                       : () => handleOnUnDrop(index)
                   }
                 >
-                  <span className="font-semibold transition duration-100 md:text-lg">
+                  <span
+                    className={`font-semibold transition duration-100 md:text-lg ${
+                      selectedIndex == index ? "text-blue-500" : ""
+                    } `}
+                  >
                     {item.question}
                   </span>
 

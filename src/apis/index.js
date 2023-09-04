@@ -58,7 +58,7 @@ api.interceptors.response.use(
     } else if (error.response && error.response.status === 401) {
       store.dispatch(
         setToast({
-          msg: "Session expired.",
+          msg: "Session expired",
           isError: true,
         })
       );

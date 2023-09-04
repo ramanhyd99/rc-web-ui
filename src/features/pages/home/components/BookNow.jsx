@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 const BookNow = ({ className }) => {
   return (
-    <div className={`bg-white py-6 sm:py-8 lg:py-10 ${className} `}>
+    <div className={` py-6 sm:py-8 lg:py-20 ${className} `}>
       <div className="mx-auto max-w-screen-2xl px-4 md:px-8 ">
         <div className="flex flex-col overflow-hidden rounded-lg  sm:flex-row md:h-80">
-          <div className="order-first h-60 w-full justify-center flex bg-white sm:order-none sm:h-auto sm:w-1/2 lg:w-2/5">
+          <div className="order-first h-60 w-full justify-center flex  sm:order-none sm:h-auto sm:w-1/2 lg:w-2/5">
             <img
               src={require("../../../../assets/img/here_for_you.gif")}
               loading="lazy"
@@ -16,14 +16,14 @@ const BookNow = ({ className }) => {
           </div>
 
           <div className="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-3/5">
-            <h2 className="flex sm:justify-start justify-center mb-4 text-xl font-bold text-gray-800 md:text-2xl lg:text-4xl">
-              Sessions at ₹329 only
+            <h2 className="flex sm:justify-start justify-center mb-4 text-3xl font-bold text-gray-800 md:text-2xl lg:text-5xl">
+              Sessions at <span className="px-2 highlight highlight-blue-50 highlight-spread-sm highlight-variant-5">₹329</span> only
             </h2>
-            <h3 className="flex sm:justify-start justify-center mb-4 text-md font-bold text-blue-900 md:text-xl lg:text-2xl">
+            <h3 className="flex sm:justify-start justify-center mb-4 text-md  text-pink-200 md:text-xl lg:text-2xl">
               Free follow-up sessions!
             </h3>
 
-            <p className="mb-4 max-w-lg text-gray-600">
+            <p className="mb-4 max-w-lg text-gray-700 text-center sm:text-left">
               We believe that mental well-being should be accessible to all,
               which is why we strive to offer afforadable rates without
               compromising on the quality of care. Free follow-ups help assess

@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import {
   Card,
@@ -9,14 +9,25 @@ import {
 } from "@material-tailwind/react";
 
 const NewUserModal = (props) => {
-  const [open, setOpen] = useState(
-    localStorage.getItem("seen_welcome") !== "true"
-  );
+  const [open, setOpen] = useState(false);
 
   const closeModal = () => {
     setOpen(!open);
     localStorage.setItem("seen_welcome", "true");
   };
+
+  useEffect(() => {
+    const delay = 1500;
+
+    const timer = setTimeout(() => {
+        setOpen(true)
+    //   if (localStorage.getItem("seen_welcome") !== "true") setOpen(true);
+    }, delay);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
     <>
@@ -34,7 +45,7 @@ const NewUserModal = (props) => {
             <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
-          <div className="fixed inset-0 z-10 overflow-y-auto">
+          <div className="mt-12 fixed inset-0 z-10 overflow-y-auto">
             <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
               <Transition.Child
                 as={Fragment}

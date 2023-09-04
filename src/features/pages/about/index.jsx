@@ -34,16 +34,16 @@ const AnimatedNumbers = ({ value }) => {
 
 const About = () => {
   return (
-    <>
+    <div className="py-2">
       <SEO title="Your Psychologist" />
       <main
-        className="flex w-full h-min-screen flex-col items-center justify-center md:px-24 px-12"
+        className="flex w-full h-min-screen flex-col items-center justify-center md:px-24 px-12 pb-4"
         // style={{ border: " 2px solid magenta" }}
       >
         <PageTitle text="Your Psychologist" className="mb-12" />
         <div className="lg:grid w-full grid-cols-8 gap-16 flex flex-col lg:items-stretch  items-center">
           <div className="col-span-3 flex flex-col items-start justify-start">
-            <h2 className="mb-4 text-lg font-bold uppercase text-black/60">
+            <h2 className="mb-4 text-lg font-bold uppercase text-gray-700  highlight highlight-pink-50 highlight-spread-sm highlight-variant-5">
               About Me
             </h2>
             <p className="font-medium text-gray-600">
@@ -84,8 +84,8 @@ const About = () => {
               alt="Pooja Gupta"
             />
             <div className="flex items-center flex-col mt-2">
-              <h2 className="text-2xl font-bold">Ms. Pooja Gupta</h2>
-              <h2 className="text-md">Msc Psychology</h2>
+              <h2 className="text-2xl font-bold text-blue-500">Ms. Pooja Gupta</h2>
+              <h2 className="text-md text-pink-200">Msc Psychology</h2>
             </div>
           </div>
           <div className="col-span-2 flex flex-col items-end justify-around pb-20">
@@ -116,7 +116,7 @@ const About = () => {
           </div>
         </div>
       </main>
-    </>
+    </div>
   );
 };
 

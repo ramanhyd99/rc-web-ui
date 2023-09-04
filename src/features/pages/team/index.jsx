@@ -5,17 +5,16 @@ import SEO from "../../seo";
 
 const OurTeam = () => {
   return (
-    <div className="bg-white py-6 sm:py-8 lg:py-12 ">
+    <div className="bg-white py-2 h-screen">
       <SEO title="Our team" />
       <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
         <div className="mb-10 md:mb-16">
           <PageTitle text="Meet Our Team" className="mb-2" />
           <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">
-            We are a small, yet dedicated team of two.
+            We are a small, yet dedicated team of <span className="px-1 highlight highlight-pink-50 highlight-spread-sm highlight-variant-5">two.</span>
           </p>
         </div>
-
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 lg:gap-8 xl:gap-12">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 lg:gap-8 xl:gap-12 item">
           <div className="flex flex-col items-center rounded-lg bg-gray-100 p-4 lg:p-8">
             <div className="mb-2 h-24 w-24 overflow-hidden rounded-full bg-gray-200 shadow-lg md:mb-4 md:h-36 md:w-auto lg:h-64">
               <img
@@ -27,7 +26,7 @@ const OurTeam = () => {
             </div>
 
             <div>
-              <div className="text-center font-bold text-blue-500 md:text-lg">
+              <div className="text-center font-bold text-pink-300 md:text-lg">
                 Ms Pooja Gupta
               </div>
               <p className="mb-3 text-center text-sm text-gray-500 md:mb-4 md:text-base">
@@ -36,16 +35,16 @@ const OurTeam = () => {
 
               <div className="flex justify-center">
                 <div className="flex">
-                  <Link className="text-gray-400  hover:text-gray-500 active:text-gray-600">
+                  <Link className="text-gray-400  hover:text-pink-200 active:text-gray-600">
                     <Facebook />
                   </Link>
-                  <Link className="ml-3 text-gray-400  hover:text-gray-500 active:text-gray-600">
+                  <Link className="ml-3 text-gray-400  hover:text-pink-200 active:text-gray-600">
                     <Twitter />
                   </Link>
                   <Link
                     to="https://www.instagram.com/random_capsule/"
                     target="_blank"
-                    className="ml-3 text-gray-400  hover:text-gray-500 active:text-gray-600"
+                    className="ml-3 text-gray-400  hover:text-pink-200 active:text-gray-600"
                   >
                     <Instagram />
                   </Link>
@@ -109,7 +108,7 @@ const OurTeam = () => {
                 <div className="flex gap-4">
                   <a
                     href="https://www.linkedin.com/in/ramansharma96/"
-                    className="text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600"
+                    className="text-gray-400 transition duration-100 hover:text-blue-200 active:text-gray-600"
                   >
                     <svg
                       className="h-5 w-5"

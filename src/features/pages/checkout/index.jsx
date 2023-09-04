@@ -6,14 +6,26 @@ import {
   HomeIcon,
   PhoneIcon,
 } from "@heroicons/react/24/outline";
-import { LockClosedIcon } from "@heroicons/react/24/solid";
+import {
+  InformationCircleIcon,
+  LockClosedIcon,
+} from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { classNames } from "../../../utils";
 
-import { Typography } from "@material-tailwind/react";
+import {
+  List,
+  ListItem,
+  ListItemPrefix,
+  Radio,
+  Spinner,
+  Tooltip,
+  Typography,
+} from "@material-tailwind/react";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { isValidEmail, isValidName, isValidNumber } from "./FormValidations";
+import { useCheckoutMutation } from "../../../apis/rtk-apis";
 
 const secondsToMMSS = (seconds) => {
   const minutes = Math.floor(seconds / 60);
@@ -26,7 +38,7 @@ const secondsToMMSS = (seconds) => {
 };
 
 const Checkout = ({ userInfo, ...props }) => {
-  const [mode, setMode] = useState("video");
+  const [mode, setMode] = useState("Call");
   const [agreementAccepted, setAgreementAccepted] = useState(false);
   const [selectedTab, setSelectedTab] = useState(0);
   const [selectedFreeFollowUp, setSelectedFreeFollowUp] = useState(
@@ -39,7 +51,11 @@ const Checkout = ({ userInfo, ...props }) => {
 
   const navigate = useNavigate();
 
+  const [checkoutMutation, { data, isLoading, isError, isSuccess }] =
+    useCheckoutMutation();
+
   const [formData, setFormData] = useState({
+    user_id: userInfo ? userInfo.id : "",
     name: userInfo ? userInfo.name : "",
     email: userInfo ? userInfo.email : "",
     phone: "",
@@ -47,6 +63,13 @@ const Checkout = ({ userInfo, ...props }) => {
     their_name: "",
     their_email: "",
     their_phone: "",
+    referer_relation: "parent/guardian",
+    session_type: selectedFreeFollowUp ? "follow_up" : "regular",
+    session_mode: "Call",
+    payment_mode: "pay_later",
+    session_for: "self",
+    price: selectedFreeFollowUp ? "0" : "329",
+    ...props.slotData,
   });
 
   useEffect(() => {
@@ -135,19 +158,57 @@ const Checkout = ({ userInfo, ...props }) => {
     if (selectedFreeFollowUp) {
       setSelectedFreeFollowUp(false);
       setFinalPrice("329");
+      setFormData({
+        ...formData,
+        price: "329",
+        session_type: "regular",
+      });
     } else {
       setSelectedFreeFollowUp(true);
       setFinalPrice("0");
+      setFormData({
+        ...formData,
+        price: "0",
+        session_type: "follow_up",
+      });
     }
   };
 
+  const handleSessionModeChange = (value) => {
+    setMode(value);
+    setFormData({
+      ...formData,
+      session_mode: value,
+    });
+  };
+
   const handleSelectedTabChange = (index) => {
+    setFormData({
+      ...formData,
+      session_for: index === 0 ? "self" : "other",
+    });
     setSelectedTab(index);
     setAgreementAccepted(false);
   };
 
+  const handlePaymentClick = (event) => {
+    event.preventDefault();
+    // alert(formData);
+
+    checkoutMutation({ form: formData });
+  };
+
+  const handleBookingSuccess = () => {
+    props.setSlotData(null);
+    props.setBookingSuccessData(data);
+  };
+
+  const handleBookingFailure = () => {
+    props.setSlotData(null);
+  };
+
   return (
-    <>
+    <div className="mt-2">
       {userInfo && props.slotData && (
         <div className="bg-white">
           <div className="">
@@ -279,7 +340,7 @@ const Checkout = ({ userInfo, ...props }) => {
                                           onChange={handleForMyselfFormChange}
                                           className="block w-full bg-gray-50 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         >
-                                          <option value="parent_guardian">
+                                          <option value="parent/guardian">
                                             Parent/Guardian
                                           </option>
                                           <option value="friend">Friend</option>
@@ -422,7 +483,7 @@ const Checkout = ({ userInfo, ...props }) => {
                                   <span className="ml-2">
                                     I accept the{" "}
                                     <a
-                                      className="text-blue-400 hover:text-blue-600"
+                                      className="text-pink-200 hover:text-pink-300"
                                       href="/terms-and-conditions"
                                       target={"_blank"}
                                     >
@@ -443,7 +504,7 @@ const Checkout = ({ userInfo, ...props }) => {
                               <a
                                 href="/privacy-policy"
                                 target={"_blank"}
-                                className="text-blue-400 transition duration-100 hover:text-blue-600 active:text-blue-700"
+                                className="text-pink-200 transition duration-100 hover:text-pink-300 active:text-pink-300"
                               >
                                 Our privacy policy
                               </a>
@@ -457,39 +518,39 @@ const Checkout = ({ userInfo, ...props }) => {
               </div>
               <div className="lg:row-span-3 md:mt-4 mt-12">
                 <p className="text-2xl tracking-tight font-semibold text-gray-900 mb-4 md:text-left text-center">
-                  {props.slotData.formattedDate}
+                  {props.slotData.formatted_date}
                 </p>
                 <div className="md:text-left text-center">
                   <span
                     className={`rounded-md bg-blue-50 px-2 py-1 text-md font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20 
    `}
                   >
-                    {props.slotData.formattedStartTime} -{" "}
-                    {props.slotData.formattedToTime}
+                    {props.slotData.formatted_start_time} -{" "}
+                    {props.slotData.formatted_end_time}
                   </span>
                   <small>
                     {" ("}
-                    {props.slotData.timeZone}
+                    {props.slotData.timezone}
                     {")"}
                   </small>
                 </div>
                 <form className="mt-10">
-                  <div className="md:text-left text-center">
+                  <div className="text-left ml-7 sm:ml-0">
                     <h3 className="text-sm font-medium text-gray-900">
-                      Choose a mode
+                      1. Choose a mode
                     </h3>
                     <RadioGroup
                       value={mode}
-                      onChange={setMode}
-                      className="flex justify-center md:justify-start"
+                      onChange={handleSessionModeChange}
+                      className="flex justify-start md:justify-start text-center"
                     >
-                      <div className="flex items-center space-x-5 mt-4 cursor-pointer">
-                        <RadioGroup.Option value="chat">
+                      <div className="flex items-center space-x-5 mt-4 cursor-pointer ">
+                        <RadioGroup.Option value="Chat">
                           {({ checked }) => (
                             <div
                               className={
                                 checked
-                                  ? "p-2 ring-2 ring-green-400 rounded-md bg-green-50"
+                                  ? "p-2 ring-2 ring-green-400 rounded-md bg-green-50 "
                                   : ""
                               }
                             >
@@ -498,7 +559,7 @@ const Checkout = ({ userInfo, ...props }) => {
                             </div>
                           )}
                         </RadioGroup.Option>
-                        <RadioGroup.Option value="video">
+                        <RadioGroup.Option value="Video">
                           {({ checked }) => (
                             <div
                               className={
@@ -512,7 +573,7 @@ const Checkout = ({ userInfo, ...props }) => {
                             </div>
                           )}
                         </RadioGroup.Option>
-                        <RadioGroup.Option value="call">
+                        <RadioGroup.Option value="Call">
                           {({ checked }) => (
                             <div
                               className={
@@ -546,7 +607,66 @@ const Checkout = ({ userInfo, ...props }) => {
                       </div>
                     </RadioGroup>
                   </div>
-                  <div className="mt-10 p-2 md:p-0">
+
+                  <div className="mt-8 space-y-2 ml-7 sm:ml-0">
+                    <h3 className="text-sm font-medium text-gray-900">
+                      2. Payment Method
+                    </h3>
+                    {/* PAYMENT METHODS */}
+                    <List>
+                      <ListItem className="p-0">
+                        <label
+                          htmlFor="vertical-list-react"
+                          className="flex w-full cursor-pointer items-center px-3 py-2"
+                        >
+                          <ListItemPrefix className="mr-3">
+                            <Radio
+                              defaultChecked="true"
+                              name="vertical-list"
+                              id="vertical-list-react"
+                              ripple={false}
+                              className="hover:before:opacity-0"
+                              containerProps={{
+                                className: "p-0",
+                              }}
+                            />
+                          </ListItemPrefix>
+                          <Typography color="blue-gray" className="font-medium">
+                            Pay after session
+                          </Typography>
+                        </label>
+                      </ListItem>
+                      <ListItem className="p-0 pointer-events-none">
+                        <label
+                          htmlFor="vertical-list-vue"
+                          className="flex w-full cursor-pointer items-center px-3 py-2"
+                        >
+                          <ListItemPrefix className="mr-3">
+                            <Radio
+                              disabled={true}
+                              name="vertical-list"
+                              id="vertical-list-vue"
+                              ripple={false}
+                              className="hover:before:opacity-0"
+                              containerProps={{
+                                className: "p-0",
+                              }}
+                            />
+                          </ListItemPrefix>
+                          <Typography color="blue-gray" className="font-medium">
+                            UPI{" "}
+                            <span
+                              className={`mx-auto items-center justify-center text-center  rounded-md bg-pink-50 px-1 py-1 text-xs font-medium text-pink-300 font-quicksand ring-1 ring-inset ring-pink-600/20
+            `}
+                            >
+                              Coming soon
+                            </span>
+                          </Typography>
+                        </label>
+                      </ListItem>
+                    </List>
+                  </div>
+                  <div className="mt-4 p-2 md:p-0">
                     <div className="flex items-center justify-between">
                       <div className="flex">
                         <input
@@ -573,37 +693,52 @@ const Checkout = ({ userInfo, ...props }) => {
                       <a
                         href="/faqs?index=2"
                         target={"_blank"}
-                        className="text-sm font-medium text-blue-400 hover:text-blue-500"
+                        className="text-sm font-medium text-pink-200 hover:text-pink-400"
                       >
                         What's this?
                       </a>
                     </div>
                   </div>
+                  {isLoading ? (
+                    <div className="flex justify-center mt-14">
+                      <Spinner />
+                    </div>
+                  ) : (
+                    <button
+                      disabled={!agreementAccepted}
+                      // type="submit"
+                      onClick={handlePaymentClick}
+                      className={classNames(
+                        "mt-14 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white ",
+                        !agreementAccepted
+                          ? "bg-gray-500 cursor-not-allowed"
+                          : "bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                      )}
+                    >
+                      {/* Pay ₹ <span className="text-lg">{finalPrice}</span> */}
+                      Pay ₹{" "}
+                      <span className="text-lg flex items-center">
+                        {finalPrice}
+                      </span>
+                    </button>
+                  )}
 
-                  <button
-                    disabled={!agreementAccepted}
-                    type="submit"
-                    className={classNames(
-                      "mt-10 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white ",
-                      !agreementAccepted
-                        ? "bg-gray-500 cursor-not-allowed"
-                        : "bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    )}
-                  >
-                    Pay ₹ <span className="text-lg">{finalPrice}</span>
-                  </button>
+                  {isSuccess && handleBookingSuccess()}
+                  {isError && handleBookingFailure()}
                 </form>
                 <Typography
                   variant="small"
                   color="gray"
                   className="mt-2 flex items-center justify-center gap-2 font-normal opacity-60"
                 >
-                  <LockClosedIcon className="-mt-0.5 h-4 w-4" /> Payments are
-                  secure and encrypted
+                  {/* <LockClosedIcon className="-mt-0.5 h-4 w-4" /> Payments are
+                  secure and encrypted */}
+                  {/* <InformationCircleIcon className="-mt-0.5 h-4 w-4" /> Payments are made post booking via UPI */}
                 </Typography>
-                <div className="mt-6 flex">
-                  <ClockIcon className="h-6 mr-2" />
-                  <span>
+
+                <div className="mt-4 sm:mt-8 flex">
+                  <ClockIcon className="h-6 mr-2 text-gray-700" />
+                  <span className="text-gray-700">
                     Session expires in:{" "}
                     <span className="font-bold">{secondsToMMSS(timer)}</span>{" "}
                     mins
@@ -614,7 +749,7 @@ const Checkout = ({ userInfo, ...props }) => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

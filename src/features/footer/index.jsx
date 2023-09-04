@@ -5,7 +5,7 @@ import { Instagram, LinkedIn } from "../common/svgs";
 const Footer = () => {
   return (
     <>
-      <footer className="text-gray-400 bg-gray-900 body-font mt-20">
+      <footer className="text-gray-400 bg-gray-900 body-font">
         <div className="container px-5 pt-24 py-12 mx-auto">
           <div className="flex flex-wrap md:text-center text-center order-first justify-center">
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
@@ -46,7 +46,7 @@ const Footer = () => {
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
-                Library
+                Resources
               </h2>
               <nav className="list-none mb-10">
                 {/* <li>
@@ -76,12 +76,12 @@ const Footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <Link to="/home" className="text-gray-400 hover:text-white">
+                  <Link to="/privacy-policy" className="text-gray-400 hover:text-white">
                     Cookie Policy
                   </Link>
                 </li>
                 <li>
-                  <Link to="/home" className="text-gray-400 hover:text-white">
+                  <Link to="/terms-and-conditions" className="text-gray-400 hover:text-white">
                     Terms & Conditions
                   </Link>
                 </li>
@@ -91,6 +91,14 @@ const Footer = () => {
                     className="text-gray-400 hover:text-white"
                   >
                     Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/feedback"
+                    className="text-gray-400 hover:text-white"
+                  >
+                    Feedback 🌻
                   </Link>
                 </li>
               </nav>

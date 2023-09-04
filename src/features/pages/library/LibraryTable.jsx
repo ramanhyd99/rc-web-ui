@@ -1,15 +1,10 @@
-import {
-  ArrowDownTrayIcon,
-  BookmarkIcon,
-  ChevronUpDownIcon,
-} from "@heroicons/react/24/outline";
+import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import {
   Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
-  Input,
   Typography,
 } from "@material-tailwind/react";
 
@@ -58,114 +53,138 @@ const data = [
 
 const LibraryTable = () => {
   return (
-    <Card className="h-full w-full">
-      <CardHeader floated={false} shadow={false} className="rounded-none">
-        <div className="flex flex-col items-center justify-between gap-4 md:flex-row ">
-          <div className="flex gap-4">
-            <div className="w-full md:w-72 pt-1">
+    <>
+      <div className="flex justify-center items-center w-full mt-0 ">
+        <div className="md:w-1/2 rounded-full w-full px-12 py-4 border-blue-50 border-2 shadow-around focus:outline-none focus:ring-2 ring-blue-100 flex items-center">
+          <input
+            label="search"
+            className="focus:outline-none w-full h-full text-xl"
+            // className="rounded-full w-full px-12 py-6 shadow-around focus:outline-none focus:ring-2 ring-blue-100"
+            placeholder="e.g. OCD"
+          />
+          <button className="rounded-xl bg-black p-3 text-white text-sm hover:bg-gray-800 ">
+            Search
+          </button>
+        </div>
+      </div>
+      <Card className="h-full w-full mt-1">
+        <CardHeader floated={false} shadow={false} className="rounded-none">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row ">
+            <div className="flex gap-4">
+              {/* <div className="w-full md:w-96 pt-1">
               <Input label="search" />
+            </div> */}
+            </div>
+            <div className="mr-4">
+              <b>Total</b>: 10
             </div>
           </div>
-          <div className="mr-4">
-            <b>Total</b>: 10
-          </div>
-        </div>
-      </CardHeader>
-      <CardBody className="overflow-scroll px-0">
-        <table className="mt-4 w-full min-w-max table-auto text-left">
-          <thead>
-            <tr>
-              {headers.map((head, index) => (
-                <th
-                  key={head.name}
-                  className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50"
-                >
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="flex items-center justify-between gap-2 font-normal leading-none opacity-70"
+        </CardHeader>
+        <CardBody className="overflow-scroll px-0">
+          <table className="mt-0 w-full min-w-max table-auto text-left">
+            <thead>
+              <tr>
+                {headers.map((head, index) => (
+                  <th
+                    key={head.name}
+                    className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-3 transition-colors hover:bg-blue-gray-50"
                   >
-                    {head.name}
-                    {head.sorting_field && (
-                      <ChevronUpDownIcon strokeWidth={2} className="h-4 w-4" />
-                    )}
-                  </Typography>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {data &&
-              data.map(({ title, tag, link }, index) => {
-                const isLast = index === data.length - 1;
-                const classes = isLast
-                  ? "p-4"
-                  : "p-4 border-b border-blue-gray-50";
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="flex items-center justify-between gap-2 font-normal leading-none opacity-70"
+                    >
+                      {head.name}
+                      {head.sorting_field && (
+                        <ChevronUpDownIcon
+                          strokeWidth={2}
+                          className="h-4 w-4"
+                        />
+                      )}
+                    </Typography>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            {/* <tbody>
+              {data &&
+                data.map(({ title, tag, link }, index) => {
+                  const isLast = index === data.length - 1;
+                  const classes = isLast
+                    ? "p-4"
+                    : "p-4 border-b border-blue-gray-50";
 
-                return (
-                  <tr key={title} className="even:bg-blue-gray-50/50">
-                    <td className={classes}>
-                      <div className="flex items-center gap-4 w-1/2">
-                        <div className="flex flex-col flex-wrap">
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="font-semibold"
-                          >
-                            <div className="flex">
-                              <BookmarkIcon className="w-6 mr-2" />
-                              {title}
-                            </div>
-                          </Typography>
+                  return (
+                    <tr key={title} className="even:bg-blue-gray-50/50">
+                      <td className={classes}>
+                        <div className="flex items-center gap-4 w-1/2">
+                          <div className="flex flex-col flex-wrap">
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-semibold"
+                            >
+                              <div className="flex">
+                                <BookmarkIcon className="w-6 mr-2" />
+                                {title}
+                              </div>
+                            </Typography>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className={classes}>
-                      <span href={link} >
-                        <ArrowDownTrayIcon className="h-6 w-6 text-black" />
-                      </span>
-                    </td>
-                    <td className={classes}>
-                      <span
-                        className={` rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20
+                      </td>
+                      <td className={classes}>
+                        <span href={link}>
+                          <ArrowDownTrayIcon className="h-6 w-6 text-black" />
+                        </span>
+                      </td>
+                      <td className={classes}>
+                        <span
+                          className={` rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20
    `}
-                      >
-                        {tag}
-                      </span>
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
-      </CardBody>
-      <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
-        <Typography variant="small" color="blue-gray" className="font-normal">
-          Page {1} of{" "}
-          {/* {data?.data?.total ? Math.ceil(data.data.total / limit) : "-"} */}
-        </Typography>
-        <div className="flex gap-2">
-          <Button
-            variant="outlined"
-            color="blue-gray"
-            size="sm"
-            // disabled={page == 0}
-            // onClick={handlePrevious}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="outlined"
-            color="blue-gray"
-            size="sm"
-            // disabled={data ? limit * (page + 1) >= data.data.total : true}
-            // onClick={handleNext}
-          >
-            Next
-          </Button>
-        </div>
-      </CardFooter>
-    </Card>
+                        >
+                          {tag}
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody> */}
+          </table>
+        </CardBody>
+        {/* <div className="flex justify-center items-right w-full">
+          <img
+            src={require("../../../assets/img/no_data.svg").default}
+            className="h-64 sm:h-72 pointer-events-none"
+          />
+        </div> */}
+        <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
+          <Typography variant="small" color="blue-gray" className="font-normal">
+            Page {1} of{" "}
+            {/* {data?.data?.total ? Math.ceil(data.data.total / limit) : "-"} */}
+          </Typography>
+          <div className="flex gap-2">
+            <Button
+              variant="outlined"
+              color="blue-gray"
+              size="sm"
+              // disabled={page == 0}
+              // onClick={handlePrevious}
+            >
+              Previous
+            </Button>
+            <Button
+              variant="outlined"
+              color="blue-gray"
+              size="sm"
+              // disabled={data ? limit * (page + 1) >= data.data.total : true}
+              // onClick={handleNext}
+            >
+              Next
+            </Button>
+          </div>
+        </CardFooter>
+      </Card>
+    </>
   );
 };
 

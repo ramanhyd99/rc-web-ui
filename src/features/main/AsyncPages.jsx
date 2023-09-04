@@ -81,6 +81,11 @@ export const PrivacyPolicyPage = Loadable({
   loader: () => import("../pages/privacy-policy"),
 });
 
+export const TermsAndConditionsPage = Loadable({
+  loading: Loading,
+  loader: () => import("../pages/terms-and-conditions"),
+});
+
 export const DashboardPage = Loadable({
   loading: Loading,
   loader: () => import("../pages/dashboard"),
@@ -94,4 +99,9 @@ export const ClientPage = Loadable({
 export const FeedbackPage = Loadable({
   loading: Loading,
   loader: () => import("../pages/feedback-page"),
+});
+
+export const MySchedulePage = Loadable({
+  loading: Loading,
+  loader: () => import("../pages/my-schedule"),
 });

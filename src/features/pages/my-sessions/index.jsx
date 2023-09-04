@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import AccountNav from "../../account-nav";
 import LoggedInPageHeader from "../../common/layout/LoggedInPageHeader";
 import SEO from "../../seo";
-import SessionsTable from "./SessionsTable";
+import BookingsTable from "./BookingsTable";
 
 const MySessions = ({ userInfo }) => {
   return (
@@ -11,9 +11,9 @@ const MySessions = ({ userInfo }) => {
         <div className="bg-white">
           <SEO title="My Sessions" />
           <div>
-            <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <main className="mx-auto max-w-9xl px-4 sm:px-6 lg:px-8">
               <LoggedInPageHeader title="My Sessions" />
-              <SessionsTable />
+              <BookingsTable userId={userInfo.id}/>
             </main>
           </div>
         </div>

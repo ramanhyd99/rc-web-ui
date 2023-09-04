@@ -61,7 +61,7 @@ const CookieModal = () => {
                   Accept Cookies
                 </button>
 
-                <div className="order-2 flex w-1/12 items-start justify-end sm:absolute sm:right-0 sm:order-none sm:mr-2 sm:w-auto xl:mr-3">
+                {/* <div className="order-2 flex w-1/12 items-start justify-end sm:absolute sm:right-0 sm:order-none sm:mr-2 sm:w-auto xl:mr-3">
                   <button
                     type="button"
                     className="text-white transition duration-100 hover:text-indigo-100 active:text-indigo-200"
@@ -81,7 +81,7 @@ const CookieModal = () => {
                       />
                     </svg>
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

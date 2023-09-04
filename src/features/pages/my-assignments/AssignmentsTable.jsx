@@ -35,14 +35,19 @@ const AssignmentsTable = ({ userId }) => {
         </div>
       ) : (
         <>
-          {data?.data.length === 0 ? (
+          {data == null || data?.data.length === 0 ? (
             <div className="flex justify-center">
-              <img
-                src={require("../../../assets/img/empty.png")}
-                loading="lazy"
-                alt="No results"
-                className="h-56"
-              />
+              <div className="block">
+                <img
+                  src={require("../../../assets/img/empty.png")}
+                  loading="lazy"
+                  alt="No results"
+                  className="h-48"
+                />
+                <div className="flex justify-center items-center font-varela text-gray-500">
+                  No assignments found.
+                </div>
+              </div>
             </div>
           ) : (
             <ul className="divide-y divide-gray-100 rounded-md border border-gray-200 w-full lg:w-3/5 xl:full justify-center">
@@ -55,7 +60,9 @@ const AssignmentsTable = ({ userId }) => {
                           <div className="flex w-0 flex-1 items-center">
                             <PaperClipIcon className="h-5 w-5 text-gray-400" />
                             <div className="ml-4 flex min-w-0 flex-1 gap-2">
-                              <span className="truncate font-medium">{name}</span>
+                              <span className="truncate font-medium">
+                                {name}
+                              </span>
                               <span className="flex-shrink-0 text-gray-400">
                                 {format(
                                   new Date(uploaded_date),

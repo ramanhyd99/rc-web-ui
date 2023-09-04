@@ -9,7 +9,7 @@ const UnauthorizedPage = () => {
         <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
           <div className="flex flex-col items-center">
             <h1 className="mb-2 text-center text-2xl font-bold text-gray-800 md:text-3xl">
-              Oops, unauthorized!
+              Oops, Forbidden!
             </h1>
             <img
               className="md:w-3/4 lg:w-full  w-1/2 h-auto"

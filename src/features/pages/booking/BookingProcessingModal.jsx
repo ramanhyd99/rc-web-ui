@@ -20,7 +20,7 @@ export default function BookingProcessingModal(props) {
     const delay = 2000;
 
     const timer = setTimeout(() => {
-      lockSlotForDate({ slot_id: props.slotData.id });
+      lockSlotForDate({ slot_id: props.slotData.slot_id });
     }, delay);
 
     return () => {

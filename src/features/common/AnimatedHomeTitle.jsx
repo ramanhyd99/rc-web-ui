@@ -23,11 +23,11 @@ const AnimatedHomeTitle = ({ text, className = "" }) => {
   return (
     <div className="w-full mx-auto py-2 flex items-center justify-center text-center overflow-hidden">
       <div
-        className={`inline-block w-full text-black font-bold capitalize sm:text-4xl text-4xl sm:text-left text-center ${className}`}
+        className={`font-quicksand inline-block w-full text-black font-bold capitalize text-pink-200 sm:text-5xl text-2xl sm:text-left text-center ${className}`}
       >
         Your
         <motion.h1
-          className="sm:text-6xl md:text-5xl font-bold text-blue-500 text-left"
+          className="text-4xl md:text-7xl font-bold text-blue-500 text-left"
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 100 }}

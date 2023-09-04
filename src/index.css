@@ -2,11 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-.tooltip {
-    @apply invisible absolute;
-  }
-  
-  .has-tooltip:hover .tooltip {
-    @apply visible z-50;
-  }
+ .tooltip {
+  @apply invisible absolute;
+}
 
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
+} 
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: Quicksand, sans-serif;
+  }
+}
+
+@layer base {
+  p {
+    font-family: Varela Round, sans-serif;
+  }
+} 
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSIsImZpbGUiOiJpbmRleC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAdGFpbHdpbmQgYmFzZTtcbkB0YWlsd2luZCBjb21wb25lbnRzO1xuQHRhaWx3aW5kIHV0aWxpdGllcztcblxuLyogLnRvb2x0aXAge1xuICBAYXBwbHkgaW52aXNpYmxlIGFic29sdXRlO1xufVxuXG4uaGFzLXRvb2x0aXA6aG92ZXIgLnRvb2x0aXAge1xuICBAYXBwbHkgdmlzaWJsZSB6LTUwO1xufSAqL1xuXG4vKiBAbGF5ZXIgYmFzZSB7XG4gIGgxLFxuICBoMixcbiAgaDMsXG4gIGg0IHtcbiAgICBmb250LWZhbWlseTogUXVpY2tzYW5kLCBzYW5zLXNlcmlmO1xuICB9XG59XG5cbkBsYXllciBiYXNlIHtcbiAgcCB7XG4gICAgZm9udC1mYW1pbHk6IFZhcmVsYSBSb3VuZCwgc2Fucy1zZXJpZjtcbiAgfVxufSAqL1xuIl19 */

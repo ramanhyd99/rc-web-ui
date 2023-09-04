@@ -1,4 +1,6 @@
 import {
+  BookOpenIcon,
+  BriefcaseIcon,
   CalendarDaysIcon,
   ChartBarIcon,
   ClipboardDocumentCheckIcon,
@@ -35,9 +37,15 @@ const AccountNav = ({ userInfo, ...props }) => {
       adminOnly: false,
     },
     {
+      title: "My Schedule",
+      src: BriefcaseIcon,
+      gap: true,
+      location: "/my-schedule",
+      adminOnly: true,
+    },
+    {
       title: "My Clients",
       src: UsersIcon,
-      gap: true,
       location: "/my-clients",
       adminOnly: true,
     },
@@ -61,9 +69,11 @@ const AccountNav = ({ userInfo, ...props }) => {
     // },
   ];
   return (
-    <>
-      {userInfo && userInfo.isNewUser !== "true" && (
-        <NewUserModal name={userInfo.name} />
+    <div className="min-h-screen">
+      {userInfo && userInfo.new_user && (
+        <div>
+          <NewUserModal name={userInfo.name} />
+        </div>
       )}
 
       {userInfo ? (
@@ -71,7 +81,8 @@ const AccountNav = ({ userInfo, ...props }) => {
           {/* NavBar for smaller screens */}
           <div className="sm:hidden ">
             <div className="bg-white pt-12 sm:pt-16 lg:pt-24">
-              <nav className="sticky bottom-0 mx-auto flex flex-wrap w-full  gap-6 bg-white px-10  text-xs sm:max-w-md sm:rounded-t-xl sm:border-transparent sm:text-sm sm:shadow-2xl">
+              {/* <nav className="sticky bottom-0 mx-auto flex flex-wrap w-full  gap-6 bg-white px-10  text-xs sm:max-w-md sm:rounded-t-xl sm:border-transparent sm:text-sm sm:shadow-2xl"> */}
+              <nav className="flex justify-around px-4 text-xs">
                 {Menus.map((menu, index) => {
                   const shouldDisplay = menu.adminOnly
                     ? userInfo && userInfo.role === "admin"
@@ -83,23 +94,22 @@ const AccountNav = ({ userInfo, ...props }) => {
                     <Link
                       to={menu.location}
                       key={index}
-                      className={`flex flex-col items-center gap-1 text-gray-400 transition duration-100  active:text-gray-600" ${
+                      className={`flex flex-col items-center gap-1  transition duration-100  active:text-gray-600" ${
                         location.pathname === menu.location
-                          ? " text-indigo-700"
-                          : " hover:text-gray-500"
+                          ? " text-blue-500"
+                          : " hover:text-blue-400 text-gray-700"
                       }`}
                     >
                       <div className="h-8 w-8">
                         <menu.src />
                       </div>
                       <span> {menu.title}</span>
-                      asd
                     </Link>
                   ) : null;
                 })}
               </nav>
               <span
-                className={`mt-8 flex  w-3/4 mx-auto items-center justify-center text-center  rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20
+                className={`mt-8 flex  w-3/5 mx-auto items-center justify-center text-center  rounded-md bg-blue-50 px-2 py-2 text-xs font-medium text-blue-300 font-quicksand ring-1 ring-inset ring-blue-600/20
             `}
               >
                 We hope you are feeling safe here.
@@ -115,7 +125,7 @@ const AccountNav = ({ userInfo, ...props }) => {
               <div
                 className={` ${
                   open ? "w-48" : "w-20 "
-                } w-48 bg-white h-min-screen p-5 pt-2 relative duration-300`}
+                } w-48 3xl:w-64 bg-white h-min-screen p-5 pt-0 relative duration-300`}
               >
                 <div className="flex gap-x-4 items-center"></div>
                 <ul className="pt-6">
@@ -131,10 +141,10 @@ const AccountNav = ({ userInfo, ...props }) => {
                         to={menu.location}
                         onHover
                         key={index}
-                        className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white  text-gray-700 text-sm items-center gap-x-2 
+                        className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white  text-black text-sm items-center gap-x-2  font-thin
               ${menu.gap ? "mt-9 " : ""} ${index === 0 && "bg-light-white"}  ${
                           location.pathname === menu.location
-                            ? "bg-blue-100 text-blue-800"
+                            ? "bg-blue-100 text-black"
                             : " hover:bg-gray-100"
                         }`}
                       >
@@ -165,7 +175,7 @@ const AccountNav = ({ userInfo, ...props }) => {
                     ) : null;
                   })}
                   <span
-                    className={`mt-32 inline-flex text-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20
+                    className={`mt-32 inline-flex text-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-300 font-quicksand ring-1 ring-inset ring-blue-600/20
             ${!open && "hidden"}`}
                   >
                     We hope you are feeling safe here.
@@ -183,7 +193,7 @@ const AccountNav = ({ userInfo, ...props }) => {
           <Navigate to="/login" />
         </>
       )}
-    </>
+    </div>
   );
 };
 

@@ -23,7 +23,7 @@ const DEV_CONFIG = {
 const PROD_CONFIG = {
   port: 3001,
   env: "production",
-  WEB_BFF: "http://random-capsule.com/api",
+  WEB_BFF: "https://randomcapsule.in/api",
 };
 
 let CONFIG;

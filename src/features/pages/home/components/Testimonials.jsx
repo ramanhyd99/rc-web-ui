@@ -1,212 +1,131 @@
+import { Rating } from "@material-tailwind/react";
 import React, { useRef, useState } from "react";
+
+// review_id = Column(Integer, primary_key=True)
+// email = Column(String(100), nullable=False, unique=True)
+// rating = Column(Integer, nullable=False)
+// age = Column(Integer, nullable=False)
+// gender = Column(String(50))
+// city = Column(String(100))
+// feedback = Column(Text, nullable=False)
+// improve = Column(Text)
+// created_at = Column(TIMESTAMP, nullable=False, server_default=func.now())
 
 const testimonials = [
   {
-    id: 1,
-    age: "25",
-    place: "Hyd",
-    message: "The sessions have been very useful.",
+    review_id: 1,
+    age: "30",
+    gender: "Male",
+    city: "Vizag",
+    feedback:
+      "She has always heard me without judgements, made me feel less guilty for my past. Always heard me out. I am happy after the therapy sessions.",
+    rating: 5,
   },
   {
-    id: 2,
-    age: "25",
-    place: "Hyd",
-    message: "I got alot of done. thanks alot pooja maam u are the best",
-  },
-  {
-    id: 3,
-    age: "25",
-    place: "Hyd",
-    message:
-      "Pooja ma'am has helped me alot.Pooja ma'am has helped me alotPooja ma'am has helped me alotPooja ma'am has helped me alot, ma'am has helped me alotPooja ma'am has helped me alot,",
-  },
-  {
-    id: 4,
-    age: "25",
-    place: "Hyd",
-    message:
-      "eibccc eibcccunb cbdbrktj kildklrctgfefrdjj tnbgnjhgin unbcbddveeu ijfnvhtlneb dtrnelt rcehcbinr",
-  },
-  {
-    id: 5,
-    age: "25",
-    place: "Hyd",
-    message:
-      "Pooja ma'am has helped me alot.Pooja  alot.Poo  alot.Poo  alot.Poo  alot.Poo  alot.Poo  alot.Poo alot.Poo  alot.Poo  alot.Poo  alot.Poo ma'am has helped me alotPooja ma'am has helped me alotPooja ma'am has helped me alot, ma'am has helped me alotPooja ma'am has helped me alot,",
-  },
-  {
-    id: 6,
-    age: "25",
-    place: "Hyd",
-    message: "Pooja helped me alot,",
-  },
-  {
-    id: 7,
-    age: "25",
-    place: "Hyd",
-    message:
-      "Pooja ma'am has helped me alot.Pooja  has helped me alotPooja ma'am has helped me alot, ma'am has helped me alotPooja ma'am has helped me alot,",
-  },
-  {
-    id: 8,
-    age: "25",
-    place: "Hyd",
-    message: "Pooja ma'am has helped me a alot,",
-  },
-  {
-    id: 9,
-    age: "25",
-    place: "Hyd",
-    message: "Pooja ma'am has helped me a alot,",
-  },
-  {
-    id: 1,
-    age: "25",
-    place: "Hyd",
-    message: "Pooja helped me alot,",
-  },
-  {
-    id: 10,
-    age: "25",
-    place: "Hyd",
-    message:
-      "Pooja ma'am has helped me alot.Pooja ma'am has helped me alotPooja ma'am has helped me alotPooja ma'am has helped me alot, ma'am has helped me alotPooja ma'am has helped me alot,",
-  },
-  {
-    id: 11,
-    age: "25",
-    place: "Hyd",
-    message: "Pooja ma'am has helped me a alot,",
-  },
-  {
-    id: 12,
-    age: "25",
-    place: "Hyd",
-    message:
-      "Pooja ma'am has helped me alot.Pooja ma'am has helped me alotPooja ma'am has helped me alotPooja ma'am has helped me alot, ma'am has helped me alotPooja ma'am has helped me alot,",
+    review_id: 2,
+    age: "23",
+    gender: "Female",
+    city: "Mahalingpur",
+    feedback:
+      "Amazing I see the massive difference in last one year I have grown mentally ",
+    rating: 4,
   },
 
   {
-    id: 13,
+    review_id: 4,
+    age: "23",
+    gender: "Female",
+    city: "Bangalore",
+    feedback: "I felt comfortable during the period.It was good.",
+    rating: 5,
+  },
+  {
+    review_id: 5,
+    age: "26",
+    gender: "Female",
+    city: "Belgaum",
+    feedback:
+      "It changed my way of thinking and seeing everything with another perspective. The sessions also helped me to calm down and relax when i was in anxiety. It was really useful and great journey where we know what we are saying is actually being felt by the therapist and also the task that was given helped me think better about the situation.",
+    rating: 5,
+  },
+  {
+    review_id: 6,
+    age: "22",
+    gender: "Male",
+    city: "Mysuru",
+    feedback:
+      "I really love the patience and detailing you look into before answering any query, the mini assignments are clarity boosters! Keep doing the work!",
+    rating: 5,
+  },
+  {
+    review_id: 9,
     age: "25",
-    place: "Hyd",
-    message:
-      "eibccc eibcccunb cbdbrktj kildklrctgfefrdjj tnbgnjhgin unbcbddveeu ijfnvhtlneb dtrnelt rcehcbinr",
+    gender: "Male",
+    city: "Belgaum",
+    feedback: "It was good session",
+    rating: 4,
   },
   {
-    id: 14,
-    age: 32,
-    place: "London",
-    message: "Fantastic product, exceeded my expectations!",
+    review_id: 10,
+    age: "22",
+    gender: "Male",
+    city: "Kolkata",
+    feedback:
+      "It was really an amazing experience with miss pooja. It really helped me a lot.",
+    rating: 4,
   },
   {
-    id: 15,
-    age: 45,
-    place: "New York",
-    message: "I've never been happier with a purchase. Highly recommended!",
+    review_id: 3,
+    age: "21",
+    gender: "Female",
+    city: "Hyderabad",
+    feedback:
+      "Very helpful, getting better at every stage. Each point is well dealt, well addressed and rightly solved. Each step, each assignment given and done helps reach to a better mental health level.",
+    rating: 5,
   },
   {
-    id: 16,
-    age: 27,
-    place: "Paris",
-    message: "The service was outstanding. Will definitely come back!",
+    review_id: 7,
+    age: "26",
+    gender: "Male",
+    city: "Hyderabad",
+    feedback:
+      "She helped me get through my hard phase, helped me deal with my anxiety through techniques like JPMR and  deep breathing. She's an amazing listener and psychologist.",
+    rating: 5,
   },
   {
-    id: 17,
-    age: 52,
-    place: "Tokyo",
-    message: "Impressed by the quality and attention to detail.",
+    review_id: 8,
+    age: "24",
+    gender: "Female",
+    city: "Gadag",
+    feedback: "Great",
+    rating: 5,
   },
   {
-    id: 18,
-    age: 38,
-    place: "Sydney",
-    message: "Exceptional value for money. Worth every penny.",
+    review_id: 8,
+    age: "24",
+    gender: "Female",
+    city: "Delhi",
+    feedback: "It was really good. I was given enough space to talk",
+    rating: 5,
   },
   {
-    id: 19,
-    age: 29,
-    place: "Berlin",
-    message: "I can't express how satisfied I am with this product.",
+    review_id: 8,
+    age: "28",
+    gender: "Female",
+    city: "Jodhpur",
+    feedback:
+      "She was very responsive and ensured that I am being taken care of. She used to keep asking whether I am okay or not. ",
+    rating: 5,
   },
-  {
-    id: 20,
-    age: 56,
-    place: "Rome",
-    message: "The best purchase I've made in a long time. Truly remarkable!",
-  },
-  {
-    id: 21,
-    age: 41,
-    place: "Amsterdam",
-    message: "Great service, quick delivery, and top-notch quality.",
-  },
-  {
-    id: 22,
-    age: 33,
-    place: "Barcelona",
-    message: "An absolute game-changer. Can't recommend it enough!",
-  },
-  {
-    id: 23,
-    age: 48,
-    place: "Dubai",
-    message: "I'm impressed by the professionalism and efficiency.",
-  },
-  {
-    id: 24,
-    age: 37,
-    place: "San Francisco",
-    message: "A life-changing experience. I'm extremely grateful.",
-  },
-  {
-    id: 25,
-    age: 39,
-    place: "Singapore",
-    message: "Superb customer support. They went above and beyond.",
-  },
-  {
-    id: 26,
-    age: 43,
-    place: "Munich",
-    message: "Good product at a reasonable price. I'm happy with my purchase.",
-  },
-  {
-    id: 27,
-    age: 31,
-    place: "Toronto",
-    message: "Effortless shopping experience. Will definitely shop here again.",
-  },
-  {
-    id: 28,
-    age: 50,
-    place: "Stockholm",
-    message: "The product arrived on time and in perfect condition.",
-  },
-  {
-    id: 29,
-    age: 36,
-    place: "Seoul",
-    message: "Absolutely love it! It's become an essential part of my routine.",
-  },
-  {
-    id: 30,
-    age: 44,
-    place: "Los Angeles",
-    message: "Highly impressed by the quality and durability.",
-  },
-  {
-    id: 31,
-    age: 34,
-    place: "Vienna",
-    message: "Satisfied customer here. Will definitely recommend it to others.",
-  },
-  {
-    id: 32,
-    age: 47,
-    place: "Hong Kong",
-    message: "This product exceeded my expectations. I'm truly amazed!",
-  },
+  // {
+  //   review_id: 8,
+  //   age: "23",
+  //   gender: "Female",
+  //   city: "Hyd",
+  //   feedback:
+  //     "Great",
+  //   rating: 5,
+  // },
 ];
 
 const chunkArray = (arr, size) => {
@@ -269,14 +188,20 @@ const Testimonials = ({ className }) => {
                   <li key={testimonial.id % 3}>
                     <div className="flex flex-col items-center  gap-4 rounded-lg bg-black px-8 py-6 md:gap-6">
                       <div className="max-w-md text-center text-white lg:text-md">
-                        {testimonial.message}
+                        <span className="text-xl font-quicksand">"</span>{" "}
+                        {testimonial.feedback}{" "}
+                        <span className="text-xl font-quicksand">"</span>
                       </div>
 
+                      <div>
+                        {" "}
+                        <Rating value={testimonial.rating} readonly />
+                      </div>
                       <div className="flex flex-col items-center gap-2 sm:flex-row md:gap-3">
                         <div className="h-12 w-12 overflow-hidden rounded-full border-2 md:h-14 md:w-14">
                           <img
                             src={require(`../../../../assets/img/penguin-${
-                              (testimonial.id % 6) + 1
+                              (testimonial.review_id % 6) + 1
                             }.png`)}
                             loading="lazy"
                             alt="Cute penguin"
@@ -289,7 +214,8 @@ const Testimonials = ({ className }) => {
                             Anonymous
                           </div>
                           <p className="text-center text-sm text-indigo-200 sm:text-left md:text-sm">
-                            {testimonial.place}
+                            {testimonial.city} | {testimonial.gender} |{" "}
+                            {testimonial.age}
                           </p>
                         </div>
                       </div>

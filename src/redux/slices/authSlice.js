@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getUserInfo, googleLoginApiCall, logoutApiCall } from "../../apis/non-rtk-apis";
+import {
+  getUserInfo,
+  googleLoginApiCall,
+  logoutApiCall,
+} from "../../apis/non-rtk-apis";
+import { userApi } from "../../apis/rtk-apis";
 import { LocalStorageLoggedInKey } from "../../utils/constants";
 
 const initialState = {
@@ -8,9 +13,10 @@ const initialState = {
 
 export const loginAsyncGoogle = createAsyncThunk(
   "auth/googleLogin",
-  async (idToken, { rejectWithValue }) => {
+  async (idToken, { rejectWithValue, dispatch }) => {
     try {
       const response = await googleLoginApiCall(idToken.token);
+      dispatch(userApi.util.resetApiState()); // globally reset rtk cache upon login to prevent previous cached api values to be shown
       return response;
     } catch (error) {
       return rejectWithValue("Could not log you in, please try again!");

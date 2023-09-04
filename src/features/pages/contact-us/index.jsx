@@ -1,8 +1,10 @@
 import { EnvelopeIcon, MapPinIcon, PhoneIcon } from "@heroicons/react/20/solid";
+import SEO from "../../seo";
 
 const ContactUsPage = () => {
   return (
     <div>
+      <SEO title="Contact Us"/>
       <section className="text-gray-600 body-font h-full">
         <div className="absolute inset-0 bg-gray-300 pt-20">
           <iframe
@@ -23,17 +25,17 @@ const ContactUsPage = () => {
               Feel free to reach out!
             </h1>
             <div className="flex mt-4">
-              <PhoneIcon className="h-7 w-7" />
+              <PhoneIcon className="h-7 w-7 text-blue-300" />
               <div className="ml-4 text-lg">+91-7975897538</div>
             </div>
 
             <div className="flex mt-4">
-              <EnvelopeIcon className="h-7 w-7" />
+              <EnvelopeIcon className="h-7 w-7 text-blue-300" />
               <div className="ml-4 ">psychologistpoojagupta@gmail.com</div>
             </div>
 
             <div className="flex mt-4">
-              <MapPinIcon className="h-7 w-7" />
+              <MapPinIcon className="h-7 w-7 text-blue-300" />
               <div className="ml-4">Tilakwadi, Belgaum, Karnataka - 590006</div>
             </div>
           </div>

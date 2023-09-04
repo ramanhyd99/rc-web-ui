@@ -1,27 +1,34 @@
 import {
   NumberOfClients,
   NumberOfSessions,
-  NumberOfYearsExp
+  NumberOfYearsExp,
 } from "../../../../utils/constants";
 
 const Experience = ({ className }) => {
   return (
     <div
-      className={` py-24 ${className} bg-desk bg-cover bg-no-repeat bg-center w-full h-[550px]`}
+      // className={`py-24 ${className} bg-desk bg-cover bg-no-repeat bg-center w-full h-[550px] flex`}
+      className={`py-24 ${className}r w-full  flex`}
     >
       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
-        <div className="mb-10 md:mb-16">
+        <div className="mb-10 md:mb-0">
           <h2 className="mb-4 text-center text-4xl font-bold text-gray-800  md:mb-6 lg:text-5xl">
             Prior Experience
           </h2>
-          <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">
+          <p className="mx-auto max-w-screen-md text-center text-gray-700 md:text-lg">
             We have helped many feel better and hopes to reach and impact even
             more lives in a positive way.
           </p>
         </div>
+        <div className="flex justify-center mb-8 sm:mb-8">
+          <img
+            src={require("../../../../assets/img/support.gif")}
+            className="h-64 sm:h-96"
+          />
+        </div>
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 md:gap-0 md:divide-x">
           <div className="flex flex-col items-center md:p-4">
-            <div className="text-3xl font-bold text-black/70  sm:text-2xl md:text-3xl lg:text-5xl">
+            <div className="text-5xl font-bold text-black/70  sm:text-2xl md:text-3xl lg:text-6xl highlight highlight-green-50 highlight-spread-sm highlight-variant-5">
               {NumberOfClients}+
             </div>
             <div className="text-sm font-semibold sm:text-base">
@@ -29,13 +36,13 @@ const Experience = ({ className }) => {
             </div>
           </div>
           <div className="flex flex-col items-center md:p-4">
-            <div className="text-3xl font-bold text-black/70  sm:text-2xl md:text-3xl lg:text-5xl">
+            <div className="text-5xl font-bold text-black/70  sm:text-2xl md:text-3xl lg:text-6xl highlight highlight-red-50 highlight-spread-sm highlight-variant-5">
               {NumberOfSessions}+
             </div>
             <div className="text-sm font-semibold sm:text-base">Sessions</div>
           </div>
           <div className="flex flex-col items-center md:p-4">
-            <div className="text-3xl font-bold text-black/70  sm:text-2xl md:text-3xl lg:text-5xl">
+            <div className="text-5xl font-bold text-black/70  sm:text-2xl md:text-3xl lg:text-6xl highlight highlight-orange-50 highlight-spread-sm highlight-variant-5">
               {NumberOfYearsExp}+
             </div>
             <div className="text-sm font-semibold sm:text-base">Years exp</div>

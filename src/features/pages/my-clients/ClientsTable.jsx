@@ -73,13 +73,15 @@ const ClientsTable = () => {
     });
   };
 
-  const handleClientClick = (id, name, joining_date, email) => {
+  const handleClientClick = (id) => {
     let searchTerm = search ? search : ""; // don't send null as search term
-
+    if(searchTerm)
     navigate(
-      `/client?id=${id}&name=${name}&joining_date=${prettyDate(
-        joining_date
-      )}&email=${email}&search=${searchTerm}`
+      `/client?id=${id}&search=${searchTerm}`
+    );
+    else 
+    navigate(
+      `/client?id=${id}`
     );
   };
 

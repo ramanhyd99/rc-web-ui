@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 import { useUploadAssignmentsMutation } from "../../../apis/rtk-apis";
 import { classNames } from "../../../utils";
-import { ErrorToast } from "../../common/toast/ErrorToast";
+import {
+  CustomToast,
+  ErrorToast,
+  PromiseToast,
+} from "../../common/toast/CustomToast";
 
 const fileTypes = ["JPG", "PNG", "GIF", "PDF", "JPEG", "TXT", "SVG"];
 
@@ -83,6 +87,7 @@ const UploadAssignment = () => {
   const handleSubmitUploads = (event) => {
     event.preventDefault();
     uploadAssigment({ file: file });
+    // PromiseToast(uploadAssigment({ file: file }), "Uploading...");
     handleClearUploads();
   };
 

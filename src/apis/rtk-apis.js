@@ -38,7 +38,7 @@ export const userApi = createApi({
     },
     credentials: "include",
   }),
-  tagTypes: ["Users", "DayTypes", "Slots", "Assignments"],
+  tagTypes: ["Users", "DayTypes", "Slots", "Assignments", "Bookings"],
   endpoints: (builder) => ({
     getAllUsers: builder.query({
       query: ({ role, search, offset, limit, sort_field, sort_dir }) => ({
@@ -54,6 +54,37 @@ export const userApi = createApi({
         },
       }),
       providesTags: ["Users"],
+    }),
+    getSpecificUserDetails: builder.query({
+      query: ({userId }) => ({
+        url: "users/userProfile/",
+        timeout: 20000,
+        params: {
+          userId
+        },
+      }),
+      providesTags: ["Users"],
+    }),
+    getAllSessionsForUser: builder.query({
+      query: ({userId, search}) => ({
+        url: `bookings/`,
+        params: {
+          userId,
+          search
+        },
+        timeout: 20000,
+      }),
+      providesTags: ["Bookings"],
+    }),
+    getAllSessionsByDate: builder.query({
+      query: ({date}) => ({
+        url: `bookings/admin`,
+        params: {
+          date,
+        },
+        timeout: 20000,
+      }),
+      providesTags: ["Bookings"],
     }),
     updateFreeFollowUp: builder.mutation({
       query: ({ userId }) => ({
@@ -177,12 +208,66 @@ export const userApi = createApi({
       },
       invalidatesTags: ["Slots"],
     }),
+    getDashboardMetrics: builder.query({
+      query: () => ({
+        url: "dashboard/",
+        timeout: 20000,
+      }),
+    }),
+    uploadReview: builder.mutation({
+      query: ({ form }) => {
+        const bodyFormData = new FormData();
+
+        for (const key in form) {
+          if (form.hasOwnProperty(key)) {
+            bodyFormData.append(key, form[key]);
+          }
+        }
+
+        return {
+          method: "POST",
+          url: "reviews/upload",
+          headers: {
+            "Content-Type": "multipart/form-data;",
+          },
+          timeout: 20000,
+          data: bodyFormData,
+          formData: true,
+        };
+      },
+    }),
+    checkout: builder.mutation({
+      query: ({ form }) => {
+        const bodyFormData = new FormData();
+
+        for (const key in form) {
+          if (form.hasOwnProperty(key)) {
+            bodyFormData.append(key, form[key]);
+          }
+        }
+
+        return {
+          method: "POST",
+          url: "bookings/",
+          headers: {
+            "Content-Type": "multipart/form-data;",
+          },
+          timeout: 20000,
+          data: bodyFormData,
+          formData: true,
+        };
+      },
+      invalidatesTags: ["Bookings"],
+    }),
   }),
 });
 
 // append use and query to the endpoint above to generate the hook
 export const {
   useGetAllUsersQuery,
+  useGetAllSessionsForUserQuery,
+  useGetSpecificUserDetailsQuery,
+  useGetAllSessionsByDateQuery,
   useUpdateFreeFollowUpMutation,
   useGetAssignmentsForUserIdQuery,
   useUploadAssignmentsMutation,
@@ -193,4 +278,7 @@ export const {
   useLockSlotForDateMutation,
   useDeleteSlotBySlotIdMutation,
   useGenerateSlotForDateMutation,
+  useGetDashboardMetricsQuery,
+  useUploadReviewMutation,
+  useCheckoutMutation,
 } = userApi;

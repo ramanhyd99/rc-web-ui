@@ -3,9 +3,18 @@ import SEO from "../../seo";
 
 const PageNotFound = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen !pt-0">
+    <div className="">
       <SEO title="404" />
-      <div className="bg-white py-6 sm:py-8 lg:py-12">
+      <div className="flex justify-center items-center h-screen">
+        <img
+          src={
+            require("../../../assets/backgrounds/page_not_found.svg").default
+          }
+          className="w-full max-w-screen-sm"
+        />
+      </div>
+
+      {/* <div className="bg-white py-6 sm:py-8 lg:py-12">
         <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
           <div className="flex flex-col items-center">
             <p className="mb-4 text-sm font-semibold uppercase text-blue-500 md:text-base">
@@ -27,7 +36,7 @@ const PageNotFound = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

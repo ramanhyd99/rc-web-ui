@@ -59,13 +59,15 @@ const CalendarComponent = (props) => {
   }
 
   return (
-    <div className="pt-0">
+    <div className="pt-12 shadow-blue-100 p-2 shadow-around">
       <div className="max-w-lg px-4 mx-auto sm:px-7 md:max-w-4xl lg:max-w-6xl md:px-6">
         <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gray-200">
           <div className="md:pr-14">
             <div className="flex items-center">
-              <h2 className="flex-auto font-semibold text-gray-900 text-lg lg:text-2xl ml-5">
-                {format(firstDayCurrentMonth, "MMMM yyyy")}
+              <h2 className="flex-auto font-semibold text-gray-900 text-xl lg:text-2xl ml-5">
+                <span className="">
+                  {format(firstDayCurrentMonth, "MMMM yyyy")}
+                </span>
               </h2>
               <button
                 type="button"
@@ -109,7 +111,7 @@ const CalendarComponent = (props) => {
                       isEqual(day, selectedDay) && "text-white",
                       !isEqual(day, selectedDay) &&
                         isToday(day) &&
-                        "text-red-500",
+                        "text-pink-300",
                       !isEqual(day, selectedDay) &&
                         !isToday(day) &&
                         isSameMonth(day, firstDayCurrentMonth) &&
@@ -138,12 +140,11 @@ const CalendarComponent = (props) => {
               ))}
             </div>
           </div>
-          <div>
-            <section className="mt-12 md:mt-0 md:pl-14 text-center md:text-left">
-              <h2 className="flex justify-center md:justify-start font-semibold ml-6 md:ml-7 mr-7 md:mr-0 text-gray-900 xl:text-md 2xl:text-lg">
-                <p className="mr-1">Slots for</p>
+          <div className="flex justify-center md:min-h-[28rem] md:max-h-[28rem] 3xl:max-h-[32rem]">
+            <section className="mt-12 md:mt-0 text-center md:text-left overflow-y-scroll">
+              <h2 className="flex justify-center md:justify-start font-semibold text-gray-900 xl:text-md 2xl:text-lg">
                 <time dateTime={format(selectedDay, "yyyy-MM-dd")}>
-                  {format(selectedDay, "MMM dd, yyy")}
+                  Slots for {format(selectedDay, "MMM dd, yyy")}
                 </time>
               </h2>
               <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
@@ -163,7 +164,7 @@ const CalendarComponent = (props) => {
                               <Slot
                                 start={start}
                                 location={location}
-                                id={slot_id}
+                                slot_id={slot_id}
                                 date={date}
                                 formattedDate={format(
                                   selectedDay,
@@ -177,7 +178,7 @@ const CalendarComponent = (props) => {
                         );
                       })
                     ) : (
-                      <p className="ml-0 md:ml-8">No slots for this day.</p>
+                      <p className="ml-0">No slots for this day.</p>
                     )}
                     {props.isAdmin && (
                       <AddSlot date={format(selectedDay, "MMM dd, yyy")} />
@@ -193,7 +194,7 @@ const CalendarComponent = (props) => {
   );
 };
 
-function Slot({ start, location, id, date, ...props }) {
+function Slot({ start, location, slot_id, date, ...props }) {
   const startTime = new Date(`${date}T${start}Z`); //sets the time in local timezone
   const formattedStartTimeForTimeZone = format(startTime, "h:mm a");
 
@@ -208,21 +209,21 @@ function Slot({ start, location, id, date, ...props }) {
 
   const handleBookClick = () => {
     props.setSlotData({
-      id: id,
-      formattedDate: formattedDateForTimezone,
-      formattedStartTime: formattedStartTimeForTimeZone,
-      formattedToTime: formattedToTimeForTimeZone,
-      timeZone: timeZone,
+      slot_id: slot_id,
+      formatted_date: formattedDateForTimezone,
+      formatted_start_time: formattedStartTimeForTimeZone,
+      formatted_end_time: formattedToTimeForTimeZone,
+      timezone: timeZone,
       location: timeZone === "Asia/Calcutta" ? location : "online", //in-clinic only for India clients
     });
   };
 
   const handleSlotDelete = () => {
-    deleteSlotBySlotId({ slotId: id });
+    deleteSlotBySlotId({ slotId: slot_id });
   };
 
   return (
-    <li className="flex items-center justify-center md:justify-start ml-20 space-x-2 md:ml-0 px-4 py-2 mr-12 group rounded-xl focus-within:bg-gray-100 hover:bg-gray-100">
+    <li className="flex items-center justify-center md:justify-start md:ml-0 p-2 group rounded-xl focus-within:bg-gray-100 hover:bg-gray-100">
       {/* in-clinic only for India clients */}
       {(location === "clinic" || location === "both") &&
       timeZone === "Asia/Calcutta" ? (
@@ -234,26 +235,29 @@ function Slot({ start, location, id, date, ...props }) {
         </div>
       ) : (
         <>
-          <div className="mr-5"></div>
+          <div className=""></div>
         </>
       )}
       <div className="my-2 flex flex-col">
         <span
-          className={`rounded-md bg-green-50 px-2 py-2 text-md font-medium text-green-700 ring-1 ring-inset ring-green-600/20
+          className={`min-w-[10rem] rounded-md bg-green-50 px-2 py-2 text-md font-medium text-green-700 ring-1 ring-inset ring-green-600/20
      `}
         >
-          <span>
+          <span className="flex justify-center">
             {formattedStartTimeForTimeZone} - {formattedToTimeForTimeZone}
           </span>
         </span>
-        {formattedDate !== formattedDateForTimezone && (
-          <span className="text-xs text-center text-orange-600">tomorrow</span>
+        {formattedDateForTimezone < formattedDate && (
+          <span className="text-xs text-center text-orange-600">prev day</span>
+        )}
+        {formattedDateForTimezone > formattedDate && (
+          <span className="text-xs text-center text-orange-600">next day</span>
         )}
       </div>
 
       <Menu
         as="div"
-        className="flex relative opacity-0 focus-within:opacity-100 group-hover:opacity-100"
+        className="flex relative opacity-0 focus-within:opacity-100 group-hover:opacity-100 md:ml-2"
       >
         <button
           onClick={handleBookClick}
@@ -329,8 +333,8 @@ const AddSlot = ({ date }) => {
   };
 
   return (
-    <li className="flex items-center justify-center md:justify-start ml-20 space-x-2 md:ml-0 px-4 py-2 mr-12 group rounded-xl ">
-      <div className="my-2 mr-0 flex flex-col">
+    <li className="flex items-center justify-center rounded-xl">
+      <div className="my-2 mr-0 flex flex-col px-2">
         <span
           className={` rounded-md bg-blue-50 px-2 py-2 text-md font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20
      `}
@@ -339,7 +343,7 @@ const AddSlot = ({ date }) => {
             <select
               onChange={handleStartSlotChange}
               name="start_slot"
-              className="block bg-gray-50 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className="block bg-gray-50 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             >
               {DefaultSlotTimings.map((timing, index) => {
                 return (
@@ -383,7 +387,7 @@ const AddSlot = ({ date }) => {
 function SlotsLoading() {
   return (
     <div className="flex justify-center md:justify-start">
-      <div className="border border-blue-300 shadow rounded-md p-0 h-max max-w-sm w-1/2 mb-4">
+      <div className="border border-blue-300 shadow rounded-md p-0 h-max max-w-sm w-3/4 mb-4">
         <div className="animate-pulse flex space-x-2">
           <div className="flex-1 space-y-3 py-1 mt-2">
             <div>

@@ -5,8 +5,10 @@ import { useDeleteAssignmentForAssignmentIdMutation } from "../../../apis/rtk-ap
 export default function DeleteAssignmentModal(props) {
   const [open, setOpen] = useState(true);
 
-  const [deleteAssignmentForAssignmentId, { isLoading: isDeleting }] =
-    useDeleteAssignmentForAssignmentIdMutation();
+  const [
+    deleteAssignmentForAssignmentId,
+    { isLoading: isDeleting, isSuccess, isError },
+  ] = useDeleteAssignmentForAssignmentIdMutation();
 
   const closeModal = () => {
     setOpen(!open);
@@ -15,9 +17,12 @@ export default function DeleteAssignmentModal(props) {
 
   const handleDeleteConfirm = () => {
     deleteAssignmentForAssignmentId({ assignmentId: props.id });
-    // if (!isDeleting) closeModal();
   };
 
+  const handleSuccessfullDelete = () => {
+    props.closeModal(null);
+  };
+  const handleDeleteFailure = () => {};
   const cancelButtonRef = useRef(null);
 
   return (
@@ -101,6 +106,8 @@ export default function DeleteAssignmentModal(props) {
                       Delete
                     </button>
                   )}
+                  {isSuccess && handleSuccessfullDelete()}
+                  {isError && handleDeleteFailure()}
                   <button
                     type="button"
                     onClick={closeModal}
