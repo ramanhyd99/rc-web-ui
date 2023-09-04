@@ -14,17 +14,18 @@ function authMiddleware(
   res: Response,
   next: NextFunction
 ) {
-  // return res.status(401).json({ errorMessage: "Unauthorized" });
-  const rcToken = req.cookies.rc_token;
-  console.debug("rcToken: " + rcToken);
   const { originalUrl } = req;
 
   if (
     originalUrl.startsWith("/api/login") ||
-    originalUrl.startsWith("/api/logout")
+    originalUrl.startsWith("/api/logout") || 
+    originalUrl.startsWith("/api/reviews")
   ) {
     return next();
   }
+
+  const rcToken = req.cookies.rc_token;
+  console.debug("rcToken: " + rcToken);
 
   if (!rcToken) {
     return res.status(401).json({ error: "Unauthorized" });

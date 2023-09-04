@@ -4,9 +4,12 @@ const userController = require("../controllers/userController");
 const assignmentController = require("../controllers/assignmentController");
 const settingsController = require("../controllers/settingsController");
 const slotsController = require("../controllers/slotsController");
+const dashboardController = require("../controllers/dashboardController");
+const reviewController = require("../controllers/reviewController");
+const bookingController = require("../controllers/bookingController");
 
 const multer = require("multer");
-const upload = multer({ dest: "uploads/" });
+const upload = multer();
 
 const router = Router();
 
@@ -36,5 +39,14 @@ router.get("/slots/", slotsController.getSlotsForDate);
 router.post("/slots/processSlot", slotsController.lockSlotForDate); 
 router.post("/slots/create/", slotsController.generateSlotsForDate); 
 router.delete("/slots/", slotsController.deleteSlotBySlotId); 
+
+router.get("/dashboard/", dashboardController.fetchMetrics); 
+
+router.post("/reviews/upload", upload.none(), reviewController.uploadReview); 
+
+router.post("/bookings/", upload.none(), bookingController.bookSession); 
+router.get("/bookings/", bookingController.getBookingsForUser); 
+router.get("/bookings/admin/", bookingController.getBookingsByDate); 
+
 
 export default router;

@@ -4,13 +4,13 @@ import swaggerApp from "./swagger";
 import cors from "cors";
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-import dns from "node:dns";
-dns.setDefaultResultOrder("ipv4first");
+// import dns from "node:dns";
+// dns.setDefaultResultOrder("ipv4first");
 
 const app: Application = express();
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://random-capsule.com"],
+    origin: ["http://localhost:3000","http://localhost:8084", "https://randomcapsule.in"],
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-By"],
     credentials: true,

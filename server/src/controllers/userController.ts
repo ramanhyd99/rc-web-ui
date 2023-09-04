@@ -17,14 +17,18 @@ export const fetchUserProfile = async (
 ) => {
   let customizedResponse: CustomizedResponse = { data: null };
   console.info("fetchUserProfile - userId: " + req.userId);
+  const authToken: string = req.headers.authorization as string;
+
+  const user_id_val = req.query.userId ? req.query.userId : req.userId;
 
   try {
     const response = await axios.get(
-      `${authMicroservice.base_url}/users/${req.userId}`,
+      `${authMicroservice.base_url}/users/${user_id_val}`,
       {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          Authorization: `${authToken}`,
         },
         timeout: 10000,
       }

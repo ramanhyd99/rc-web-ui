@@ -4,6 +4,7 @@ import FormData from "form-data";
 import fs from "fs";
 import { CONFIG, MicroserviceConfig } from "../configs";
 import { CustomizedResponse } from "../schemas";
+const { Readable } = require("stream");
 
 const authMicroservice = CONFIG.microservices.find(
   (microservice: MicroserviceConfig) => microservice.name === "backend"
@@ -25,10 +26,18 @@ export const uploadAssignments = async (
     const fileRecievedFromClient = req.file;
     const formData = new FormData();
 
-    formData.append("file", fs.createReadStream(fileRecievedFromClient.path), {
+    // formData.append("file", fs.createReadStream(fileRecievedFromClient.path), {
+    //   filename: fileRecievedFromClient.originalname,
+    //   contentType: fileRecievedFromClient.type,
+    // });
+
+
+    formData.append("file", Readable.from(req.file.buffer), {
       filename: fileRecievedFromClient.originalname,
       contentType: fileRecievedFromClient.type,
     });
+
+    console.log(formData)
 
     const response = await axios.post(
       `${authMicroservice.base_url}/assignments/upload`,
