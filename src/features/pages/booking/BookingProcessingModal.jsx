@@ -88,7 +88,15 @@ export default function BookingProcessingModal(props) {
                       alt="Booking..."
                       className="h-full w-full object-cover object-center"
                     />
-                    <div className="text-center text-xl ">Booking your slot...</div>
+                    {/* <video preload="yes" autoPlay loop muted playsInline>
+                      <source
+                        src={require("../../../assets/img/penguin_booking.mp4")}
+                        type="video/mp4"
+                      />
+                    </video> */}
+                    <div className="text-center text-xl ">
+                      Booking your slot...
+                    </div>
                   </Dialog.Title>
                 </Dialog.Panel>
               </Transition.Child>

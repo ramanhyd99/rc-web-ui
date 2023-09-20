@@ -1,4 +1,10 @@
 export const DefaultSlotTimings = [
+  "12:00 AM",
+  "01:00 AM",
+  "02:00 AM",
+  "03:00 AM",
+  "04:00 AM",
+  "05:00 AM",
   "06:00 AM",
   "07:00 AM",
   "08:00 AM",

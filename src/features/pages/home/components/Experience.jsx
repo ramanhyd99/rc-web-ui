@@ -16,15 +16,32 @@ const Experience = ({ className }) => {
             Prior Experience
           </h2>
           <p className="mx-auto max-w-screen-md text-center text-gray-700 md:text-lg">
-            We have helped many feel better and hopes to reach and impact even
+            We have helped many feel better and hope to reach and impact even
             more lives in a positive way.
           </p>
         </div>
         <div className="flex justify-center mb-8 sm:mb-8">
           <img
+            height="100%"
+            width="auto"
             src={require("../../../../assets/img/support.gif")}
             className="h-64 sm:h-96"
+            alt="Mental health support by psychologist"
           />
+          {/* <video
+            preload="yes"
+            ref={videoRef} // need this for react + video to work on mobile https://stackoverflow.com/questions/65259387/video-not-playing-on-mobile-using-react 
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="h-64 sm:h-96"
+          >
+            <source
+              src={require("../../../../assets/img/support.mp4")}
+              type="video/mp4"
+            />
+          </video> */}
         </div>
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 md:gap-0 md:divide-x">
           <div className="flex flex-col items-center md:p-4">

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import Banner from "../common/Banner";
 import CookieModal from "../common/modals/CookieModal";
 import NoInternetComp from "../common/NoInternetComp";
 import ErrorNotification from "../errors/ErrorNotification";
@@ -15,6 +14,7 @@ import {
   DashboardPage,
   FAQsPage,
   FeedbackPage,
+  GalleryPage,
   HomePage,
   LibraryPage,
   LoginPage,
@@ -24,13 +24,10 @@ import {
   MySessionsPage,
   OurTeamPage,
   PageNotFound,
-  PaymentPage,
-  PostBookingPage,
-  PostPaymentPage,
-  PrivacyPolicyPage,
+  PaymentPage, PrivacyPolicyPage,
   SetSchedulePage,
   SettingsPage,
-  TermsAndConditionsPage,
+  TermsAndConditionsPage
 } from "./AsyncPages";
 
 const Main = () => {
@@ -91,8 +88,12 @@ const Main = () => {
               <Route path="/not-found" element={<PageNotFound />} />
               <Route path="/library" element={<LibraryPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-              <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
+              <Route
+                path="/terms-and-conditions"
+                element={<TermsAndConditionsPage />}
+              />
               <Route path="/feedback" element={<FeedbackPage />} />
+              <Route path="/gallery" element={<GalleryPage />} />
             </Routes>
           ) : (
             <div>

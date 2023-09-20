@@ -87,7 +87,8 @@ const ClientsTable = () => {
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
-    setSearch(queryParams.get("search"));
+    if(queryParams.get("search") != null && queryParams.get("search") !== "")
+      setSearch(queryParams.get("search"));
   }, []);
 
   return (

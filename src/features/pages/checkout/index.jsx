@@ -55,7 +55,6 @@ const Checkout = ({ userInfo, ...props }) => {
     useCheckoutMutation();
 
   const [formData, setFormData] = useState({
-    user_id: userInfo ? userInfo.id : "",
     name: userInfo ? userInfo.name : "",
     email: userInfo ? userInfo.email : "",
     phone: "",

@@ -7,21 +7,26 @@ import {
   CardFooter,
   Typography,
 } from "@material-tailwind/react";
+import Cookies from "js-cookie";
 
 const NewUserModal = (props) => {
   const [open, setOpen] = useState(false);
 
   const closeModal = () => {
     setOpen(!open);
-    localStorage.setItem("seen_welcome", "true");
   };
 
   useEffect(() => {
-    const delay = 1500;
+    const delay = 1000;
 
     const timer = setTimeout(() => {
-        setOpen(true)
-    //   if (localStorage.getItem("seen_welcome") !== "true") setOpen(true);
+      const hasWelcomeBeenShownId = Cookies.get("rc_welcome_shown");
+      if (!open && String(hasWelcomeBeenShownId) !== String(props.id)) {
+        setOpen(true);
+        Cookies.set("rc_welcome_shown", props.id); // setting id so that if same browser is used to sign-up different users, message still gets shown
+      } else {
+        setOpen(false);
+      }
     }, delay);
 
     return () => {

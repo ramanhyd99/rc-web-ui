@@ -8,8 +8,8 @@ function csrfMiddleware(
 ) {
   const requestedByHeader = req.headers["x-requested-by"];
 
-  if (requestedByHeader != "Radhe-Krishna")
-    return res.status(403).json({ error: "Does not meet CSRF check." });
+  // if (requestedByHeader != "Radhe-Krishna")
+  //   return res.status(403).json({ error: "Does not meet CSRF check." });
 
   next();
 }

@@ -33,7 +33,5 @@ COPY ./nginx.conf /etc/nginx/conf.d/
 
 EXPOSE 8080
 
-ENV env="dev"
-
 # Start Nginx when the container starts
 CMD ["nginx", "-g", "daemon off;"]

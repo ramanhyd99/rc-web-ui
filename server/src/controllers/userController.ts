@@ -41,10 +41,24 @@ export const fetchUserProfile = async (
 
     res.status(200).json(customizedResponse);
   } catch (error) {
-    console.error(error);
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError<{ detail: string }>;
+      if (axiosError.response) {
+        console.error("Status code:", axiosError.response.status);
+        // console.error("Status code:", axiosError.response);
+        customizedResponse = {
+          data: null,
+          errorMessage: axiosError.response.data?.detail
+            ? axiosError.response.data?.detail
+            : "Could not fetch user details. Please try again.",
+          errorDetails: error,
+        };
+        return res.status(axiosError.response.status).json(customizedResponse);
+      }
+    }
     customizedResponse = {
       data: null,
-      errorMessage: "Could not fetch user details.",
+      errorMessage: "Could not fetch user details. Please try again.",
       errorDetails: error,
     };
     res.status(500).json(customizedResponse);
@@ -101,12 +115,14 @@ export const fetchUsers = async (
     res.status(200).json(customizedResponse);
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      const axiosError = error as AxiosError;
+      const axiosError = error as AxiosError<{ detail: string }>;
       if (axiosError.response) {
         console.error("Status code:", axiosError.response.status);
         customizedResponse = {
           data: null,
-          errorMessage: "Could not fetch users.",
+          errorMessage: axiosError.response.data?.detail
+            ? axiosError.response.data?.detail
+            : "Could not fetch users.",
           errorDetails: error,
         };
         return res.status(axiosError.response.status).json(customizedResponse);
@@ -154,13 +170,15 @@ export const updateFreeFollowUp = async (
     res.status(200).json(customizedResponse);
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      const axiosError = error as AxiosError;
+      const axiosError = error as AxiosError<{ detail: string }>;
       if (axiosError.response) {
         console.error("Status code:", axiosError.response.status);
         // console.error("Status code:", axiosError.response);
         customizedResponse = {
           data: null,
-          errorMessage: "Could not update free follow up.",
+          errorMessage: axiosError.response.data?.detail
+            ? axiosError.response.data?.detail
+            : "Could not update free follow up.",
           errorDetails: error,
         };
         return res.status(axiosError.response.status).json(customizedResponse);

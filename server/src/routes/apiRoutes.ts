@@ -47,6 +47,7 @@ router.post("/reviews/upload", upload.none(), reviewController.uploadReview);
 router.post("/bookings/", upload.none(), bookingController.bookSession); 
 router.get("/bookings/", bookingController.getBookingsForUser); 
 router.get("/bookings/admin/", bookingController.getBookingsByDate); 
+router.post("/bookings/cancel/", bookingController.cancelBooking); 
 
 
 export default router;

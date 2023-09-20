@@ -1,16 +1,23 @@
-import express from "express";
-import { Application } from "express";
-import swaggerApp from "./swagger";
 import cors from "cors";
+import express, { Application } from "express";
+import swaggerApp from "./swagger";
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const rateLimit = require("express-rate-limit");
+
 // import dns from "node:dns";
 // dns.setDefaultResultOrder("ipv4first");
+
+require("dotenv").config();
 
 const app: Application = express();
 app.use(
   cors({
-    origin: ["http://localhost:3000","http://localhost:8084", "https://randomcapsule.in"],
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:8084",
+      "https://randomcapsule.in",
+    ],
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-By"],
     credentials: true,
@@ -39,12 +46,29 @@ import paymentRouter from "./routes/payment";
 router.use("/", apiRouter);
 router.use("/payment", paymentRouter);
 
-const multer = require("multer");
-const upload = multer({ dest: "uploads2/" });
-
-app.post("/upload2", upload.single("files"), function (req: any, res, next) {
-  console.log(req.body, req.file);
+// rate limiting
+const defaultLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 60, // Max requests per minute
+  message: "Too many requests from this IP, please try again later.",
 });
+const strictLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 30, // Max requests per minute
+  message: "Too many requests from this IP, please try again later.",
+});
+const veryStrictLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 5, // Max requests per minute
+  message: "Too many requests from this IP, please try again later.",
+});
+
+app.use("/api/login", veryStrictLimiter);
+app.use("/api/reviews", veryStrictLimiter);
+app.use("/api/slots", strictLimiter);
+app.use("/api/bookings", strictLimiter);
+app.use("/api", defaultLimiter); 
+
 
 // Use the router object with a common prefix for all routes
 app.use("/api", router);

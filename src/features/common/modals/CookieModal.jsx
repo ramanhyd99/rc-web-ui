@@ -7,7 +7,7 @@ const CookieModal = () => {
     const delay = 5000;
 
     const timer = setTimeout(() => {
-      if (!localStorage.getItem("cookie_accepted")) {
+      if (!localStorage.getItem("rc_cookie_accepted")) {
         setShowCookieBanner(true);
       }
     }, delay);
@@ -18,7 +18,7 @@ const CookieModal = () => {
   }, []);
 
   const handleAcceptCookies = () => {
-    localStorage.setItem("cookie_accepted", true);
+    localStorage.setItem("rc_cookie_accepted", true);
     setShowCookieBanner(false);
   };
 

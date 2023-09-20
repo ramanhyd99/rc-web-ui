@@ -2,39 +2,7 @@ import { connect } from "react-redux";
 import AccountNav from "../../account-nav";
 import SEO from "../../seo";
 import UnauthorizedPage from "../unauthorized";
-import BarChartComponent from "./BarChartComponent";
 import OverviewComponent from "./OverviewComponent";
-import SessionsListings from "./SessionListings";
-
-const data = [
-  {
-    month: "August",
-    value: 5,
-  },
-  {
-    month: "September",
-    value: 6,
-  },
-  {
-    month: "October",
-    value: 9,
-  },
-  {
-    month: "November",
-    value: 10,
-  },
-  {
-    month: "September",
-    value: 6,
-  },
-];
-
-const products = [
-  {
-    title: null,
-    comp: <OverviewComponent />,
-  },
-];
 
 const Dashboard = ({ userInfo }) => {
   return (

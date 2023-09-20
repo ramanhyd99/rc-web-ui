@@ -31,13 +31,13 @@ export const uploadAssignments = async (
     //   contentType: fileRecievedFromClient.type,
     // });
 
-
     formData.append("file", Readable.from(req.file.buffer), {
       filename: fileRecievedFromClient.originalname,
       contentType: fileRecievedFromClient.type,
     });
 
-    console.log(formData)
+    const fileLength = req.file.buffer.length; // This gives you the length of the file in bytes
+    console.log("File size: ", fileLength);
 
     const response = await axios.post(
       `${authMicroservice.base_url}/assignments/upload`,
@@ -47,6 +47,7 @@ export const uploadAssignments = async (
           Accept: "application/json",
           "Content-Type": "multipart/form-data",
           Authorization: `${authToken}`,
+          "X-FILE-SIZE": fileLength,
         },
         timeout: 10000,
       }
@@ -59,6 +60,8 @@ export const uploadAssignments = async (
 
     res.status(response.status).json(customizedResponse);
   } catch (error) {
+    const errMsg = "Sorry, could not upload your assignment.";
+
     if (axios.isAxiosError(error)) {
       const axiosError = error as AxiosError<{ detail: string }>;
       if (axiosError.response) {
@@ -67,7 +70,7 @@ export const uploadAssignments = async (
           data: null,
           errorMessage: axiosError.response.data?.detail
             ? axiosError.response.data?.detail
-            : "Could not upload the assignment.",
+            : errMsg,
           errorDetails: error,
         };
         return res.status(axiosError.response.status).json(customizedResponse);
@@ -76,7 +79,7 @@ export const uploadAssignments = async (
     console.error("uploadAssignments :", error);
     customizedResponse = {
       data: null,
-      errorMessage: "Could not upload the assignment.",
+      errorMessage: errMsg,
       errorDetails: error,
     };
     res.status(500).json(customizedResponse);
@@ -112,6 +115,8 @@ export const getAssignmentsForUserId = async (
 
     res.status(response.status).json(customizedResponse);
   } catch (error) {
+    const errMsg = "Sorry, could not fetch your assignments.";
+
     if (axios.isAxiosError(error)) {
       const axiosError = error as AxiosError<{ detail: string }>;
       if (axiosError.response) {
@@ -119,7 +124,7 @@ export const getAssignmentsForUserId = async (
           data: null,
           errorMessage: axiosError.response.data?.detail
             ? axiosError.response.data?.detail
-            : "Could not fetch the assignments.",
+            : errMsg,
           errorDetails: error,
         };
         return res.status(axiosError.response.status).json(customizedResponse);
@@ -128,7 +133,7 @@ export const getAssignmentsForUserId = async (
     console.error("getAssignmentsForUserId :", error);
     customizedResponse = {
       data: null,
-      errorMessage: "Could not fetch the assignments.",
+      errorMessage: errMsg,
       errorDetails: error,
     };
     res.status(500).json(customizedResponse);
@@ -164,6 +169,8 @@ export const deleteAssignmentsForAssignmentId = async (
 
     res.status(response.status).json(customizedResponse);
   } catch (error) {
+    const errMsg = "Sorry, could not delete your assignment.";
+
     if (axios.isAxiosError(error)) {
       const axiosError = error as AxiosError<{ detail: string }>;
       if (axiosError.response) {
@@ -171,7 +178,7 @@ export const deleteAssignmentsForAssignmentId = async (
           data: null,
           errorMessage: axiosError.response.data?.detail
             ? axiosError.response.data?.detail
-            : "Could not delete the assignment.",
+            : errMsg,
           errorDetails: error,
         };
         return res.status(axiosError.response.status).json(customizedResponse);
@@ -180,7 +187,7 @@ export const deleteAssignmentsForAssignmentId = async (
     console.error("deleteAssignmentsForAssignmentId :", error);
     customizedResponse = {
       data: null,
-      errorMessage: "Could not delete the assignment.",
+      errorMessage: errMsg,
       errorDetails: error,
     };
     res.status(500).json(customizedResponse);

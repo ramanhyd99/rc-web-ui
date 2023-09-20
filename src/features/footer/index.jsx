@@ -12,11 +12,11 @@ const Footer = () => {
               <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
                 About
               </h2>
-              <nav className="list-none mb-10">
+              <nav className="list-none mb-10 space-y-1">
                 <li>
                   <Link
                     to="/your-psychologist"
-                    className="text-gray-400 hover:text-white"
+                    className="text-gray-400 hover:text-white py-2"
                   >
                     Your Psychologist
                   </Link>
@@ -24,20 +24,20 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/our-team"
-                    className="text-gray-400 hover:text-white"
+                    className="text-gray-400 hover:text-white py-2"
                   >
                     Our Team
                   </Link>
                 </li>
                 <li>
-                  <Link to="/faqs" className="text-gray-400 hover:text-white">
+                  <Link to="/faqs" className="text-gray-400 hover:text-white py-2">
                     FAQS
                   </Link>
                 </li>
                 <li>
                   <Link
                     to="/contact-us"
-                    className="text-gray-400 hover:text-white"
+                    className="text-gray-400 hover:text-white py-2"
                   >
                     Contact Us
                   </Link>
@@ -45,10 +45,10 @@ const Footer = () => {
               </nav>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-              <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
-                Resources
+              <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3 py-2">
+                Quick Links
               </h2>
-              <nav className="list-none mb-10">
+              <nav className="list-none mb-10 space-y-1">
                 {/* <li>
                   <Link to="/home" className="text-gray-400 hover:text-white">
                     Assessments
@@ -57,38 +57,38 @@ const Footer = () => {
                 <li>
                   <Link
                     to="https://ijcspub.org/viewfull.php?&p_id=IJCSP23A1290"
-                    className="text-gray-400 hover:text-white"
+                    className="text-gray-400 hover:text-white py-2"
                     target={"_blank"}
                   >
                     My Publications
                   </Link>
                 </li>
-                {/* <li>
-                  <Link to="/home" className="text-gray-400 hover:text-white">
-                    Articles
+                <li>
+                  <Link to="/gallery" className="text-gray-400 hover:text-white py-2">
+                    Gallery
                   </Link>
-                </li> */}
+                </li>
               </nav>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
                 Other
               </h2>
-              <nav className="list-none mb-10">
+              <nav className="list-none mb-10 space-y-1">
                 <li>
-                  <Link to="/privacy-policy" className="text-gray-400 hover:text-white">
+                  <Link to="/privacy-policy" className="text-gray-400 hover:text-white py-2">
                     Cookie Policy
                   </Link>
                 </li>
                 <li>
-                  <Link to="/terms-and-conditions" className="text-gray-400 hover:text-white">
+                  <Link to="/terms-and-conditions" className="text-gray-400 hover:text-white py-2">
                     Terms & Conditions
                   </Link>
                 </li>
                 <li>
                   <Link
                     to="/privacy-policy"
-                    className="text-gray-400 hover:text-white"
+                    className="text-gray-400 hover:text-white py-2"
                   >
                     Privacy Policy
                   </Link>

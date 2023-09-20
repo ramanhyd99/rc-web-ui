@@ -106,7 +106,10 @@ const PrivacyPolicy = () => {
             us the personal information sought to be collected. You will also
             have an option to withdraw your consent at any point, provided such
             withdrawal of consent is intimated to us in writing to
-            <span className="text-blue-500 underline"> support@randomcapsule.in</span>
+            <span className="text-blue-500 underline">
+              {" "}
+              support@randomcapsule.in
+            </span>
             . Notwithstanding this, if you are accessing our platform through a
             third-party or your organisation, you will have an option to
             withdraw your consent at any point, provided you explicitly inform
@@ -143,7 +146,10 @@ const PrivacyPolicy = () => {
             profile that can be used to interact with our wellness professional.
             You may change some of the information that you provide by writing
             to us at{" "}
-            <span className="text-blue-500 underline"> support@randomcapsule.in</span>
+            <span className="text-blue-500 underline">
+              {" "}
+              support@randomcapsule.in
+            </span>
             <br />
             <br />
             We may use your Personal Information to:
@@ -193,7 +199,10 @@ const PrivacyPolicy = () => {
             Personal Information. If you decide at any time that you no longer
             wish to receive certain communications from us, you can inform us by
             writing to
-            <span className="text-blue-500 underline"> support@randomcapsule.in</span>
+            <span className="text-blue-500 underline">
+              {" "}
+              support@randomcapsule.in
+            </span>
             .
           </p>
         </h1>
@@ -211,9 +220,9 @@ const PrivacyPolicy = () => {
             and we will take all reasonable efforts to incorporate the changes
             within a reasonable period of time. If you provide your Personal
             Information to a third-party platform from which you are using our
-            Services, Random Capsule may not be able to make any changes to the same and
-            you will have to contact the third-party platform in order to update
-            your Personal Information.
+            Services, Random Capsule may not be able to make any changes to the
+            same and you will have to contact the third-party platform in order
+            to update your Personal Information.
             <br />
             <br />
             Some Personal Information, such as your answers to online
@@ -245,8 +254,8 @@ const PrivacyPolicy = () => {
             We use “cookies” to collect information and smoothen your experience
             on our platform. A cookie is a small data file that we transfer to
             your device’s hard disk for record-keeping purposes. We use only
-            persistent cookies to save your session token for future logins
-            to the Services.
+            persistent cookies to save your session token for future logins to
+            the Services.
             <br />
             <br />
             You can instruct your browser, by changing its options, to stop
@@ -256,7 +265,7 @@ const PrivacyPolicy = () => {
             platform.
           </p>
         </h1>
-        <h1 className="text-xl sm:text-3xl space-y-8 text-gray-800">
+        {/* <h1 className="text-xl sm:text-3xl space-y-8 text-gray-800">
           Log Data
           <p className="text-xs sm:text-sm mt-6 sm:mt-8">
             When you visit the platform, our servers automatically record
@@ -272,6 +281,49 @@ const PrivacyPolicy = () => {
             location, gather broad demographic information for aggregate use,
             increase user-friendliness and tailor our Services to better suit
             your needs.
+          </p>
+        </h1> */}
+        <h1 className="text-xl sm:text-3xl space-y-8 text-gray-800">
+          Google Analytics for Metrics
+          <p className="text-xs sm:text-sm mt-6 sm:mt-8">
+            To enhance your experience and improve our services, we utilize
+            Google Analytics, a web analytics service provided by Google Inc.
+            ("Google"). Google Analytics helps us analyze how users interact
+            with our website and provides valuable insights into visitor
+            behavior.
+            <br />
+            <br />
+            Google Analytics uses cookies and similar technologies to collect
+            information about your use of our website. This information
+            includes, but is not limited to, your IP address, browser type,
+            operating system, referring URLs, and pages viewed. Google may also
+            collect demographic and interest information.
+            <br />
+            <br />
+            The data collected by Google Analytics is used solely for the
+            purpose of understanding website traffic and user engagement. We do
+            not use Google Analytics to collect personally identifiable
+            information. The information gathered is anonymized and aggregated,
+            and it does not identify individual users.
+            <br />
+            <br />
+            By using our website, you consent to the processing of data about
+            your interaction with our site by Google Analytics in the manner and
+            for the purposes set out in this disclaimer.
+            <br />
+            <br />
+            If you wish to opt out of Google Analytics tracking, you can do so
+            by using the Google Analytics Opt-Out Browser Add-on provided by
+            Google. For more information on Google Analytics' privacy practices,
+            please refer to Google's Privacy Policy.
+            <br />
+            <br />
+            Please note that this disclaimer is subject to change, and any
+            updates will be posted on this page. Your continued use of our
+            website after any modifications to this disclaimer will signify your
+            acceptance of those changes. If you have any questions or concerns
+            about our use of Google Analytics or our privacy practices, please
+            feel free to contact us.
           </p>
         </h1>
         <h1 className="text-xl sm:text-3xl space-y-8 text-gray-800">
@@ -308,8 +360,8 @@ const PrivacyPolicy = () => {
             The User agrees to indemnify Random Capsule for any breach in
             confidentiality of the User’s Personal Information. If the User
             accesses Random Capsule through a third-party platform the User
-            indemnifies Random Capsule against any data breaches that occur due to any
-            acts of commission or omission from the third-party platform.
+            indemnifies Random Capsule against any data breaches that occur due
+            to any acts of commission or omission from the third-party platform.
           </p>
         </h1>
         <h1 className="text-xl sm:text-3xl space-y-8 text-gray-800">
@@ -347,16 +399,16 @@ const PrivacyPolicy = () => {
             comments or any other publicly accessible places on our platform.
             Random Capsule shall not be held responsible for use or misuse of
             any information pertaining to or shared by the User with relation to
-            its Services. The User will not hold Random Capsule liable for any issue
-            related to data storage and/or security.
+            its Services. The User will not hold Random Capsule liable for any
+            issue related to data storage and/or security.
             <br />
             <br />
             It is your responsibility to ensure the privacy and security of your
             email account and phone messages so they cannot be accessed by
-            third-party. Random Capsule will use one or both of these channels to
-            communicate with you regarding a range of information related to
-            your psychological wellness. Random Capsule shall not be liable for any
-            breach in confidentiality, should your email or text messages be
+            third-party. Random Capsule will use one or both of these channels
+            to communicate with you regarding a range of information related to
+            your psychological wellness. Random Capsule shall not be liable for
+            any breach in confidentiality, should your email or text messages be
             accessed by a third-party, with or without your consent.
           </p>
         </h1>
@@ -423,7 +475,10 @@ const PrivacyPolicy = () => {
           <p className="text-xs sm:text-sm mt-6 sm:mt-8">
             To address the grievances of the users or you are dissatisfied with
             any aspect of our Services, you may contact us at
-            <span className="text-blue-500 underline"> support@randomcapsule.in</span>
+            <span className="text-blue-500 underline">
+              {" "}
+              support@randomcapsule.in
+            </span>
             . We assure you a time-bound response not exceeding one month from
             the date of your complaint.
           </p>
@@ -431,18 +486,22 @@ const PrivacyPolicy = () => {
         <h1 className="text-xl sm:text-3xl space-y-8 text-gray-800">
           Jurisdiction
           <p className="text-xs sm:text-sm mt-6 sm:mt-8">
-            Jurisdictional policies of Random Capsule have been drafted in accordance and
-            compliance with Indian laws. Any and all disputes arising between
-            the user and Random Capsule with regards to this Policy, including
-            the interpretation of the terms of this Policy shall be subject to
-            the exclusive jurisdiction of the courts at Bangalore, India.
+            Jurisdictional policies of Random Capsule have been drafted in
+            accordance and compliance with Indian laws. Any and all disputes
+            arising between the user and Random Capsule with regards to this
+            Policy, including the interpretation of the terms of this Policy
+            shall be subject to the exclusive jurisdiction of the courts at
+            Bangalore, India.
           </p>
         </h1>
         <h1 className="text-xl sm:text-3xl space-y-8 text-gray-800">
           Contact Information
           <p className="text-xs sm:text-sm mt-6 sm:mt-8">
             E-mail:{" "}
-            <span className="text-blue-500 underline"> support@randomcapsule.in</span>
+            <span className="text-blue-500 underline">
+              {" "}
+              support@randomcapsule.in
+            </span>
           </p>
         </h1>
       </div>

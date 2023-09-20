@@ -40,7 +40,8 @@ const CalendarComponent = (props) => {
   let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
 
   const { data, isFetching } = useGetSlotsForDateQuery({
-    date_str: format(selectedDay, "dd MMMM, yyy"),
+    date_str: format(new Date(selectedDay), "dd MMMM, yyyy"),
+    timeZone: timeZone,
   });
 
   let days = eachDayOfInterval({
@@ -247,12 +248,6 @@ function Slot({ start, location, slot_id, date, ...props }) {
             {formattedStartTimeForTimeZone} - {formattedToTimeForTimeZone}
           </span>
         </span>
-        {formattedDateForTimezone < formattedDate && (
-          <span className="text-xs text-center text-orange-600">prev day</span>
-        )}
-        {formattedDateForTimezone > formattedDate && (
-          <span className="text-xs text-center text-orange-600">next day</span>
-        )}
       </div>
 
       <Menu
@@ -329,6 +324,7 @@ const AddSlot = ({ date }) => {
       date_str: date,
       start_str: startSlot,
       end_str: endSlot,
+      timeZone: timeZone,
     });
   };
 

@@ -45,7 +45,7 @@ const AssignmentsTable = ({ userId }) => {
                   className="h-48"
                 />
                 <div className="flex justify-center items-center font-varela text-gray-500">
-                  No assignments found.
+                  No assignments found
                 </div>
               </div>
             </div>

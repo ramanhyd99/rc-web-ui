@@ -1,11 +1,29 @@
 import { Dialog, Transition } from "@headlessui/react";
+import { Textarea } from "@material-tailwind/react";
 import { Fragment, useRef, useState } from "react";
+import { useCancelBookingMutation } from "../../../apis/rtk-apis";
 
 const CancelBookingModal = (props) => {
   const [open, setOpen] = useState(true);
+  const [reason, setReason] = useState("");
+  const [cancelBooking, { isLoading: isCancelling, isSuccess }] =
+    useCancelBookingMutation();
 
   const closeModal = () => {
     setOpen(!open);
+    props.closeModal(null);
+  };
+
+  const handleOnReasonChange = (event) => {
+    setReason(event.target.value);
+  };
+
+  const handleDeleteConfirm = () => {
+    // console.log(formData);
+    cancelBooking({ bookingId: props.id, reason: reason });
+  };
+
+  const handleSuccessfullDelete = () => {
     props.closeModal(null);
   };
 
@@ -66,7 +84,7 @@ const CancelBookingModal = (props) => {
                         className="text-base font-semibold leading-6 text-gray-900"
                         id="modal-title"
                       >
-                        Cancel Booking
+                        Cancel Booking #RC-00{props.id}
                       </h3>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
@@ -87,35 +105,42 @@ const CancelBookingModal = (props) => {
                     </div>
                   </div>
                 </div>
+                <div className="flex justify-center p-4">
+                  <div className="w-96">
+                    <Textarea
+                      name="reason"
+                      value={reason}
+                      onChange={handleOnReasonChange}
+                      color="gray"
+                      label="Reason for cancellation"
+                    />
+                  </div>
+                </div>
                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                  {/* {isDeleting ? (
+                  {isCancelling ? (
                     <div
                       className="text-red-500 flex justify-center h-6 w-6 ml-2 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
                       role="status"
                     ></div>
                   ) : (
-                    <button
-                    //   onClick={handleDeleteConfirm}
-                      type="button"
-                      className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                    >
-                      Confirm
-                    </button>
-                  )} */}
-                  <button
-                    //   onClick={handleDeleteConfirm}
-                      type="button"
-                      className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                    >
-                      Yes, Cancel
-                    </button>
-                  <button
-                    type="button"
-                    onClick={closeModal}
-                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                  >
-                    No
-                  </button>
+                    <div className="flex space-x-2">
+                      <button
+                        type="button"
+                        onClick={closeModal}
+                        className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                      >
+                        No
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleDeleteConfirm}
+                        className="mt-3 inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-400 sm:mt-0 sm:w-auto"
+                      >
+                        Yes, Cancel
+                      </button>
+                    </div>
+                  )}
+                  {isSuccess && handleSuccessfullDelete()}
                 </div>
               </div>
             </Transition.Child>

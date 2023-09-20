@@ -1,10 +1,9 @@
 import {
   Card,
-  Checkbox,
   Input,
   Spinner,
   Tooltip,
-  Typography,
+  Typography
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { useGetAllSessionsForUserQuery } from "../../../apis/rtk-apis";
@@ -12,10 +11,6 @@ import CancelBookingModal from "./CancelBookingModal";
 
 const headers = [
   { id: 1, name: "Booking ID", direction: "desc", sorting_field: "name" },
-  {
-    id: 2,
-    name: "Client Email",
-  },
   {
     id: 3,
     name: "Session date",
@@ -28,14 +23,16 @@ const headers = [
   },
   { id: 5, name: "Payment" },
   { id: 6, name: "Session" },
+  {
+    id: 2,
+    name: "Client Email",
+  },
   { id: 7, name: "Link" },
 ];
 
-const BookingsTable = ({ userId }) => {
+const BookingsTable = ({ userId, date }) => {
   const [cancelBooking, setCancelBooking] = useState(null);
   const [search, setSearch] = useState("");
-
-  let searchTerm = search ? search : ""; // don't send null as search term
 
   const handleSearch = (value) => {
     setSearch(value);
@@ -104,26 +101,18 @@ const BookingsTable = ({ userId }) => {
               data.data?.map(
                 ({
                   index,
-                  user_id,
                   booking_id,
-                  client_name,
                   client_email,
                   formatted_date,
                   formatted_start_time,
                   timezone,
-                  session_for,
                   session_mode,
                   session_link,
-                  payment_mode,
                   payment_status,
-                  booking_status,
                   session_status,
-                  slot_date,
-                  slot_start,
                   price,
-                  can_cancel
+                  can_cancel,
                 }) => {
-                  const isLast = index === data.length - 1;
                   const classes =
                     "px-4 sm:px-8 py-6 sm:py-8 pl-4 border-b border-blue-gray-50";
 
@@ -141,18 +130,7 @@ const BookingsTable = ({ userId }) => {
                           </div>
                         </div>
                       </td>
-                      <td className={classes}>
-                        <div className="">
-                          <div className="">
-                            <span
-                              className={` rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20
-   `}
-                            >
-                              {client_email}
-                            </span>
-                          </div>
-                        </div>
-                      </td>
+
                       <td className={classes}>
                         <span
                           className={` rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20
@@ -171,37 +149,21 @@ const BookingsTable = ({ userId }) => {
                         <span className="text-xs">{timezone}</span>
                       </td>
                       <td className={classes}>
-                        {payment_mode === "pay_later" ? (
-                          <span
-                            className={` rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20
-   `}
-                          >
-                            ₹{price} -{" "}
-                            {payment_status === "pending"
-                              ? "Pay after session"
-                              : payment_status}
-                          </span>
-                        ) : (
-                          <span
-                            className={` rounded-md bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-600/20
- `}
-                          >
-                            {payment_status}
-                          </span>
-                        )}
+                        <span
+                          className={`rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20`}
+                        >
+                          ₹{price} - {payment_status}
+                        </span>
                       </td>
                       <td className={classes}>
-                        {session_status === "Upcoming" ? ( // Session is in the future
-                          <div className="items-center flex space-x-1 justify-center">
-                            <div>
+                        <div className="items-center flex space-x-1 justify-center">
+                          {session_status === "upcoming" ? (
+                            <>
                               <span
-                                className={` rounded-md bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-600/20
-   `}
+                                className={`rounded-md bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-600/20`}
                               >
                                 {session_status}
                               </span>
-                            </div>
-                            <div>
                               {can_cancel ? (
                                 <>
                                   <button
@@ -216,7 +178,7 @@ const BookingsTable = ({ userId }) => {
                                     className={` rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20
  `}
                                   >
-                                    x Cancel
+                                    x cancel
                                   </button>
                                 </>
                               ) : (
@@ -226,20 +188,33 @@ const BookingsTable = ({ userId }) => {
                                     className={` cursor-not-allowed rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20
  `}
                                   >
-                                    x Cancel
+                                    x cancel
                                   </button>
                                 </Tooltip>
                               )}
-                            </div>
-                          </div>
-                        ) : (
-                          <span
-                            className={` rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20
+                            </>
+                          ) : (
+                            <>
+                              <span
+                                className={`rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20`}
+                              >
+                                {session_status}
+                              </span>
+                            </>
+                          )}
+                        </div>
+                      </td>
+                      <td className={classes}>
+                        <div className="">
+                          <div className="">
+                            <span
+                              className={` rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20
    `}
-                          >
-                            {session_status}
-                          </span>
-                        )}
+                            >
+                              {client_email}
+                            </span>
+                          </div>
+                        </div>
                       </td>
                       <td>
                         <div className="flex flex-col justify-center items-center space-y-1">
@@ -257,6 +232,7 @@ const BookingsTable = ({ userId }) => {
                                 href={session_link}
                                 className="text-blue-500 hover:text-blue-600 underline"
                                 target={"_blank"}
+                                rel="noreferrer"
                               >
                                 ({session_link})
                               </a>
@@ -304,7 +280,16 @@ const BookingsTable = ({ userId }) => {
           </div>
         </CardFooter> */}
       </Card>
-      {(data == null || data.data.length == 0) && (
+      {isFetching ? (
+        <div className="flex justify-center items-center mt-7">
+          <div className="block">
+            <div className="flex justify-center">
+              <Spinner className="h-7" />
+            </div>
+            <span className="text-sm text-gray-700">Loading sessions</span>
+          </div>
+        </div>
+      ) : data == null || data.data.length === 0 ? (
         <div className="flex justify-center items-center">
           <div className="block">
             <img
@@ -318,6 +303,8 @@ const BookingsTable = ({ userId }) => {
             </div>
           </div>
         </div>
+      ) : (
+        <></>
       )}
       {data != null && data.data.length > 0 && (
         <div className="text-sm font-varela mt-4">

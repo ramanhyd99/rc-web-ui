@@ -2,35 +2,32 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
   BookOpenIcon,
-  DocumentMagnifyingGlassIcon,
-  XMarkIcon,
+  DocumentMagnifyingGlassIcon
 } from "@heroicons/react/24/outline";
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { InstagramIcon, SpotifyIcon, WhatsappIcon } from "../common/svgs";
 
-import { PhoneIcon } from "@heroicons/react/20/solid";
+import {
+  ArrowLeftOnRectangleIcon,
+  PhoneIcon
+} from "@heroicons/react/20/solid";
 import { Avatar } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 import { connect, useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { fetchUserInfo, logout } from "../../redux/slices/authSlice";
 import { LocalStorageLoggedInKey } from "../../utils/constants";
 import Button1 from "../common/styled-components/button1";
 
-import {
-  Drawer,
-  Button,
-  Typography,
-  IconButton,
-} from "@material-tailwind/react";
+import { Drawer, IconButton, Typography } from "@material-tailwind/react";
 
 const navigation = [
   { id: 1, name: "Your Psychologist", to: "/your-psychologist", current: true },
   { id: 2, name: "Our Team", to: "/our-team", current: true },
   { id: 3, name: "FAQS", to: "/faqs", current: false },
-  // { id: 4, name: "Library", to: "/library", current: false },
   { id: 4, name: "Contact Us", to: "/contact-us", current: false },
 ];
 
@@ -40,14 +37,16 @@ function classNames(...classes) {
 
 const NavBar = ({ userInfo }) => {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const openDrawer = () => setDrawerOpen(true);
   const closeDrawer = () => setDrawerOpen(false);
 
-  //get userProfile each time page loads if it's already present
-  //this prevents anyone from editing the localstorage
+  // get userProfile each time page loads if it's already present
+  // this prevents anyone from editing the localstorage
+  // and also checking for expired tokens
   useEffect(() => {
     try {
       if (userInfo) {
@@ -57,6 +56,11 @@ const NavBar = ({ userInfo }) => {
       console.error(error);
     }
   }, []);
+
+  // close the drawer when the route changes
+  useEffect(() => {
+    closeDrawer();
+  }, [location]);
 
   // this is to ensure we logout the user from all tabs if logged out from one.
   // the rc_logged_in token is set and removed on login/logout and we detect any changes in that here.
@@ -116,9 +120,12 @@ const NavBar = ({ userInfo }) => {
                     <div className="flex flex-shrink-0 items-center">
                       <Link to="/home">
                         <img
+                          width="324"
+                          height="auto"
                           className="block h-20 lg:h-24 w-auto"
-                          src={require("../../assets/img/main_logo.png")}
-                          alt="Random Capsule"
+                          src={require("../../assets/img/main_logo_1400.png")}
+                          alt="Random Capsule Logo"
+                          srcSet={`${require("../../assets/img/main_logo_324.png")} 324, ${require("../../assets/img/main_logo_1400.png")} 3200w`}
                         />
                       </Link>
                     </div>
@@ -251,22 +258,17 @@ const NavBar = ({ userInfo }) => {
                         <Menu.Button className="flex rounded-full bg-gray-1000 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-1 focus:ring-offset-gray-800">
                           <span className="sr-only">Open user menu</span>
                           {userInfo != null && userInfo.profile_picture ? (
+                            // <Badge
+                            //   content="5"
+                            //   overlap="circular"
+                            //   placement="bottom-end"
+                            // >
                             <Avatar
                               className="h-9 w-9 rounded-full"
                               src={userInfo.profile_picture}
                               alt="profile picture"
                             />
                           ) : (
-                            // uncomment for notifications
-                            // <Badge
-                            //   content="5"
-                            //   overlap="circular"
-                            //   placement="bottom-end"
-                            // >
-                            //   <Avatar
-                            //     src={userInfo.profile_picture}
-                            //     alt="profile picture"
-                            //   />
                             // </Badge>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -298,6 +300,73 @@ const NavBar = ({ userInfo }) => {
                               <div className="w-32">
                                 {userInfo ? (
                                   <div className="absolute right-0 z-10 mt-2 w-auto origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                    <div className="min-w-[18rem]">
+                                      <div className="mx-3">
+                                        <div className="block justify-start p-3 space-y-1">
+                                          <div className="font-quicksand">
+                                            <b>{userInfo.name}</b>
+                                          </div>
+                                          <div className="text-sm text-gray-700">
+                                            {userInfo.email}
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      {userInfo.role === "admin" && (
+                                        <div className="border-t mx-3">
+                                          <div className="block justify-start p-3 space-y-1">
+                                            <div className="font-quicksand">
+                                              <b>General Info</b>
+                                            </div>
+                                            <div className="text-xs">
+                                              <div className="flex justify-start space-x-2">
+                                                <div className="font-bold">
+                                                  Environment:
+                                                </div>
+                                                <div>
+                                                  {process.env.NODE_ENV}
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      )}
+                                      {/* <div className="border-t mx-3 ">
+                                        <NotificationComp />
+                                      </div> */}
+                                      <div className="border-t mx-3 ">
+                                        <div className="flex justify-center p-3 space-y-1 ">
+                                          <div className="font-quicksand ">
+                                            <button
+                                              onClick={handleLogout}
+                                              className={classNames(
+                                                "flex items-center text-start text-sm  w-full text-red-400 hover:text-red-300 space-x-2"
+                                              )}
+                                            >
+                                              <div>
+                                                <ArrowLeftOnRectangleIcon className="h-5" />
+                                              </div>
+                                              <div>Logout</div>
+                                            </button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    {/* <div>
+                                      <span
+                                        className="text-gray-700 block text-xs justify-center"
+                                        role="menuitem"
+                                        tabindex="-1"
+                                        id="menu-item-0"
+                                      >
+                                        <div className="items-center text-center flex justify-center ">
+                                          <b className="text-lg">
+                                            {userInfo.name}
+                                          </b>
+                                        </div>
+                                        {userInfo.email}
+                                      </span>
+                                    </div>
                                     <div>
                                       <span
                                         className="text-gray-700 block px-4 py-2 text-sm justify-center"
@@ -305,10 +374,10 @@ const NavBar = ({ userInfo }) => {
                                         tabindex="-1"
                                         id="menu-item-0"
                                       >
-                                        <span className="items-center text-center flex justify-center">
-                                          Signed in as
+                                        <span className="items-center text-center flex justify-between">
+                                          Environment:
+                                          <b>{process.env.NODE_ENV}</b>
                                         </span>
-                                        <b>{userInfo.email}</b>
                                       </span>
                                     </div>
                                     <div>
@@ -320,14 +389,14 @@ const NavBar = ({ userInfo }) => {
                                       >
                                         Logout
                                       </button>
-                                    </div>
+                                    </div> */}
                                   </div>
                                 ) : (
                                   <a
                                     href="/login"
                                     className={classNames(
                                       active ? "bg-gray-100" : "",
-                                      "inline-block px-4 py-2 text-sm text-gray-700 w-full"
+                                      "flex justify-center p-2 text-sm text-gray-700 w-full"
                                     )}
                                   >
                                     Sign-In
@@ -432,7 +501,7 @@ const NavBar = ({ userInfo }) => {
                       </div>
                       <div className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
                         <div className="flex h-7 w-7 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                          <BookOpenIcon className="text-black"/>
+                          <BookOpenIcon className="text-black" />
                         </div>
                         <div className="flex-auto text-xs">
                           <a

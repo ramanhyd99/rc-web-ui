@@ -6,6 +6,7 @@ const SubmittedComponent = () => {
       <div className="flex justify-center">
         <img
           src={require("../../../assets/img/thanks.png")}
+          alt="Thank you"
           className="h-48"
         />
       </div>

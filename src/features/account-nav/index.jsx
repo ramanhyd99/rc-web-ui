@@ -1,11 +1,10 @@
 import {
-  BookOpenIcon,
   BriefcaseIcon,
   CalendarDaysIcon,
   ChartBarIcon,
   ClipboardDocumentCheckIcon,
   PencilSquareIcon,
-  UsersIcon,
+  UsersIcon
 } from "@heroicons/react/24/outline";
 
 import { useState } from "react";
@@ -68,11 +67,12 @@ const AccountNav = ({ userInfo, ...props }) => {
     //   adminOnly: true,
     // },
   ];
+
   return (
     <div className="min-h-screen">
       {userInfo && userInfo.new_user && (
         <div>
-          <NewUserModal name={userInfo.name} />
+          <NewUserModal name={userInfo.name} id={userInfo.id} />
         </div>
       )}
 
@@ -112,7 +112,7 @@ const AccountNav = ({ userInfo, ...props }) => {
                 className={`mt-8 flex  w-3/5 mx-auto items-center justify-center text-center  rounded-md bg-blue-50 px-2 py-2 text-xs font-medium text-blue-300 font-quicksand ring-1 ring-inset ring-blue-600/20
             `}
               >
-                We hope you are feeling safe here.
+                "We hope you are feeling safe here."
               </span>
             </div>
           </div>
@@ -178,7 +178,7 @@ const AccountNav = ({ userInfo, ...props }) => {
                     className={`mt-32 inline-flex text-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-300 font-quicksand ring-1 ring-inset ring-blue-600/20
             ${!open && "hidden"}`}
                   >
-                    We hope you are feeling safe here.
+                    "We hope you are feeling safe here."
                   </span>
                 </ul>
               </div>

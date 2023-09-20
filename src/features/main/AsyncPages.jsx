@@ -105,3 +105,8 @@ export const MySchedulePage = Loadable({
   loading: Loading,
   loader: () => import("../pages/my-schedule"),
 });
+
+export const GalleryPage = Loadable({
+  loading: Loading,
+  loader: () => import("../pages/gallery"),
+});

@@ -130,23 +130,24 @@ const HowItWorks = ({ className }) => {
               </div>
             </motion.div>
           </div>
-
-          {/* <div className="lg:w-2/3 md:w-2/3 w-full md:mt-0 mt-12 flex items-center content-center justify-center">
-            <img
-              className="lg:w-3/4 lg:h-auto  w-3/4 h-auto "
-              src={require("../../../../assets/img/talking_to_client.png")}
-              alt="talking to client"
-            />
-          </div> */}
           <div className="lg:w-2/3 md:w-2/3 h-[32rem] w-full sm:h-full flex items-center content-center justify-center mt-12 sm:mt-0">
             <div className="w-full h-full flex justify-center items-center ">
-              <div className="mx-12 rounded-3xl flex justify-center items-center h-full w-3/4 sm:w-1/2 shadow-2xl ring-4 ring-gray-100 border-gray-50 border-4">
-                <div className=" h-full flex justify-center items-center">
+              <div className="mx-12 rounded-3xl flex justify-center items-center h-full w-3/5 sm:w-1/2 shadow-2xl ring-4 ring-gray-100 border-gray-50 border-4">
+                <div className="h-full flex justify-center items-center">
                   <img
-                    className="h-full w-full px-2 py-2 rounded-3xl"
-                    src={require("../../../../assets/backgrounds/booking_recording.gif")}
-                    alt="talking to client"
+                    width="100%"
+                    height="auto"
+                    className="px-2 py-2 rounded-3xl"
+                    src={require("../../../../assets/backgrounds/how_it_works.gif")}
+                    alt="How it works recording"
                   />
+                  {/* TODO use mp4 instead of gif */}
+                  {/* <video preload="yes" autoPlay muted playsInline width="640" height="360" className="w-full  h-full rounded-xl">
+                    <source
+                      src={require("../../../../assets/backgrounds/how_it_works.mp4")}
+                      type="video/mp4"
+                    />
+                  </video> */}
                 </div>
               </div>
             </div>

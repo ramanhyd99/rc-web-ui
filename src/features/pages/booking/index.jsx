@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 import AccountNav from "../../account-nav";
-import LoggedInPageHeader from "../../common/layout/LoggedInPageHeader";
 import SEO from "../../seo";
 import Checkout from "../checkout";
 import PostBookingPage from "../post-booking";
@@ -24,7 +23,10 @@ const Booking = ({ userInfo }) => {
       {userInfo && (
         <>
           {bookingSuccessData ? (
-            <PostBookingPage data={bookingSuccessData} setBookingSuccessData={setBookingSuccessData}/>
+            <PostBookingPage
+              data={bookingSuccessData}
+              setBookingSuccessData={setBookingSuccessData}
+            />
           ) : (
             <>
               {!slotData ? (

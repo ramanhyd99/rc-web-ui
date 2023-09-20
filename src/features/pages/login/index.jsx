@@ -1,21 +1,14 @@
+import { ExclamationTriangleIcon } from "@heroicons/react/24/solid";
 import { GoogleLogin } from "@react-oauth/google";
 import { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SEO from "../../../features/seo";
 import { loginAsyncGoogle } from "../../../redux/slices/authSlice";
 import { LocalStorageLoggedInKey } from "../../../utils/constants";
 import Loading from "../../common/loading";
 import { ErrorToast } from "../../common/toast/ErrorToast";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
 
 const Login = ({ userInfo }) => {
   const navigate = useNavigate();
@@ -35,7 +28,7 @@ const Login = ({ userInfo }) => {
       setIsLoading(true);
       dispatch(loginAsyncGoogle({ token })).then((result) => {
         if (result.type === "auth/googleLogin/fulfilled") {
-          localStorage.setItem(LocalStorageLoggedInKey, "16108");
+          localStorage.setItem(LocalStorageLoggedInKey, "16108"); // needed to login/logout for all tabs (check in Navbar)
         }
         setIsLoading(false);
       });
@@ -85,9 +78,13 @@ const Login = ({ userInfo }) => {
                     <h3 className="text-center text-lg pt-2 sm:pt-3 text-pink-300">
                       Welcome to Random Capsule!
                     </h3>
+                    <h4 className="text-center text-md pt-2 sm:pt-3 text-red-500 flex">
+                      <ExclamationTriangleIcon className="h-6" />
+                      This is a test environment, we will be launching soon!
+                    </h4>
                     <div className="pt-4 sm:mt-12 px-2 h-full flex items-center">
-                      <div >
-                        <form className="mx-auto max-w-lg rounded-lg sm:rounded-none border" >
+                      <div>
+                        <form className="mx-auto max-w-lg rounded-lg sm:rounded-none border">
                           <div className="flex flex-col gap-4 p-4 md:p-8">
                             <div className="relative flex items-center justify-center">
                               <span className="absolute inset-x-0 h-px bg-gray-300"></span>

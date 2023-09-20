@@ -56,28 +56,28 @@ export const userApi = createApi({
       providesTags: ["Users"],
     }),
     getSpecificUserDetails: builder.query({
-      query: ({userId }) => ({
+      query: ({ userId }) => ({
         url: "users/userProfile/",
         timeout: 20000,
         params: {
-          userId
+          userId,
         },
       }),
       providesTags: ["Users"],
     }),
     getAllSessionsForUser: builder.query({
-      query: ({userId, search}) => ({
+      query: ({ userId, search }) => ({
         url: `bookings/`,
         params: {
           userId,
-          search
+          search,
         },
         timeout: 20000,
       }),
       providesTags: ["Bookings"],
     }),
     getAllSessionsByDate: builder.query({
-      query: ({date}) => ({
+      query: ({ date }) => ({
         url: `bookings/admin`,
         params: {
           date,
@@ -160,11 +160,12 @@ export const userApi = createApi({
       invalidatesTags: ["DayTypes"],
     }),
     getSlotsForDate: builder.query({
-      query: ({ date_str }) => ({
+      query: ({ date_str, timeZone }) => ({
         url: "slots/",
         timeout: 20000,
         params: {
           date_str,
+          timeZone,
         },
       }),
       providesTags: ["Slots"],
@@ -194,7 +195,7 @@ export const userApi = createApi({
       invalidatesTags: ["Slots"],
     }),
     generateSlotForDate: builder.mutation({
-      query: ({ date_str, start_str, end_str }) => {
+      query: ({ date_str, start_str, end_str, timeZone }) => {
         return {
           method: "POST",
           url: "slots/create",
@@ -202,6 +203,7 @@ export const userApi = createApi({
             date_str,
             start_str,
             end_str,
+            timeZone,
           },
           timeout: 20000,
         };
@@ -257,6 +259,20 @@ export const userApi = createApi({
           formData: true,
         };
       },
+      invalidatesTags: ["Bookings", "Users"],
+    }),
+    cancelBooking: builder.mutation({
+      query: ({ bookingId, reason }) => {
+        return {
+          method: "POST",
+          url: "bookings/cancel",
+          params: {
+            bookingId,
+            reason,
+          },
+          timeout: 20000,
+        };
+      },
       invalidatesTags: ["Bookings"],
     }),
   }),
@@ -281,4 +297,5 @@ export const {
   useGetDashboardMetricsQuery,
   useUploadReviewMutation,
   useCheckoutMutation,
+  useCancelBookingMutation,
 } = userApi;

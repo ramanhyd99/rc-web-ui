@@ -25,17 +25,22 @@ export const getSlotsForDate = async (
   try {
     const authToken: string = req.headers.authorization as string;
 
-    const response = await axios.get(`${authMicroservice.base_url}/slots/`, {
-      params: {
-        date_str: req.query.date_str,
-      },
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: authToken,
-      },
-      timeout: 10000,
-    });
+    console.log(req.query.date_str);
+    const response = await axios.get(
+      `${authMicroservice.base_url}/slots/timezone`,
+      {
+        params: {
+          date: req.query.date_str,
+          timezone: req.query.timeZone,
+        },
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: authToken,
+        },
+        timeout: 10000,
+      }
+    );
 
     customizedResponse = {
       data: response.data,
@@ -44,13 +49,15 @@ export const getSlotsForDate = async (
     res.status(response.status).json(customizedResponse);
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      const axiosError = error as AxiosError;
+      const axiosError = error as AxiosError<{ detail: string }>;
       if (axiosError.response) {
         console.error("Status code:", axiosError.response.status);
         // console.error("Status code:", axiosError.response);
         customizedResponse = {
           data: null,
-          errorMessage: "Could not get day types. Please try again.",
+          errorMessage: axiosError.response.data?.detail
+            ? axiosError.response.data?.detail
+            : "Could not get the slots. Please try again.",
           errorDetails: error,
         };
         return res.status(axiosError.response.status).json(customizedResponse);
@@ -98,13 +105,15 @@ export const lockSlotForDate = async (
     res.status(response.status).json(customizedResponse);
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      const axiosError = error as AxiosError;
+      const axiosError = error as AxiosError<{ detail: string }>;
       if (axiosError.response) {
         console.error("Status code:", axiosError.response.status);
 
         customizedResponse = {
           data: null,
-          errorMessage: "Sorry, that slot is currently unavailable.",
+          errorMessage: axiosError.response.data?.detail
+            ? axiosError.response.data?.detail
+            : "Sorry, that slot is currently unavailable.",
           errorDetails: error,
         };
         return res.status(axiosError.response.status).json(customizedResponse);
@@ -186,7 +195,9 @@ export const generateSlotsForDate = async (
   try {
     const authToken: string = req.headers.authorization as string;
 
-    console.log(req.query);
+    // console.log(req.query);
+
+    console.log(req.query.timeZone);
 
     const response = await axios.post(
       `${authMicroservice.base_url}/slots/create`,
@@ -194,6 +205,7 @@ export const generateSlotsForDate = async (
         date_str: req.query.date_str,
         start_str: req.query.start_str,
         end_str: req.query.end_str,
+        timeZone: req.query.timeZone,
       },
       {
         headers: {

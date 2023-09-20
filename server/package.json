@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-dev": "nodemon --exec ts-node src/app.ts",
-    "start": "NODE_ENV=production node dist/app.js",
+    "start": "node dist/app.js",
     "build": "tsc --build tsconfig.json --verbose"
   },
   "keywords": [],
@@ -18,6 +18,7 @@
     "crypto": "^1.0.1",
     "dotenv": "^16.1.3",
     "express": "^4.18.2",
+    "express-rate-limit": "^7.0.1",
     "jsonwebtoken": "^9.0.0",
     "multer": "^1.4.5-lts.1",
     "razorpay": "^2.8.6",

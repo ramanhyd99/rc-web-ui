@@ -11,7 +11,7 @@ const PostBookingPage = (props) => {
   const booking_id = props.data?.data?.data.booking_id;
   const price =  props.data?.data?.data.price;
   const session_mode =  props.data?.data?.data.session_mode;
-  const payment_mode =  props.data?.data?.data.payment_mode == "pay_later" ? "Pay after session" : "Pending";
+  const payment_mode =  props.data?.data?.data.payment_mode === "pay_later" ? "Pay after session" : "Pending";
   const formatted_date =  props.data?.data?.data.formatted_date;
   const formatted_start_time =  props.data?.data?.data.formatted_start_time;
   const timezone =  props.data?.data?.data.timezone;
@@ -20,7 +20,6 @@ const PostBookingPage = (props) => {
     props.setBookingSuccessData(null);
   };
 
-  console.log()
   return (
     <div className="flex justify-center items-center h-screen px-2">
       <div className="md:w-1/3 flex flex-col rounded-lg overflow-hidden bg-white shadow">
@@ -29,7 +28,7 @@ const PostBookingPage = (props) => {
           <div className="font-bold text-2xl mb-2 text-center">
             Booking Confirmed!
           </div>
-          <div className="flex justify-center space-x-4">
+          <div className="block md:flex justify-center space-x-4">
             <div className="text-center">
               <small className="font-semibold">Booking Id: </small>
               <small>

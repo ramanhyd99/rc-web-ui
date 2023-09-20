@@ -68,16 +68,26 @@ api.interceptors.response.use(
         setToast({
           msg: error.response?.data?.errorMessage
             ? error.response?.data?.errorMessage
-            : "Could not perform that action, please try again.",
+            : "That resource could not be found, please try again.",
           isError: true,
         })
       );
-    } else if (error.response && error.response.status === 500) {
+    } else if (error.response && error.response.status === 429) {
       store.dispatch(
         setToast({
           msg: error.response?.data?.errorMessage
             ? error.response?.data?.errorMessage
-            : "Oops, something went wrong.",
+            : "Too many requests in a minute.",
+          isError: true,
+        })
+      );
+    }  
+    else if (error.response && error.response.status === 500) {
+      store.dispatch(
+        setToast({
+          msg: error.response?.data?.errorMessage
+            ? error.response?.data?.errorMessage
+            : "Sorry, something went wrong.",
           isError: true,
         })
       );

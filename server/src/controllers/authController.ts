@@ -1,9 +1,8 @@
-import { CONFIG, MicroserviceConfig } from "../configs";
-import axios from "axios";
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import cookie from "cookie";
 import { Request, Response } from "express";
-import { AuthorizedRequest, CustomizedResponse, UserInfo } from "../schemas";
+import { CONFIG, MicroserviceConfig } from "../configs";
+import { CustomizedResponse, UserInfo } from "../schemas";
 
 const authMicroservice = CONFIG.microservices.find(
   (microservice: MicroserviceConfig) => microservice.name === "backend"
@@ -47,13 +46,14 @@ export const loginWithGoogle = async (
       res.setHeader(
         "Set-Cookie",
         cookie.serialize(CONFIG.jwt_token_name, rc_token, {
-          httpOnly: true,
-          secure: CONFIG.env == "production",
-          maxAge: 7200, // 2 hours in seconds
+          httpOnly: true, // this cookie is inaccessible to JavaScript
+          secure: CONFIG.env == "production", // sent over HTTPS only or not i.e True/False
+          maxAge: 21600, // 6 hours in seconds
           path: "/",
+          sameSite: "strict", // cookie can be sent in cross-site or in a restricted way (Lax)
         })
       );
-      console.log('sending response...');
+      console.log("sending response...");
       res.status(200).json(customizedResponse);
     } else {
       customizedResponse = {
@@ -64,7 +64,8 @@ export const loginWithGoogle = async (
       res.status(response.status).json(customizedResponse);
     }
   } catch (error: unknown) {
-    console.log('loginWithGoogle error');
+    console.log("loginWithGoogle error");
+    console.log(error);
 
     let errorDetails = null;
 
@@ -78,7 +79,7 @@ export const loginWithGoogle = async (
       errorDetails: errorDetails,
       data: null,
     };
-    console.log('returing ' + customizedResponse.errorMessage)
+    console.log("returning " + customizedResponse.errorMessage);
     res.status(500).json(customizedResponse);
   }
 };
@@ -87,8 +88,7 @@ export const logout = async (
   req: Request,
   res: Response<CustomizedResponse>
 ) => {
-
-  console.log('logging out..')
+  console.log("logging out..");
   let customizedResponse: CustomizedResponse = { data: null };
   //todo logout logic to remove jwt from redis
   res.setHeader(

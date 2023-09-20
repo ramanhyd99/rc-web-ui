@@ -24,6 +24,7 @@ export const bookSession = async (
 
   try {
     console.info("checkout for user_id: " + req.userId);
+    const authToken: string = req.headers.authorization as string;
 
     if (!req.body.payment_mode) {
       return res
@@ -49,6 +50,7 @@ export const bookSession = async (
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          Authorization: `${authToken}`,
         },
         timeout: 10000,
       }
@@ -61,6 +63,7 @@ export const bookSession = async (
 
     res.status(response.status).json(customizedResponse);
   } catch (error) {
+    const errMsg = "Sorry, could not perform the booking."
     if (axios.isAxiosError(error)) {
       const axiosError = error as AxiosError<{ detail: string }>;
       if (axiosError.response) {
@@ -75,7 +78,7 @@ export const bookSession = async (
           data: null,
           errorMessage: axiosError.response.data?.detail
             ? axiosError.response.data?.detail
-            : "Could not perform the booking.",
+            : errMsg,
           errorDetails: error,
         };
         return res.status(axiosError.response.status).json(customizedResponse);
@@ -83,7 +86,7 @@ export const bookSession = async (
     }
     customizedResponse = {
       data: null,
-      errorMessage: "Could not perform the booking.",
+      errorMessage: errMsg,
       errorDetails: error,
     };
     return res.status(500).json(customizedResponse);
@@ -108,7 +111,6 @@ export const getBookingsForUser = async (
 
     const response = await axios.get(
       `${authMicroservice.base_url}/booking/${user_id_val}`,
-
       {
         params: {
           search: req.query.search,
@@ -129,6 +131,7 @@ export const getBookingsForUser = async (
 
     res.status(response.status).json(customizedResponse);
   } catch (error) {
+    const errMsg = "Sorry, could not get your sessions."
     if (axios.isAxiosError(error)) {
       const axiosError = error as AxiosError<{ detail: string }>;
       if (axiosError.response) {
@@ -136,7 +139,7 @@ export const getBookingsForUser = async (
           data: null,
           errorMessage: axiosError.response.data?.detail
             ? axiosError.response.data?.detail
-            : "Sorry, could not get your sessions.",
+            : errMsg,
           errorDetails: error,
         };
         return res.status(axiosError.response.status).json(customizedResponse);
@@ -144,66 +147,125 @@ export const getBookingsForUser = async (
     }
     customizedResponse = {
       data: null,
-      errorMessage: "Sorry, could not get your sessions.",
+      errorMessage: errMsg,
       errorDetails: error,
     };
     return res.status(500).json(customizedResponse);
   }
 };
 
-
 export const getBookingsByDate = async (
-    req: any,
-    res: Response<CustomizedResponse>
-  ) => {
-    let customizedResponse: CustomizedResponse = {
-      data: null,
-      errorMessage: "Sorry, could not perform that action. Please try again.",
-    };
-  
-    try {
-      console.info("Getting bookings by date");
-      const authToken: string = req.headers.authorization as string;
-  
-  
-      const response = await axios.get(
-        `${authMicroservice.base_url}/booking/admin/${req.query.date}`,
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `${authToken}`,
-          },
-          timeout: 10000,
-        }
-      );
-  
-      customizedResponse = {
-        data: response.data,
-        infoMessage: response.data.msg,
-      };
-  
-      res.status(response.status).json(customizedResponse);
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        const axiosError = error as AxiosError<{ detail: string }>;
-        if (axiosError.response) {
-          customizedResponse = {
-            data: null,
-            errorMessage: axiosError.response.data?.detail
-              ? axiosError.response.data?.detail
-              : "Sorry, could not get the sesssions.",
-            errorDetails: error,
-          };
-          return res.status(axiosError.response.status).json(customizedResponse);
-        }
-      }
-      customizedResponse = {
-        data: null,
-        errorMessage: "Sorry, could not get the sessions.",
-        errorDetails: error,
-      };
-      return res.status(500).json(customizedResponse);
-    }
+  req: any,
+  res: Response<CustomizedResponse>
+) => {
+  let customizedResponse: CustomizedResponse = {
+    data: null,
+    errorMessage: "Sorry, could not perform that action. Please try again.",
   };
-  
+
+  try {
+    console.info("Getting bookings by date");
+    const authToken: string = req.headers.authorization as string;
+
+    const response = await axios.get(
+      `${authMicroservice.base_url}/booking/admin/${req.query.date}`,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: authToken,
+        },
+        timeout: 10000,
+      }
+    );
+
+    customizedResponse = {
+      data: response.data,
+      infoMessage: response.data.msg,
+    };
+
+    res.status(response.status).json(customizedResponse);
+  } catch (error) {
+    const errMsg = "Sorry, could not get sessions for that date."
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError<{ detail: string }>;
+      if (axiosError.response) {
+        customizedResponse = {
+          data: null,
+          errorMessage: axiosError.response.data?.detail
+            ? axiosError.response.data?.detail
+            : errMsg,
+          errorDetails: error,
+        };
+        return res.status(axiosError.response.status).json(customizedResponse);
+      }
+    }
+    customizedResponse = {
+      data: null,
+      errorMessage: errMsg,
+      errorDetails: error,
+    };
+    return res.status(500).json(customizedResponse);
+  }
+};
+
+export const cancelBooking = async (
+  req: any,
+  res: Response<CustomizedResponse>
+) => {
+  let customizedResponse: CustomizedResponse = {
+    data: null,
+    errorMessage: "Sorry, could not perform that action. Please try again.",
+  };
+
+  try {
+    console.info("Cancelling booking...");
+    const authToken: string = req.headers.authorization as string;
+    console.info(req.query.bookingId);
+    console.info(authToken);
+
+    const response = await axios.delete(
+      `${authMicroservice.base_url}/booking/cancel`,
+      {
+        params: {
+          bookingId: req.query.bookingId,
+          reason: req.query.reason,
+        },
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `${authToken}`,
+        },
+        timeout: 10000,
+      }
+    );
+
+    customizedResponse = {
+      data: response.data,
+      infoMessage: response.data.msg,
+    };
+
+    res.status(response.status).json(customizedResponse);
+  } catch (error) {
+    const errMsg = "Sorry, could not cancel your booking."
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError<{ detail: string }>;
+      if (axiosError.response) {
+        customizedResponse = {
+          data: null,
+          errorMessage: axiosError.response.data?.detail
+            ? axiosError.response.data?.detail
+            : errMsg,
+          errorDetails: error,
+        };
+        return res.status(axiosError.response.status).json(customizedResponse);
+      }
+    }
+    customizedResponse = {
+      data: null,
+      errorMessage: errMsg,
+      errorDetails: error,
+    };
+    return res.status(500).json(customizedResponse);
+  }
+};

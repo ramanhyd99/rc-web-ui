@@ -22,6 +22,10 @@ RUN npm install -g pm2
 # Expose the port on which the application listens
 EXPOSE 3001
 
+# Env variables 
+ENV NODE_ENV=production
+ENV BACKEND_URL=http://localhost:8046/api
+
 # Start the application using pm2 in production mode by default
-CMD [ "sh", "-c", "if [ \"$NODE_ENV\" = \"development\" ]; then npm run start-dev; else pm2-runtime npm -- start; fi" ]
+CMD [ "sh", "-c", "pm2-runtime npm -- start" ]
 

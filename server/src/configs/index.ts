@@ -7,44 +7,43 @@ export interface MicroserviceConfig {
 
 export type APPConfig = {
   [key: string]: any;
-  env: string;
-  jwt_token_name: string
+  jwt_token_name: string;
   port: number;
   microservices: MicroserviceConfig[];
 };
 
 const DEV_CONFIG: APPConfig = {
   port: 5000,
-  env: "dev",
   jwt_token_name: "rc_token",
   microservices: [
     {
       name: "backend",
-      base_url: "http://localhost:8046/api",
+      base_url: process.env.BACKEND_URL || "http://localhost:8046/api",
     },
   ],
 };
 
 const PROD_CONFIG: APPConfig = {
   port: 5000,
-  env: "production",
   jwt_token_name: "rc_token",
   microservices: [
     {
       name: "backend",
-      base_url: "https://auth.random-capsule.com/api",
+      base_url: process.env.BACKEND_URL || "http://localhost:8046/api",
     },
   ],
 };
 
 let CONFIG: APPConfig;
 
-console.log("USING", process.env.STAGE || "CONFIG_DEV", "Configuration");
+console.log("NODE_ENV", process.env.NODE_ENV);
+console.log("BACKEND_URL", process.env.BACKEND_URL);
+console.log("USING", process.env.NODE_ENV || "CONFIG_DEV", "Configuration");
 switch (process.env.NODE_ENV) {
   case "production":
     CONFIG = PROD_CONFIG;
     break;
-  case "development":
+  case "dev":
     CONFIG = DEV_CONFIG;
     break;
   default:

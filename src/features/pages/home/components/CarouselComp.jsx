@@ -1,11 +1,11 @@
-import { Carousel, Typography, IconButton } from "@material-tailwind/react";
-import AnimatedHomeTitle from "../../../common/AnimatedHomeTitle";
+import { Carousel } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import AnimatedHomeTitle from "../../../common/AnimatedHomeTitle";
 
 const CarouselComp = () => {
   return (
     <div className="">
-      <Carousel autoplay="false" loop="false" autoplayDelay="5000">
+      <Carousel autoplay="false" loop="false" autoplayDelay="20000">
         {/* Slide 1 */}
         <div className="bg-gradient-to-r from-blue-100 to-blue-50">
           <div className="block sm:grid grid-cols-2 grid-rows-1 gap-0 min-h-screen max-h-screen  ">
@@ -14,6 +14,8 @@ const CarouselComp = () => {
                 style={{
                   "border-radius": "46% 43% 47% 53% / 40% 34% 64% 61%",
                 }}
+                width="100%"
+                height="auto"
                 className="w-1/2 sm:w-2/3 bg-blue-50"
                 src={require("../../../../assets/img/pooja.png")}
                 alt="Pooja Gupta"
@@ -55,6 +57,8 @@ const CarouselComp = () => {
           <div className="block sm:grid grid-cols-2 grid-rows-1 gap-0 min-h-screen max-h-screen bg-gradient-to-r from-green-200 via-green-100 to-green-50">
             <div className="flex justify-center items-center py-1">
               <img
+                width="100%" // set this to avoid layout shifts https://pagespeed.web.dev/analysis/https-www-randomcapsule-in/k4ripcl3of?form_factor=mobile
+                height="auto"
                 style={{
                   "border-radius": "46% 43% 47% 53% / 40% 34% 64% 61%",
                 }}
@@ -73,6 +77,7 @@ const CarouselComp = () => {
                 </div>
                 <div>
                   <iframe
+                    title="Random Capsule Spotify Podcast"
                     className="leading-relaxed mt-8 md:mt-8 mr:20 sm:mr-36"
                     style={{ "border-radius": "12px" }}
                     src="https://open.spotify.com/embed/show/6RcZys27bOqkHuiWVrR6zO?utm_source=generator&theme=0"

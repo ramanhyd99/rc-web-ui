@@ -11,6 +11,7 @@ import { injectStore } from "./apis/index";
 import Loading from "./features/common/loading";
 import "./index.css";
 import { persistor, store } from "./redux/store";
+import CONFIG from "./config";
 
 injectStore(store); // needed to inject Redux store into axios calls
 
@@ -27,7 +28,7 @@ async function bootStrap(preloadedState = {}) {
       <PersistGate loading={null} persistor={persistor}>
         <HelmetProvider>
           <CookiesProvider>
-            <GoogleOAuthProvider clientId="362955312743-2igqvv7odpc8snj388fmo95k00o7ffvl.apps.googleusercontent.com">
+            <GoogleOAuthProvider clientId={CONFIG.GOOGLE_CLIENT_ID}>
               <BrowserRouter>
                 <ThemeProvider>
                   <Main />

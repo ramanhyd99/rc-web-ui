@@ -3,7 +3,6 @@ import {
   Card,
   CardBody,
   CardHeader,
-  Checkbox,
   Input,
   Option,
   Rating,
@@ -12,22 +11,22 @@ import {
   Textarea,
   Typography,
 } from "@material-tailwind/react";
-import SEO from "../../seo";
+import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { useEffect, useState } from "react";
+import { useUploadReviewMutation } from "../../../apis/rtk-apis";
+import SEO from "../../seo";
 import {
   isValidAge,
   isValidEmail,
   isValidText,
 } from "../checkout/FormValidations";
 import SubmittedComponent from "./SubmittedComponent";
-import { useUploadReviewMutation } from "../../../apis/rtk-apis";
 
-export function FeedBack({ className }) {
+export function FeedBack() {
   const [isCaptchaSuccessfull, setIsCaptchaSuccessfull] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const [uploadMutation, { isLoading, isError, isSuccess }] =
+  const [uploadMutation, { isLoading, isSuccess }] =
     useUploadReviewMutation();
 
   const [formData, setFormData] = useState({
@@ -102,8 +101,6 @@ export function FeedBack({ className }) {
 
   const handleSubmitForm = () => {
     uploadMutation({ form: formData });
-
-    // setIsSubmitted(true); //TODO api call to submit review
   };
 
   return (
@@ -126,10 +123,7 @@ export function FeedBack({ className }) {
             </CardHeader>
             {!isSubmitted ? (
               <CardBody className="w-full sm:w-1/2">
-                <div
-              
-                  className="mb-2 uppercase flex justify-center sm:justify-start font-quicksand text-xl text-blue-500"
-                >
+                <div className="mb-2 uppercase flex justify-center sm:justify-start font-quicksand text-xl text-blue-500">
                   Feedback
                 </div>
                 <Typography

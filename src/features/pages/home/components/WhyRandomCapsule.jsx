@@ -1,28 +1,19 @@
-import { StarIcon } from "@heroicons/react/20/solid";
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
+import { Card, CardBody, Typography } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 
 const WhyRandomCapsule = ({ className }) => {
   return (
     <>
-      <h5>
-        <div className="mt-6 md:mt-12 lg:text-3lg py-6 sm:py-8 lg:py-12">
-          <h4 className="text-center text-3xl lg:text-4xl font-bold text-gray-800">
-            {" "}
-            Why Random Capsule?
-          </h4>
-          <h6 className="pt-3 text-center text-md lg:text-md font-varela text-gray-500 ">
-            Random Capsule has been made with the sole aim to bring afforadable
-            and better mental health-care closer to you!
-          </h6>
+      <div className="mt-6 md:mt-12 lg:text-3lg py-6 sm:py-8 lg:py-12">
+        <div className="font-quicksand text-center text-3xl lg:text-4xl font-bold text-gray-800">
+          {" "}
+          Why Random Capsule?
         </div>
-      </h5>
+        <div className="pt-3 text-center text-md lg:text-md font-varela text-gray-700 ">
+          Random Capsule has been made with the sole aim to bring afforadable
+          and better mental health-care closer to you!
+        </div>
+      </div>
       <div className="flex flex-col sm:flex sm:flex-row items-center justify-center space-y-6 sm:space-x-12">
         <motion.div whileHover={{ scale: 1.1 }}>
           <div className="border-t-4 rounded-t-xl border-green-500 mt-6">
@@ -77,12 +68,17 @@ const WhyRandomCapsule = ({ className }) => {
                   variant="h5"
                   className="mb-5 text-pink-500  border-gray-200"
                 >
-                  Extensive Practical Experience
+                  {/* Extensive Practical Experience */}
+                  Ease of Booking
                 </Typography>
                 <Typography>
-                  Experience the valuable expertise and extensive practical
+                  {/* Experience the valuable expertise and extensive practical
                   knowledge of Ms. Pooja, empowering her to offer you impactful
-                  strategies that can truly help transform your life.
+                  strategies that can truly help transform your life. */}
+                  Whether you prefer a phone call, online video sessions, or
+                  prefer to chat, our platform offers convenient options that
+                  allow you to receive the support you need from the comfort of
+                  your own environment.
                 </Typography>
               </CardBody>
               {/* <CardFooter className="pt-0">
