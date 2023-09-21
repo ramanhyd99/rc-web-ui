@@ -2,22 +2,19 @@ import { connect } from "react-redux";
 import AccountNav from "../../account-nav";
 import LoggedInPageHeader from "../../common/layout/LoggedInPageHeader";
 import SEO from "../../seo";
+import BookingsTable from "../my-sessions/MySessionsTable";
 import UnauthorizedPage from "../unauthorized";
-import MyScheduleComp from "./MyScheduleComponent";
 
-const MySchedule = ({ userInfo }) => {
+const Payments = ({ userInfo }) => {
   return (
     <>
       <AccountNav>
         {userInfo && userInfo.role === "admin" ? (
           <div className="">
-            <SEO title="My Schedule" />
+            <SEO title="Payments" />
             <div>
               <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-                <div className="bg-white">
-                  <LoggedInPageHeader title="My Schedule" />
-                  <MyScheduleComp />
-                </div>
+                <LoggedInPageHeader title="Payments" />
               </main>
             </div>
           </div>
@@ -35,5 +32,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(MySchedule);
-
+export default connect(mapStateToProps)(Payments);

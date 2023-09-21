@@ -9,7 +9,7 @@ import {
   Textarea
 } from "@material-tailwind/react";
 import { useState } from "react";
-import { classNames } from "../../../utils";
+import { classNames } from "../../../../utils";
 
 const Notes = () => {
   const [newNote, setNewNote] = useState(false);

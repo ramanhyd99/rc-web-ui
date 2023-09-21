@@ -1,11 +1,11 @@
 import { Spinner } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useGetSpecificUserDetailsQuery } from "../../../apis/rtk-apis";
-import { prettyDate } from "../../../utils";
-import AssignmentsTable from "../my-assignments/AssignmentsTable";
-import BookingsTable from "../my-sessions/BookingsTable";
-import Notes from "./Notes";
+import { useGetSpecificUserDetailsQuery } from "../../../../apis/rtk-apis";
+import { prettyDate } from "../../../../utils";
+import MyAssignmentsTable from "../../my-assignments/MyAssignmentsTable";
+import MySessionsTable from "../../my-sessions/MySessionsTable";
+import Notes from "./NotesComponent";
 
 const ClientInfo = ({ defaultId }) => {
   const [id, setId] = useState(defaultId);
@@ -80,8 +80,7 @@ const ClientInfo = ({ defaultId }) => {
                       Client's Sessions
                     </h3>
                   </div>
-                  <BookingsTable userId={id} />
-                  {/* <AssignmentsTable userId={id} /> */}
+                  <MySessionsTable userId={id} />
                 </div>
               </div>
             </div>
@@ -94,7 +93,7 @@ const ClientInfo = ({ defaultId }) => {
                     Client's Assignments
                   </h3>
                 </div>
-                <AssignmentsTable userId={id} />
+                <MyAssignmentsTable userId={id} />
               </div>
             </div>
           </div>

@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import AccountNav from "../../account-nav";
 import LoggedInPageHeader from "../../common/layout/LoggedInPageHeader";
 import SEO from "../../seo";
-import BookingsTable from "./BookingsTable";
+import BookingsTable from "./MySessionsTable";
 
 const MySessions = ({ userInfo }) => {
   return (

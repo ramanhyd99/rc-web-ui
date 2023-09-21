@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
-import UnauthorizedPage from "../unauthorized";
-import ClientInfo from "./ClientInfo";
+import UnauthorizedPage from "../../unauthorized";
+import ClientInfo from "./ClientInfoComponent";
 
 const ClientPage = ({ userInfo }) => {
   return (

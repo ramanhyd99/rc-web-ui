@@ -1,16 +1,16 @@
-import {
-  Card,
-  Input,
-  Spinner,
-  Tooltip,
-  Typography
-} from "@material-tailwind/react";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import { Card, Spinner, Tooltip, Typography } from "@material-tailwind/react";
 import { useState } from "react";
-import { useGetAllSessionsForUserQuery } from "../../../apis/rtk-apis";
-import CancelBookingModal from "./CancelBookingModal";
+import { Link } from "react-router-dom";
+import { useGetAllSessionsByDateQuery } from "../../../apis/rtk-apis";
+import CancelBookingModal from "../my-sessions/CancelSessionModel";
 
 const headers = [
   { id: 1, name: "Booking ID", direction: "desc", sorting_field: "name" },
+  {
+    id: 2,
+    name: "Client Email",
+  },
   {
     id: 3,
     name: "Session date",
@@ -23,24 +23,14 @@ const headers = [
   },
   { id: 5, name: "Payment" },
   { id: 6, name: "Session" },
-  {
-    id: 2,
-    name: "Client Email",
-  },
   { id: 7, name: "Link" },
 ];
 
-const BookingsTable = ({ userId, date }) => {
+const AdminSessionsTable = ({ date }) => {
   const [cancelBooking, setCancelBooking] = useState(null);
-  const [search, setSearch] = useState("");
 
-  const handleSearch = (value) => {
-    setSearch(value);
-  };
-
-  const { data, isFetching } = useGetAllSessionsForUserQuery({
-    userId: userId,
-    search: search,
+  const { data, isFetching } = useGetAllSessionsByDateQuery({
+    date: date,
   });
 
   const handleOnCancelClick = (
@@ -59,16 +49,6 @@ const BookingsTable = ({ userId, date }) => {
 
   return (
     <>
-      <div className="flex justify-center sm:justify-start">
-        <div className="w-72 pb-4 ">
-          <Input
-            label="search"
-            value={search}
-            onChange={(e) => handleSearch(e.target.value)}
-            icon={isFetching && <Spinner className="h-5" />}
-          />
-        </div>
-      </div>
       <Card className="h-full w-full overflow-scroll">
         <table className="w-full min-w-max table-auto text-center">
           <thead>
@@ -86,11 +66,11 @@ const BookingsTable = ({ userId, date }) => {
                   >
                     {head.name}
                     {/* {head.sorting_field && (
-                        <ChevronUpDownIcon
-                          strokeWidth={2}
-                          className="h-4 w-4"
-                        />
-                      )} */}
+                          <ChevronUpDownIcon
+                            strokeWidth={2}
+                            className="h-4 w-4"
+                          />
+                        )} */}
                   </Typography>
                 </th>
               ))}
@@ -101,18 +81,26 @@ const BookingsTable = ({ userId, date }) => {
               data.data?.map(
                 ({
                   index,
+                  user_id,
                   booking_id,
+                  client_name,
                   client_email,
                   formatted_date,
                   formatted_start_time,
                   timezone,
+                  session_for,
                   session_mode,
                   session_link,
+                  payment_mode,
                   payment_status,
+                  booking_status,
                   session_status,
+                  slot_date,
+                  slot_start,
                   price,
                   can_cancel,
                 }) => {
+                  const isLast = index === data.length - 1;
                   const classes =
                     "px-4 sm:px-8 py-6 sm:py-8 pl-4 border-b border-blue-gray-50";
 
@@ -123,18 +111,35 @@ const BookingsTable = ({ userId, date }) => {
                           <div className="">
                             <span
                               className={` rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20
-   `}
+     `}
                             >
                               RC-00{booking_id}
                             </span>
                           </div>
                         </div>
                       </td>
-
+                      <td className={classes}>
+                        <div className="">
+                          <div className="flex justify-between">
+                            <span
+                              className={` rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20
+     `}
+                            >
+                              {client_email}
+                            </span>
+                            <span>
+                              <Link to={"/client?id=" + user_id}>
+                                {" "}
+                                <ArrowTopRightOnSquareIcon className="h-5" />
+                              </Link>
+                            </span>
+                          </div>
+                        </div>
+                      </td>
                       <td className={classes}>
                         <span
                           className={` rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20
-   `}
+     `}
                         >
                           {formatted_date}
                         </span>
@@ -142,7 +147,7 @@ const BookingsTable = ({ userId, date }) => {
                       <td className={classes}>
                         <span
                           className={` rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20
-   `}
+     `}
                         >
                           {formatted_start_time}
                         </span>{" "}
@@ -204,24 +209,12 @@ const BookingsTable = ({ userId, date }) => {
                           )}
                         </div>
                       </td>
-                      <td className={classes}>
-                        <div className="">
-                          <div className="">
-                            <span
-                              className={` rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20
-   `}
-                            >
-                              {client_email}
-                            </span>
-                          </div>
-                        </div>
-                      </td>
                       <td>
                         <div className="flex flex-col justify-center items-center space-y-1">
                           <div>
                             <span
                               className={` rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20
-   `}
+     `}
                             >
                               {session_mode}
                             </span>
@@ -232,7 +225,6 @@ const BookingsTable = ({ userId, date }) => {
                                 href={session_link}
                                 className="text-blue-500 hover:text-blue-600 underline"
                                 target={"_blank"}
-                                rel="noreferrer"
                               >
                                 ({session_link})
                               </a>
@@ -252,33 +244,6 @@ const BookingsTable = ({ userId, date }) => {
               )}
           </tbody>
         </table>
-
-        {/* <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
-          <Typography variant="small" color="blue-gray" className="font-normal">
-            Page {1} of{" "}
-            {data?.data?.total ? Mth.ceil(data.data.total / limit) : "-"}
-          </Typography>
-          <div className="flex gap-2">
-            <Button
-              variant="outlined"
-              color="blue-gray"
-              size="sm"
-              disabled={page == 0}
-              onClick={handlePrevious}
-            >
-              Previous
-            </Button>
-            <Button
-              variant="outlined"
-              color="blue-gray"
-              size="sm"
-              disabled={data ? limit * (page + 1) >= data.data.total : true}
-              onClick={handleNext}
-            >
-              Next
-            </Button>
-          </div>
-        </CardFooter> */}
       </Card>
       {isFetching ? (
         <div className="flex justify-center items-center mt-7">
@@ -306,12 +271,6 @@ const BookingsTable = ({ userId, date }) => {
       ) : (
         <></>
       )}
-      {data != null && data.data.length > 0 && (
-        <div className="text-sm font-varela mt-4">
-          For 'Pay after session' option, please use the following UPI ID for
-          the payment: <span className="text-blue-500">7975897538@paytm</span>
-        </div>
-      )}
       {cancelBooking && (
         <CancelBookingModal
           id={cancelBooking["booking_id"]}
@@ -325,4 +284,4 @@ const BookingsTable = ({ userId, date }) => {
   );
 };
 
-export default BookingsTable;
+export default AdminSessionsTable;

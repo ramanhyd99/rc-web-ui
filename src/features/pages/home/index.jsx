@@ -3,7 +3,7 @@ import ContactUsModal from "../../common/modals/ContactUsModal";
 import { CustomToast } from "../../common/toast/CustomToast";
 import SEO from "../../seo";
 import BookNow from "./components/BookNow";
-import CarouselComp from "./components/CarouselComp";
+import CarouselComp from "./components/Carousel";
 import Experience from "./components/Experience";
 import HowItWorks from "./components/HowItWorks";
 import ServicesProvided from "./components/ServicesProvided";

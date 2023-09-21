@@ -1,4 +1,7 @@
-import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowTopRightOnSquareIcon,
+  ChevronUpDownIcon,
+} from "@heroicons/react/24/outline";
 import {
   Avatar,
   Button,
@@ -15,7 +18,7 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useGetAllUsersQuery } from "../../../apis/rtk-apis";
 import { getRandomImageString, prettyDate } from "../../../utils";
-import FreeSessionToggle from "./ToggleButton";
+import FreeSessionToggle from "./FreeSessionComponent";
 
 const headers = [
   { id: 1, name: "Client", direction: "desc", sorting_field: "name" },
@@ -75,19 +78,13 @@ const ClientsTable = () => {
 
   const handleClientClick = (id) => {
     let searchTerm = search ? search : ""; // don't send null as search term
-    if(searchTerm)
-    navigate(
-      `/client?id=${id}&search=${searchTerm}`
-    );
-    else 
-    navigate(
-      `/client?id=${id}`
-    );
+    if (searchTerm) navigate(`/client?id=${id}&search=${searchTerm}`);
+    else navigate(`/client?id=${id}`);
   };
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
-    if(queryParams.get("search") != null && queryParams.get("search") !== "")
+    if (queryParams.get("search") != null && queryParams.get("search") !== "")
       setSearch(queryParams.get("search"));
   }, []);
 
@@ -161,31 +158,29 @@ const ClientsTable = () => {
                       <tr key={name} className="even:bg-blue-gray-50/50">
                         <td className={classes}>
                           <div className="flex items-center gap-3">
-                            <button
-                              onClick={() =>
-                                handleClientClick(id, name, created_at, email)
+                            <Avatar
+                              src={
+                                profile_picture
+                                  ? profile_picture
+                                  : require(`../../../assets/img/penguin-${getRandomImageString(
+                                      id
+                                    )}.png`)
                               }
-                              className="transform transition-all hover:scale-110"
-                            >
-                              <Avatar
-                                src={
-                                  profile_picture
-                                    ? profile_picture
-                                    : require(`../../../assets/img/penguin-${getRandomImageString(
-                                        id
-                                      )}.png`)
-                                }
-                                alt={name}
-                                size="md"
-                              />
-                            </button>
+                              alt={name}
+                              size="md"
+                            />
                             <div className="flex flex-col">
                               <Typography
                                 variant="small"
                                 color="blue-gray"
                                 className="font-normal"
                               >
-                                {name}
+                                <div className="flex space-x-1">
+                                  <div>{name}</div>
+                                  <button onClick={() => handleClientClick(id)}>
+                                    <ArrowTopRightOnSquareIcon className="h-5" />
+                                  </button>
+                                </div>
                               </Typography>
                               <Typography
                                 variant="small"

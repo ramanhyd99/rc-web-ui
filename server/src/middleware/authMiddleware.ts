@@ -25,7 +25,6 @@ function authMiddleware(
   }
 
   const rcToken = req.cookies.rc_token;
-  console.debug("rcToken: " + rcToken);
 
   if (!rcToken) {
     return res.status(401).json({ error: "Unauthorized" });

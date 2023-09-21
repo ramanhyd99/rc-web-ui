@@ -66,11 +66,6 @@ export const SettingsPage = Loadable({
   loader: () => import("../pages/settings"),
 });
 
-export const PaymentPage = Loadable({
-  loading: Loading,
-  loader: () => import("../pages/payment"),
-});
-
 export const LibraryPage = Loadable({
   loading: Loading,
   loader: () => import("../pages/library"),
@@ -93,7 +88,7 @@ export const DashboardPage = Loadable({
 
 export const ClientPage = Loadable({
   loading: Loading,
-  loader: () => import("../pages/client-page"),
+  loader: () => import("../pages/my-clients/client-page"),
 });
 
 export const FeedbackPage = Loadable({
@@ -109,4 +104,9 @@ export const MySchedulePage = Loadable({
 export const GalleryPage = Loadable({
   loading: Loading,
   loader: () => import("../pages/gallery"),
+});
+
+export const PaymentsPage = Loadable({
+  loading: Loading,
+  loader: () => import("../pages/payments"),
 });

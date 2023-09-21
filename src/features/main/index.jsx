@@ -5,8 +5,8 @@ import NoInternetComp from "../common/NoInternetComp";
 import ErrorNotification from "../errors/ErrorNotification";
 import Footer from "../footer";
 import NavBar from "../navbar";
-import ClientPage from "../pages/client-page";
-import SpeedDialComp from "../pages/home/components/SpeedDialComp";
+import ClientPage from "../pages/my-clients/client-page";
+import SpeedDialComp from "../pages/home/components/SpeedDial";
 import {
   AboutPage,
   BookingPage,
@@ -24,10 +24,11 @@ import {
   MySessionsPage,
   OurTeamPage,
   PageNotFound,
-  PaymentPage, PrivacyPolicyPage,
+  PaymentsPage,
+  PrivacyPolicyPage,
   SetSchedulePage,
   SettingsPage,
-  TermsAndConditionsPage
+  TermsAndConditionsPage,
 } from "./AsyncPages";
 
 const Main = () => {
@@ -82,8 +83,8 @@ const Main = () => {
               <Route path="/my-schedule" element={<MySchedulePage />} />
               <Route path="/client" element={<ClientPage />} />
               <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/payments" element={<PaymentsPage />} />
               <Route path="/settings" element={<SettingsPage />} />
-              <Route path="/payment" element={<PaymentPage />} />
               <Route path="*" element={<Navigate to="/not-found" />} />
               <Route path="/not-found" element={<PageNotFound />} />
               <Route path="/library" element={<LibraryPage />} />

@@ -3,7 +3,7 @@ import { Textarea } from "@material-tailwind/react";
 import { Fragment, useRef, useState } from "react";
 import { useCancelBookingMutation } from "../../../apis/rtk-apis";
 
-const CancelBookingModal = (props) => {
+const CancelSessionModel = (props) => {
   const [open, setOpen] = useState(true);
   const [reason, setReason] = useState("");
   const [cancelBooking, { isLoading: isCancelling, isSuccess }] =
@@ -151,4 +151,4 @@ const CancelBookingModal = (props) => {
   );
 };
 
-export default CancelBookingModal;
+export default CancelSessionModel;

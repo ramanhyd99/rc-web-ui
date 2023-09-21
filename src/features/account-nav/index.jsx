@@ -3,6 +3,7 @@ import {
   CalendarDaysIcon,
   ChartBarIcon,
   ClipboardDocumentCheckIcon,
+  CurrencyRupeeIcon,
   PencilSquareIcon,
   UsersIcon
 } from "@heroicons/react/24/outline";
@@ -54,6 +55,12 @@ const AccountNav = ({ userInfo, ...props }) => {
       location: "/dashboard",
       adminOnly: true,
     },
+    // {
+    //   title: "Payments",
+    //   src: CurrencyRupeeIcon,
+    //   location: "/payments",
+    //   adminOnly: true,
+    // },
     // {
     //   title: "Set Schedule",
     //   src: WrenchIcon,

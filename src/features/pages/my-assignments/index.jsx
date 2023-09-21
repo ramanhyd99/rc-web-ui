@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import AccountNav from "../../account-nav";
 import LoggedInPageHeader from "../../common/layout/LoggedInPageHeader";
 import SEO from "../../seo";
-import AssignmentsTable from "./AssignmentsTable";
+import AssignmentsTable from "./MyAssignmentsTable";
 import UploadAssignment from "./UploadAssigment";
 
 const MyAssignments = ({ userInfo }) => {
