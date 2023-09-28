@@ -106,7 +106,7 @@ const ClientInfo = ({ defaultId }) => {
                   </h3>
                 </div>
                 <div className="mt-5">
-                  <Notes />
+                  <Notes userId={id}/>
                 </div>
               </div>
             </div>

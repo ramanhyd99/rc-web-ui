@@ -1,4 +1,3 @@
-import { ExclamationTriangleIcon } from "@heroicons/react/24/solid";
 import { GoogleLogin } from "@react-oauth/google";
 import { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
@@ -60,6 +59,7 @@ const Login = ({ userInfo }) => {
                 <img
                   src={require("../../../assets/backgrounds/login.svg").default}
                   className="w-1/2 sm:w-full max-w-screen-sm"
+                  alt="login"
                 />
               </div>
               <div
@@ -78,10 +78,10 @@ const Login = ({ userInfo }) => {
                     <h3 className="text-center text-lg pt-2 sm:pt-3 text-pink-300">
                       Welcome to Random Capsule!
                     </h3>
-                    <h4 className="text-center text-md pt-2 sm:pt-3 text-red-500 flex">
+                    {/* <h4 className="text-center text-md pt-2 sm:pt-3 text-red-500 flex">
                       <ExclamationTriangleIcon className="h-6" />
                       This is a test environment, we will be launching soon!
-                    </h4>
+                    </h4> */}
                     <div className="pt-4 sm:mt-12 px-2 h-full flex items-center">
                       <div>
                         <form className="mx-auto max-w-lg rounded-lg sm:rounded-none border">

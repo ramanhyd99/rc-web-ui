@@ -1,33 +1,79 @@
-import {
-  EllipsisHorizontalIcon
-} from "@heroicons/react/24/outline";
+import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import {
   Menu,
   MenuHandler,
   MenuItem,
   MenuList,
-  Textarea
+  Spinner,
+  Textarea,
 } from "@material-tailwind/react";
 import { useState } from "react";
-import { classNames } from "../../../../utils";
+import {
+  useCreateNoteForUserIdMutation,
+  useDeleteNoteByNoteIdMutation,
+  useGetNotesQuery,
+  useUpdateNoteByNoteIdMutation,
+} from "../../../../apis/rtk-apis";
+import { classNames, prettyDate } from "../../../../utils";
 
-const Notes = () => {
+const Notes = ({ userId }) => {
   const [newNote, setNewNote] = useState(false);
+
+  const { data, isFetching } = useGetNotesQuery({
+    userId: userId,
+  });
+
+  const [createNoteForUserId, { isLoading: isCreating }] =
+    useCreateNoteForUserIdMutation();
+
+  const [updateNoteByNoteId] = useUpdateNoteByNoteIdMutation();
+
+  const [deleteNoteByNoteId] = useDeleteNoteByNoteIdMutation();
 
   const handleNewNoteClick = () => {
     setNewNote(true);
   };
+
+  const handleCreateNewNote = (note) => {
+    createNoteForUserId({ user_id: userId, note: note });
+    setNewNote(false);
+  };
+
+  const handleUpdateNote = (note_id, note) => {
+    updateNoteByNoteId({ note_id: note_id, note: note });
+  };
+
+  const handleDeleteNoteClick = (note_id) => {
+    // alert(note_id);
+    deleteNoteByNoteId({ noteId: note_id });
+  };
+
   return (
     <div className="w-full">
       <div className="space-y-4">
-        <NoteComp
-          date="3 Sept 2023"
-          data="Initial assessment: Client shows symptons of ADHD."
-        />
-        <NoteComp
-          date="9 Sept 2023"
-          data="Conducted DBT session, gave an assignment to create timeline."
-        />
+        {isFetching ? (
+          <div className="flex justify-center">
+            <Spinner />
+          </div>
+        ) : (
+          data &&
+          data.data?.map(({ note_id, created_at, note }) => {
+            return (
+              <NoteComp
+                id={note_id}
+                date={prettyDate(created_at)}
+                data={note}
+                handleDeleteNoteClick={handleDeleteNoteClick}
+                handleUpdateNote={handleUpdateNote}
+              />
+            );
+          })
+        )}
+        {isCreating && (
+          <div className="flex justify-center">
+            <Spinner />
+          </div>
+        )}
       </div>
       <div className="mt-7">
         {!newNote ? (
@@ -46,7 +92,10 @@ const Notes = () => {
           </div>
         ) : (
           <div className="mt-12">
-            <NewNoteComp setNewNote={setNewNote} />
+            <NewNoteComp
+              setNewNote={setNewNote}
+              handleCreateNewNote={handleCreateNewNote}
+            />
           </div>
         )}
       </div>
@@ -56,7 +105,13 @@ const Notes = () => {
 
 export default Notes;
 
-const NoteComp = ({ date, data }) => {
+const NoteComp = ({
+  id,
+  date,
+  data,
+  handleDeleteNoteClick,
+  handleUpdateNote,
+}) => {
   const [canEditNote, setCanEditNote] = useState(false);
   const [textValue, setTextValue] = useState(data);
 
@@ -64,9 +119,13 @@ const NoteComp = ({ date, data }) => {
     setCanEditNote(true);
   };
 
+  const handleSaveClick = () => {
+    setCanEditNote(false);
+    handleUpdateNote(id, textValue);
+  };
+
   const handleCancelClick = () => {
     setTextValue(data);
-
     setCanEditNote(false);
   };
 
@@ -105,7 +164,7 @@ const NoteComp = ({ date, data }) => {
                 Cancel
               </button>
               <button
-                onClick={handleEditClick}
+                onClick={handleSaveClick}
                 className={classNames(
                   "flex rounded-md bg-blue-600 px-3 py-2 text-xs font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
                 )}
@@ -123,7 +182,12 @@ const NoteComp = ({ date, data }) => {
             </MenuHandler>
             <MenuList>
               <MenuItem onClick={handleEditClick}>Edit</MenuItem>
-              <MenuItem className="text-red-400">Delete</MenuItem>
+              <MenuItem
+                className="text-red-400"
+                onClick={() => handleDeleteNoteClick(id)}
+              >
+                Delete
+              </MenuItem>
             </MenuList>
           </Menu>
         </div>
@@ -132,11 +196,16 @@ const NoteComp = ({ date, data }) => {
   );
 };
 
-const NewNoteComp = ({ setNewNote }) => {
+const NewNoteComp = ({ setNewNote, handleCreateNewNote }) => {
   const date = getFormattedTodaysDate();
+  const [textValue, setTextValue] = useState("");
 
   const handleCancelClick = () => {
     setNewNote(false);
+  };
+
+  const handleInputChange = (event) => {
+    setTextValue(event.target.value);
   };
 
   return (
@@ -150,7 +219,11 @@ const NewNoteComp = ({ setNewNote }) => {
         </span>
       </div>
       <div className="w-full sm:w-5/6">
-        <Textarea label="Notes" className="h-[10rem]" />
+        <Textarea
+          label="Notes"
+          className="h-[10rem]"
+          onChange={handleInputChange}
+        />
 
         <div className="flex justify-center sm:justify-end space-x-2">
           <button
@@ -163,9 +236,9 @@ const NewNoteComp = ({ setNewNote }) => {
           </button>
           <button
             name="files"
-            // onClick={handleSubmitUploads}
+            onClick={() => handleCreateNewNote(textValue)}
             type="submit"
-            // disabled={isLoading}
+            // disabled={isCreating}
             className={classNames(
               "flex rounded-md bg-blue-600 px-3 py-2 text-xs font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               //   isLoading ? "cursor-not-allowed" : ""

@@ -26,7 +26,7 @@ const content = [
     index: 3,
     question: "How frequently can I schedule sessions?",
     answer:
-      "The frequency of sessions can vary depending on your specific needs and goals. It is best to discuss this with your therapist or counselor to determine a schedule that works best for you. As a rule of thumb, it's best to keep a gap of at-least 3 days before booking a new session.",
+      "The frequency of sessions can vary depending on your specific needs and goals. It is best to discuss this with your therapist or counselor to determine a schedule that works best for you. As a rule of thumb, it's best to keep a gap of at-least 1 day before booking a new session.",
   },
   {
     index: 4,
@@ -48,6 +48,12 @@ const content = [
   },
   {
     index: 7,
+    question: "How does the process of counselling work at Random Capsule?",
+    answer:
+      "The process of counselling is unique for every person. It is tailored differently for every client keeping in mind their issue and potentialities. However an eclectic approach, assignments and internal reflection are the key features of counselling at Random Capsule",
+  },
+  {
+    index: 7,
     question: "What can I expect during the first session?",
     answer:
       "During the initial session, your therapist or counselor will work with you to gather information about your background, current concerns, and goals for therapy. This helps them develop an understanding of your unique situation and create a tailored treatment plan.",
@@ -58,7 +64,6 @@ const content = [
     answer:
       "The duration of therapy or counseling can vary depending on individual needs and goals. Some people find benefit from short-term therapy, which may last a few weeks or months, while others may engage in longer-term therapy for ongoing support and personal growth.",
   },
-  
 ];
 
 const FAQs = ({ className }) => {

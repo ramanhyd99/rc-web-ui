@@ -488,7 +488,7 @@ const Checkout = ({ userInfo, ...props }) => {
                                     >
                                       terms & conditions
                                     </a>{" "}
-                                    and consult to counselling.
+                                    and consent to counselling.
                                   </span>
                                 </div>
                               </div>

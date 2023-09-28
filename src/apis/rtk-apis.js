@@ -38,7 +38,7 @@ export const userApi = createApi({
     },
     credentials: "include",
   }),
-  tagTypes: ["Users", "DayTypes", "Slots", "Assignments", "Bookings"],
+  tagTypes: ["Users", "DayTypes", "Slots", "Assignments", "Bookings", "Notes"],
   endpoints: (builder) => ({
     getAllUsers: builder.query({
       query: ({ role, search, offset, limit, sort_field, sort_dir }) => ({
@@ -275,6 +275,57 @@ export const userApi = createApi({
       },
       invalidatesTags: ["Bookings"],
     }),
+    getNotes: builder.query({
+      query: ({ userId }) => ({
+        url: "notes/",
+        timeout: 20000,
+        params: {
+          userId,
+        },
+      }),
+      providesTags: ["Notes"],
+    }),
+    deleteNoteByNoteId: builder.mutation({
+      query: ({ noteId }) => {
+        return {
+          method: "DELETE",
+          url: "notes/",
+          params: {
+            noteId,
+          },
+          timeout: 20000,
+        };
+      },
+      invalidatesTags: ["Notes"],
+    }),
+    createNoteForUserId: builder.mutation({
+      query: ({ user_id, note }) => {
+        return {
+          method: "POST",
+          url: "notes/",
+          params: {
+            user_id,
+            note,
+          },
+          timeout: 20000,
+        };
+      },
+      invalidatesTags: ["Notes"],
+    }),
+    updateNoteByNoteId: builder.mutation({
+      query: ({ note_id, note }) => {
+        return {
+          method: "PATCH",
+          url: "notes/",
+          params: {
+            note_id,
+            note,
+          },
+          timeout: 20000,
+        };
+      },
+      invalidatesTags: ["Notes"],
+    }),
   }),
 });
 
@@ -298,4 +349,8 @@ export const {
   useUploadReviewMutation,
   useCheckoutMutation,
   useCancelBookingMutation,
+  useGetNotesQuery,
+  useDeleteNoteByNoteIdMutation,
+  useCreateNoteForUserIdMutation,
+  useUpdateNoteByNoteIdMutation,
 } = userApi;

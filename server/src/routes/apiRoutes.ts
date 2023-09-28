@@ -2,6 +2,7 @@ import { Router, Request, Response, NextFunction } from "express";
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
 const assignmentController = require("../controllers/assignmentController");
+const notesController = require("../controllers/notesController");
 const settingsController = require("../controllers/settingsController");
 const slotsController = require("../controllers/slotsController");
 const dashboardController = require("../controllers/dashboardController");
@@ -49,5 +50,9 @@ router.get("/bookings/", bookingController.getBookingsForUser);
 router.get("/bookings/admin/", bookingController.getBookingsByDate); 
 router.post("/bookings/cancel/", bookingController.cancelBooking); 
 
+router.get("/notes/", notesController.getNotesForUserId);
+router.delete("/notes/", notesController.deleteNoteByNoteId);
+router.post("/notes/", notesController.createNote);
+router.patch("/notes/", notesController.updateNote);
 
 export default router;

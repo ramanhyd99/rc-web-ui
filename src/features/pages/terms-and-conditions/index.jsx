@@ -162,7 +162,7 @@ const TermsAndConditions = () => {
             Capsule at
             <span className="text-blue-500 underline">
               {" "}
-              support@randomcapsule.in
+              beheard@randomcapsule.in
             </span>
             . Random Capsule will aim to process all such requests within 14
             working days, in line with our Privacy Policy and subject to

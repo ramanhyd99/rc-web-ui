@@ -108,7 +108,7 @@ const PrivacyPolicy = () => {
             withdrawal of consent is intimated to us in writing to
             <span className="text-blue-500 underline">
               {" "}
-              support@randomcapsule.in
+              beheard@randomcapsule.in
             </span>
             . Notwithstanding this, if you are accessing our platform through a
             third-party or your organisation, you will have an option to
@@ -148,7 +148,7 @@ const PrivacyPolicy = () => {
             to us at{" "}
             <span className="text-blue-500 underline">
               {" "}
-              support@randomcapsule.in
+              beheard@randomcapsule.in
             </span>
             <br />
             <br />
@@ -201,7 +201,7 @@ const PrivacyPolicy = () => {
             writing to
             <span className="text-blue-500 underline">
               {" "}
-              support@randomcapsule.in
+              beheard@randomcapsule.in
             </span>
             .
           </p>
@@ -215,7 +215,7 @@ const PrivacyPolicy = () => {
             reason, you may send updates and corrections to us at
             <span className="text-blue-500 underline">
               {" "}
-              support@randomcapsule.in
+              beheard@randomcapsule.in
             </span>{" "}
             and we will take all reasonable efforts to incorporate the changes
             within a reasonable period of time. If you provide your Personal
@@ -231,7 +231,7 @@ const PrivacyPolicy = () => {
             us at{" "}
             <span className="text-blue-500 underline">
               {" "}
-              support@randomcapsule.in
+              beheard@randomcapsule.in
             </span>{" "}
             and we will attempt to accommodate your request if we do not have
             any legal obligation to retain such information.
@@ -477,7 +477,7 @@ const PrivacyPolicy = () => {
             any aspect of our Services, you may contact us at
             <span className="text-blue-500 underline">
               {" "}
-              support@randomcapsule.in
+              beheard@randomcapsule.in
             </span>
             . We assure you a time-bound response not exceeding one month from
             the date of your complaint.
@@ -500,7 +500,7 @@ const PrivacyPolicy = () => {
             E-mail:{" "}
             <span className="text-blue-500 underline">
               {" "}
-              support@randomcapsule.in
+              beheard@randomcapsule.in
             </span>
           </p>
         </h1>

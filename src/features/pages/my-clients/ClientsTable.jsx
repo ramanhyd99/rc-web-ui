@@ -1,3 +1,4 @@
+import { StarIcon } from "@heroicons/react/20/solid";
 import {
   ArrowTopRightOnSquareIcon,
   ChevronUpDownIcon,
@@ -43,7 +44,7 @@ const ClientsTable = () => {
   });
 
   const { data, isFetching } = useGetAllUsersQuery({
-    role: "client",
+    role: "", //change here to get only clients and not admins
     search: search,
     limit: limit,
     offset: page * limit,
@@ -139,6 +140,7 @@ const ClientsTable = () => {
               data.data?.users?.map(
                 (
                   {
+                    role,
                     profile_picture,
                     name,
                     email,
@@ -176,6 +178,7 @@ const ClientsTable = () => {
                                 className="font-normal"
                               >
                                 <div className="flex space-x-1">
+                                  {role === "admin" && <StarIcon className="text-yellow-600 h-4"/>}
                                   <div>{name}</div>
                                   <button onClick={() => handleClientClick(id)}>
                                     <ArrowTopRightOnSquareIcon className="h-5" />
