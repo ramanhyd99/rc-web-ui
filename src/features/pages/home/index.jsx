@@ -1,6 +1,3 @@
-import { useState } from "react";
-import ContactUsModal from "../../common/modals/ContactUsModal";
-import { CustomToast } from "../../common/toast/CustomToast";
 import SEO from "../../seo";
 import BookNow from "./components/BookNow";
 import CarouselComp from "./components/Carousel";
@@ -11,16 +8,10 @@ import Testimonials from "./components/Testimonials";
 import WhyRandomCapsule from "./components/WhyRandomCapsule";
 
 const Home = () => {
-  const [onPhoneClick, setPhoneClick] = useState(false);
-
-  const handlePhoneClick = () => {
-    setPhoneClick(!onPhoneClick);
-  };
-
   return (
     <div>
       <SEO title="Home" />
-      {onPhoneClick && <ContactUsModal setOpen={handlePhoneClick} />}
+      {/* {onPhoneClick && <ContactUsModal setOpen={handlePhoneClick} />} */}
       <div>
         <CarouselComp />
       </div>

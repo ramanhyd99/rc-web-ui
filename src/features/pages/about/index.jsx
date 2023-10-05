@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import {
   NumberOfClients,
   NumberOfSessions,
+  NumberOfStudentsCounselled,
   NumberOfYearsExp,
 } from "../../../utils/constants";
 import PageTitle from "../../common/PageTitle";
@@ -84,8 +85,11 @@ const About = () => {
               alt="Pooja Gupta"
             />
             <div className="flex items-center flex-col mt-2">
-              <h2 className="text-2xl font-bold text-blue-500">Ms. Pooja Gupta</h2>
+              <h2 className="text-2xl font-bold text-blue-500">
+                Ms. Pooja Gupta
+              </h2>
               <h2 className="text-md text-pink-200">Msc Psychology</h2>
+              <h2 className="text-md text-black">Gold Medalist</h2>
             </div>
           </div>
           <div className="col-span-2 flex flex-col items-end justify-around pb-20">
@@ -95,6 +99,14 @@ const About = () => {
               </span>
               <h2 className="text-xl font-medium capitalize text-black/60">
                 Lives Impacted
+              </h2>
+            </div>
+            <div className="flex flex-col items-end justify-center ">
+              <span className="inline-block text-7xl font-bold">
+                <AnimatedNumbers value={NumberOfStudentsCounselled} />+
+              </span>
+              <h2 className="text-xl font-medium capitalize text-black/60">
+                Students counselled
               </h2>
             </div>
             <div className="flex flex-col items-end justify-center ">

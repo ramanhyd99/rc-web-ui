@@ -1,5 +1,3 @@
-import { Tooltip } from "@material-tailwind/react";
-
 const LoggedInPageHeader = (props) => {
   return (
     <div

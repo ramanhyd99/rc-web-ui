@@ -216,6 +216,12 @@ export const userApi = createApi({
         timeout: 20000,
       }),
     }),
+    getReviews: builder.query({
+      query: () => ({
+        url: "reviews/",
+        timeout: 20000,
+      }),
+    }),
     uploadReview: builder.mutation({
       query: ({ form }) => {
         const bodyFormData = new FormData();
@@ -347,6 +353,7 @@ export const {
   useGenerateSlotForDateMutation,
   useGetDashboardMetricsQuery,
   useUploadReviewMutation,
+  useGetReviewsQuery,
   useCheckoutMutation,
   useCancelBookingMutation,
   useGetNotesQuery,

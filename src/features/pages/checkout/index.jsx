@@ -6,10 +6,6 @@ import {
   HomeIcon,
   PhoneIcon,
 } from "@heroicons/react/24/outline";
-import {
-  InformationCircleIcon,
-  LockClosedIcon,
-} from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { classNames } from "../../../utils";
 
@@ -19,13 +15,12 @@ import {
   ListItemPrefix,
   Radio,
   Spinner,
-  Tooltip,
   Typography,
 } from "@material-tailwind/react";
 import { connect } from "react-redux";
-import { useNavigate, Navigate } from "react-router-dom";
-import { isValidEmail, isValidName, isValidNumber } from "./FormValidations";
+import { useNavigate } from "react-router-dom";
 import { useCheckoutMutation } from "../../../apis/rtk-apis";
+import { isValidEmail, isValidName, isValidNumber } from "./FormValidations";
 
 const secondsToMMSS = (seconds) => {
   const minutes = Math.floor(seconds / 60);

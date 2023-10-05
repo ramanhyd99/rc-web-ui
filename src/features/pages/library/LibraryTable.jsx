@@ -20,36 +20,36 @@ const headers = [
   },
 ];
 
-const data = [
-  {
-    title:
-      "Compassion Focused Therapy (CFT) Distinctive Features (Paul Gilbert).pdf",
-    bookingDateTime: "2023-06-19",
-    tag: "Social Psychology",
-    status: "completed",
-    link: "https://example.com",
-    bookingDetails: {
-      name: "John Doe",
-      phone: "1234567890",
-      email: "john.doe@example.com",
-      age: 8,
-    },
-  },
-  {
-    title:
-      "Relating to Voices using Compassion Focused Therapy A Self-help Companion.pdf",
-    bookingDateTime: "2023-06-20",
-    tag: "Self-help",
-    status: "Pending",
-    link: "https://example.com",
-    bookingDetails: {
-      name: "Jane Smith",
-      phone: "9876543210",
-      email: "jane.smith@example.com",
-      age: 24,
-    },
-  },
-];
+// const data = [
+//   {
+//     title:
+//       "Compassion Focused Therapy (CFT) Distinctive Features (Paul Gilbert).pdf",
+//     bookingDateTime: "2023-06-19",
+//     tag: "Social Psychology",
+//     status: "completed",
+//     link: "https://example.com",
+//     bookingDetails: {
+//       name: "John Doe",
+//       phone: "1234567890",
+//       email: "john.doe@example.com",
+//       age: 8,
+//     },
+//   },
+//   {
+//     title:
+//       "Relating to Voices using Compassion Focused Therapy A Self-help Companion.pdf",
+//     bookingDateTime: "2023-06-20",
+//     tag: "Self-help",
+//     status: "Pending",
+//     link: "https://example.com",
+//     bookingDetails: {
+//       name: "Jane Smith",
+//       phone: "9876543210",
+//       email: "jane.smith@example.com",
+//       age: 24,
+//     },
+//   },
+// ];
 
 const LibraryTable = () => {
   return (

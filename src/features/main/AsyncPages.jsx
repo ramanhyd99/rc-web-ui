@@ -110,3 +110,8 @@ export const PaymentsPage = Loadable({
   loading: Loading,
   loader: () => import("../pages/payments"),
 });
+
+export const PublicationsPage = Loadable({
+  loading: Loading,
+  loader: () => import("../pages/publications"),
+});

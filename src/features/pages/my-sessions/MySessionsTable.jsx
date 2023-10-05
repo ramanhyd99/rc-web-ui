@@ -25,7 +25,7 @@ const headers = [
   { id: 6, name: "Session" },
   {
     id: 2,
-    name: "Client Email",
+    name: "Booking for",
   },
   { id: 7, name: "Link" },
 ];

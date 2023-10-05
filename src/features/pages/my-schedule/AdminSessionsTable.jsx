@@ -9,7 +9,11 @@ const headers = [
   { id: 1, name: "Booking ID", direction: "desc", sorting_field: "name" },
   {
     id: 2,
-    name: "Client Email",
+    name: "Booking for",
+  },
+  {
+    id: 2,
+    name: "Booked by",
   },
   {
     id: 3,
@@ -99,8 +103,8 @@ const AdminSessionsTable = ({ date }) => {
                   slot_start,
                   price,
                   can_cancel,
+                  contact_details,
                 }) => {
-                  const isLast = index === data.length - 1;
                   const classes =
                     "px-4 sm:px-8 py-6 sm:py-8 pl-4 border-b border-blue-gray-50";
 
@@ -120,16 +124,27 @@ const AdminSessionsTable = ({ date }) => {
                       </td>
                       <td className={classes}>
                         <div className="">
-                          <div className="flex justify-between">
+                          <div className="flex justify-center">
                             <span
-                              className={` rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20
+                              className={`rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20
      `}
                             >
                               {client_email}
                             </span>
+                          </div>
+                          <div className="text-sm pt-1 font-semibold flex justify-center">
+                            {session_for === "self"
+                              ? contact_details["phone"]
+                              : contact_details["their_phone"]}
+                          </div>
+                        </div>
+                      </td>
+                      <td className={classes}>
+                        <div className="">
+                          <div className="flex justify-between">
                             <span>
                               <Link to={"/client?id=" + user_id}>
-                                {" "}
+                                {session_for}
                                 <ArrowTopRightOnSquareIcon className="h-5" />
                               </Link>
                             </span>
@@ -225,6 +240,7 @@ const AdminSessionsTable = ({ date }) => {
                                 href={session_link}
                                 className="text-blue-500 hover:text-blue-600 underline"
                                 target={"_blank"}
+                                rel="noreferrer"
                               >
                                 ({session_link})
                               </a>

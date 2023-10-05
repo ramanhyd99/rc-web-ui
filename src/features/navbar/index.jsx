@@ -2,17 +2,14 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
   BookOpenIcon,
-  DocumentMagnifyingGlassIcon
+  DocumentMagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { InstagramIcon, SpotifyIcon, WhatsappIcon } from "../common/svgs";
 
-import {
-  ArrowLeftOnRectangleIcon,
-  PhoneIcon
-} from "@heroicons/react/20/solid";
+import { ArrowLeftOnRectangleIcon, PhoneIcon } from "@heroicons/react/20/solid";
 import { Avatar } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 import { connect, useDispatch } from "react-redux";
@@ -101,11 +98,12 @@ const NavBar = ({ userInfo }) => {
         <ToastContainer />
         <Disclosure
           as="nav"
-          className="bg-white fixed top-0 w-full py-2 border-b -[1px] z-50"
+          className="bg-white fixed top-0 w-full border-b -[1px] z-50"
         >
           {({}) => (
             <>
-              <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
+              {/* {userInfo && <Banner />} */}
+              <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-2">
                 <div className="relative flex h-16 items-center justify-between">
                   <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
                     {/* Mobile menu button*/}
@@ -124,7 +122,7 @@ const NavBar = ({ userInfo }) => {
                           height="auto"
                           className="block h-20 lg:h-24 w-auto"
                           src={require("../../assets/img/main_logo_1400.png")}
-                          alt="Random Capsule Logo"
+                          alt="Random Capsule | Affordable Counselling"
                           srcSet={`${require("../../assets/img/main_logo_324.png")} 324, ${require("../../assets/img/main_logo_1400.png")} 3200w`}
                         />
                       </Link>
@@ -177,17 +175,16 @@ const NavBar = ({ userInfo }) => {
                                 </div>
                                 <div className="flex-auto">
                                   <a
-                                    href="https://ijcspub.org/viewfull.php?&p_id=IJCSP23A1290"
+                                    href="/publications"
                                     className="block font-semibold text-gray-900"
-                                    target={"_blank"}
                                     rel="noopener noreferrer"
                                   >
                                     My Publications
                                     <span className="absolute inset-0"></span>
                                   </a>
                                   <p className="mt-1 text-gray-600">
-                                    View my publications to international
-                                    journal of current science
+                                    Checkout my publications to some national
+                                    and international journals.
                                   </p>
                                 </div>
                               </div>
@@ -331,9 +328,6 @@ const NavBar = ({ userInfo }) => {
                                           </div>
                                         </div>
                                       )}
-                                      {/* <div className="border-t mx-3 ">
-                                        <NotificationComp />
-                                      </div> */}
                                       <div className="border-t mx-3 ">
                                         <div className="flex justify-center p-3 space-y-1 ">
                                           <div className="font-quicksand ">
@@ -408,6 +402,13 @@ const NavBar = ({ userInfo }) => {
                         </Menu.Items>
                       </Transition>
                     </Menu>
+
+                    {/* Notification bell */}
+                    {/* {userInfo && (
+                      <div className="flex items-baseline">
+                        <NotificationComp />
+                      </div>
+                    )} */}
                   </div>
                 </div>
               </div>
@@ -484,17 +485,16 @@ const NavBar = ({ userInfo }) => {
                           </div>
                           <div className="flex-auto text-xs">
                             <a
-                              href="https://ijcspub.org/viewfull.php?&p_id=IJCSP23A1290"
+                              href="/publications"
                               className="block font-semibold text-gray-900"
-                              target={"_blank"}
                               rel="noopener noreferrer"
                             >
                               My Publications
                               <span className="absolute inset-0"></span>
                             </a>
                             <p className="mt-1 text-gray-600">
-                              View my publications to international journal of
-                              current science
+                              Checkout my publications to some national and
+                              international journals.
                             </p>
                           </div>
                         </div>

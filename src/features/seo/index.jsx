@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 
 const SEO = ({
   title = "Random Capsule",
-  description = "A psychology website providing affordable sessions for booking.",
+  description = "A psychology website providing affordable counselling/therapy.",
   type = "website",
   name = "Random Capsule",
 }) => {

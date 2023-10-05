@@ -158,26 +158,29 @@ const CalendarComponent = (props) => {
                 ) : (
                   <>
                     {data && data?.data.length > 0 ? (
-                      data?.data.map(({ slot_id, start, location, date }) => {
-                        return (
-                          <>
-                            <p>
-                              <Slot
-                                start={start}
-                                location={location}
-                                slot_id={slot_id}
-                                date={date}
-                                formattedDate={format(
-                                  selectedDay,
-                                  "MMM dd, yyy"
-                                )}
-                                setSlotData={props.setSlotData}
-                                isAdmin={props.isAdmin}
-                              />
-                            </p>
-                          </>
-                        );
-                      })
+                      data?.data.map(
+                        ({ is_available, slot_id, start, location, date }) => {
+                          return (
+                            <>
+                              <p>
+                                <Slot
+                                  start={start}
+                                  location={location}
+                                  slot_id={slot_id}
+                                  date={date}
+                                  formattedDate={format(
+                                    selectedDay,
+                                    "MMM dd, yyy"
+                                  )}
+                                  setSlotData={props.setSlotData}
+                                  isAdmin={props.isAdmin}
+                                  is_available={is_available}
+                                />
+                              </p>
+                            </>
+                          );
+                        }
+                      )
                     ) : (
                       <p className="ml-0">No slots for this day.</p>
                     )}
@@ -195,7 +198,7 @@ const CalendarComponent = (props) => {
   );
 };
 
-function Slot({ start, location, slot_id, date, ...props }) {
+function Slot({ start, location, slot_id, date, is_available, ...props }) {
   const startTime = new Date(`${date}T${start}Z`); //sets the time in local timezone
   const formattedStartTimeForTimeZone = format(startTime, "h:mm a");
 
@@ -239,67 +242,88 @@ function Slot({ start, location, slot_id, date, ...props }) {
           <div className=""></div>
         </>
       )}
-      <div className="my-2 flex flex-col">
-        <span
-          className={`min-w-[10rem] rounded-md bg-green-50 px-2 py-2 text-md font-medium text-green-700 ring-1 ring-inset ring-green-600/20
+
+      {!is_available ? (
+        <>
+          <div className="my-2 flex flex-col">
+            <span
+              className={`min-w-[10rem] rounded-md bg-gray-50 px-2 py-2 text-md font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20
+   `}
+            >
+              <span className="flex justify-center">
+                {formattedStartTimeForTimeZone} - {formattedToTimeForTimeZone}
+              </span>
+            </span>
+          </div>
+          <span className="ml-2 text-red-400">Booked</span>
+        </>
+      ) : (
+        <>
+          <div className="my-2 flex flex-col">
+            <span
+              className={`min-w-[10rem] rounded-md bg-green-50 px-2 py-2 text-md font-medium text-green-700 ring-1 ring-inset ring-green-600/20
      `}
-        >
-          <span className="flex justify-center">
-            {formattedStartTimeForTimeZone} - {formattedToTimeForTimeZone}
-          </span>
-        </span>
-      </div>
+            >
+              <span className="flex justify-center">
+                {formattedStartTimeForTimeZone} - {formattedToTimeForTimeZone}
+              </span>
+            </span>
+          </div>
 
-      <Menu
-        as="div"
-        className="flex relative opacity-0 focus-within:opacity-100 group-hover:opacity-100 md:ml-2"
-      >
-        <button
-          onClick={handleBookClick}
-          type="submit"
-          className="ml-2 rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-        >
-          Book
-        </button>
-
-        {props.isAdmin && (
-          <button
-            onClick={handleSlotDelete}
-            disabled={isDeleting}
-            className="ml-2 font-medium text-black-600 hover:text-red-500"
+          <Menu
+            as="div"
+            className="flex relative opacity-0 focus-within:opacity-100 group-hover:opacity-100 md:ml-2"
           >
-            {!isDeleting ? <TrashIcon className="h-6 w-6" /> : <Spinner />}
-          </button>
-        )}
+            <button
+              onClick={handleBookClick}
+              type="submit"
+              className="ml-2 rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            >
+              Book
+            </button>
 
-        <Transition
-          as={Fragment}
-          enter="transition ease-out duration-100"
-          enterFrom="transform opacity-0 scale-95"
-          enterTo="transform opacity-100 scale-100"
-          leave="transition ease-in duration-75"
-          leaveFrom="transform opacity-100 scale-100"
-          leaveTo="transform opacity-0 scale-95"
-        >
-          <Menu.Items className="absolute right-0 z-10 mt-2 origin-top-right bg-white rounded-md shadow-lg w-36 ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <div className="py-1">
-              <Menu.Item>
-                {({ active }) => (
-                  <a
-                    href="/checkout"
-                    className={classNames(
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                      "block px-4 py-2 text-sm"
+            {props.isAdmin && (
+              <button
+                onClick={handleSlotDelete}
+                disabled={isDeleting}
+                className="ml-2 font-medium text-black-600 hover:text-red-500"
+              >
+                {!isDeleting ? <TrashIcon className="h-6 w-6" /> : <Spinner />}
+              </button>
+            )}
+
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <Menu.Items className="absolute right-0 z-10 mt-2 origin-top-right bg-white rounded-md shadow-lg w-36 ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <div className="py-1">
+                  <Menu.Item>
+                    {({ active }) => (
+                      <a
+                        href="/checkout"
+                        className={classNames(
+                          active
+                            ? "bg-gray-100 text-gray-900"
+                            : "text-gray-700",
+                          "block px-4 py-2 text-sm"
+                        )}
+                      >
+                        Book
+                      </a>
                     )}
-                  >
-                    Book
-                  </a>
-                )}
-              </Menu.Item>
-            </div>
-          </Menu.Items>
-        </Transition>
-      </Menu>
+                  </Menu.Item>
+                </div>
+              </Menu.Items>
+            </Transition>
+          </Menu>
+        </>
+      )}
     </li>
   );
 }

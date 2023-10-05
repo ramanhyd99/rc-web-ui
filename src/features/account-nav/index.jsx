@@ -3,9 +3,8 @@ import {
   CalendarDaysIcon,
   ChartBarIcon,
   ClipboardDocumentCheckIcon,
-  CurrencyRupeeIcon,
   PencilSquareIcon,
-  UsersIcon
+  UsersIcon,
 } from "@heroicons/react/24/outline";
 
 import { useState } from "react";
@@ -132,7 +131,7 @@ const AccountNav = ({ userInfo, ...props }) => {
               <div
                 className={` ${
                   open ? "w-48" : "w-20 "
-                } w-48 3xl:w-64 bg-white h-min-screen p-5 pt-0 relative duration-300`}
+                } w-48 3xl:w-64 bg-white h-min-screen py-5 pt-0 relative duration-300`}
               >
                 <div className="flex gap-x-4 items-center"></div>
                 <ul className="pt-6">
@@ -144,41 +143,42 @@ const AccountNav = ({ userInfo, ...props }) => {
                       : true;
 
                     return shouldDisplay ? (
-                      <Link
-                        to={menu.location}
-                        onHover
-                        key={index}
-                        className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white  text-black text-sm items-center gap-x-2  font-thin
+                      <div>
+                        <Link
+                          to={menu.location}
+                          onHover
+                          key={index}
+                          className={`w-full flex rounded-r-xl py-2 cursor-pointer hover:bg-light-white  text-black text-sm items-center gap-x-2  font-thin
               ${menu.gap ? "mt-9 " : ""} ${index === 0 && "bg-light-white"}  ${
-                          location.pathname === menu.location
-                            ? "bg-blue-100 text-black"
-                            : " hover:bg-gray-100"
-                        }`}
-                      >
-                        <div
-                          className="h-6 w-6
-                  "
+                            location.pathname === menu.location
+                              ? "bg-blue-50 text-blue-500 font-bold"
+                              : " hover:bg-gray-100"
+                          }`}
                         >
-                          <div className="relative flex flex-col items-center group">
-                            <menu.src />
-                            {!open && (
-                              <div className="absolute left-0 flex items-center hidden ml-6 group-hover:flex">
-                                <div className="w-3 h-3 -mr-2 rotate-45"></div>
-                                <span className="relative z-10 p-2 text-sm leading-none text-black whitespace-no-wrap  ">
-                                  {menu.title}
-                                </span>
+                          <div className="pl-2 flex items-center space-x-2">
+                            <div className="h-6 w-6">
+                              <div className="relative flex flex-col items-center group">
+                                <menu.src />
+                                {!open && (
+                                  <div className="absolute left-0 flex items-center hidden ml-6 group-hover:flex">
+                                    <div className="w-3 h-3 -mr-2 rotate-45"></div>
+                                    <span className="relative z-10 p-2 text-sm leading-none text-black whitespace-no-wrap  ">
+                                      {menu.title}
+                                    </span>
+                                  </div>
+                                )}
                               </div>
-                            )}
+                            </div>
+                            <span
+                              className={`${
+                                !open && "hidden"
+                              } origin-left duration-200 text-left flex flex-wrap text-sm`}
+                            >
+                              {menu.title}
+                            </span>
                           </div>
-                        </div>
-                        <span
-                          className={`${
-                            !open && "hidden"
-                          } origin-left duration-200 text-left flex flex-wrap text-sm`}
-                        >
-                          {menu.title}
-                        </span>
-                      </Link>
+                        </Link>
+                      </div>
                     ) : null;
                   })}
                   <span

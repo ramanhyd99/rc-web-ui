@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import CookieModal from "../common/modals/CookieModal";
 import NoInternetComp from "../common/NoInternetComp";
+import CookieModal from "../common/modals/CookieModal";
+import MoodTracker from "../common/modals/MoodTrackerModal";
 import ErrorNotification from "../errors/ErrorNotification";
 import Footer from "../footer";
 import NavBar from "../navbar";
 import ClientPage from "../pages/my-clients/client-page";
-import SpeedDialComp from "../pages/home/components/SpeedDial";
 import {
   AboutPage,
   BookingPage,
@@ -26,6 +26,7 @@ import {
   PageNotFound,
   PaymentsPage,
   PrivacyPolicyPage,
+  PublicationsPage,
   SetSchedulePage,
   SettingsPage,
   TermsAndConditionsPage,
@@ -55,7 +56,7 @@ const Main = () => {
   return (
     <>
       <div className="z-9999 fixed bottom-2 left-2">
-        <SpeedDialComp />
+        {/* <SpeedDialComp /> */}
       </div>
       {/* <div className="z-9999 fixed right-2 bottom-2  w-3/4 flex justify-start">
         <Banner />
@@ -89,6 +90,7 @@ const Main = () => {
               <Route path="/not-found" element={<PageNotFound />} />
               <Route path="/library" element={<LibraryPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="/publications" element={<PublicationsPage />} />
               <Route
                 path="/terms-and-conditions"
                 element={<TermsAndConditionsPage />}
@@ -104,6 +106,9 @@ const Main = () => {
         </div>
         <div>
           <CookieModal />
+        </div>
+        <div>
+          <MoodTracker />
         </div>
         <div>
           <Footer />

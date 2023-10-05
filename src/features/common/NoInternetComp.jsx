@@ -4,6 +4,7 @@ const NoInternetComp = () => {
       <img
         src={require("../../assets/backgrounds/no_internet.svg").default}
         className="w-full max-w-screen-sm"
+        alt="no internet"
       />
     </div>
   );

@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import AccountNav from "../../account-nav";
 import LoggedInPageHeader from "../../common/layout/LoggedInPageHeader";
 import SEO from "../../seo";
-import BookingsTable from "../my-sessions/MySessionsTable";
 import UnauthorizedPage from "../unauthorized";
 
 const Payments = ({ userInfo }) => {

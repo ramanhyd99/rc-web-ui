@@ -114,7 +114,7 @@ const FAQs = ({ className }) => {
                 >
                   <span
                     className={`font-semibold transition duration-100 md:text-lg ${
-                      selectedIndex == index ? "text-blue-500" : ""
+                      selectedIndex === index ? "text-blue-500" : ""
                     } `}
                   >
                     {item.question}

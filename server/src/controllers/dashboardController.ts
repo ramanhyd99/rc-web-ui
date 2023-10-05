@@ -18,7 +18,7 @@ const authMicroservice = CONFIG.microservices.find(
     let customizedResponse: CustomizedResponse = { data: null };
     console.info("fetchMetrics - userId: " + req.userId);
     const authToken: string = req.headers.authorization as string;
-  
+    
     try {
       const response = await axios.get(
         `${authMicroservice.base_url}/dashboard/`,

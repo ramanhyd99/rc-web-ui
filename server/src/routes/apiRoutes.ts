@@ -31,24 +31,28 @@ router.post(
   assignmentController.uploadAssignments
 );
 router.get("/assignments/", assignmentController.getAssignmentsForUserId);
-router.delete("/assignments/", assignmentController.deleteAssignmentsForAssignmentId);
+router.delete(
+  "/assignments/",
+  assignmentController.deleteAssignmentsForAssignmentId
+);
 
 router.patch("/settings/updateDayTypes", settingsController.updateDayTypes);
 router.get("/settings/getDayTypes", settingsController.getDayTypes);
 
 router.get("/slots/", slotsController.getSlotsForDate);
-router.post("/slots/processSlot", slotsController.lockSlotForDate); 
-router.post("/slots/create/", slotsController.generateSlotsForDate); 
-router.delete("/slots/", slotsController.deleteSlotBySlotId); 
+router.post("/slots/processSlot", slotsController.lockSlotForDate);
+router.post("/slots/create/", slotsController.generateSlotsForDate);
+router.delete("/slots/", slotsController.deleteSlotBySlotId);
 
-router.get("/dashboard/", dashboardController.fetchMetrics); 
+router.get("/dashboard/", dashboardController.fetchMetrics);
 
-router.post("/reviews/upload", upload.none(), reviewController.uploadReview); 
+router.post("/reviews/upload", upload.none(), reviewController.uploadReview);
+router.get("/reviews/", reviewController.getReviews);
 
-router.post("/bookings/", upload.none(), bookingController.bookSession); 
-router.get("/bookings/", bookingController.getBookingsForUser); 
-router.get("/bookings/admin/", bookingController.getBookingsByDate); 
-router.post("/bookings/cancel/", bookingController.cancelBooking); 
+router.post("/bookings/", upload.none(), bookingController.bookSession);
+router.get("/bookings/", bookingController.getBookingsForUser);
+router.get("/bookings/admin/", bookingController.getBookingsByDate);
+router.post("/bookings/cancel/", bookingController.cancelBooking);
 
 router.get("/notes/", notesController.getNotesForUserId);
 router.delete("/notes/", notesController.deleteNoteByNoteId);

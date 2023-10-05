@@ -98,3 +98,55 @@ export const uploadReview = async (
     return res.status(500).json(customizedResponse);
   }
 };
+
+export const getReviews = async (
+  req: any,
+  res: Response<CustomizedResponse>
+) => {
+  let customizedResponse: CustomizedResponse = {
+    data: null,
+    errorMessage: "Sorry, could not get the reviews. Please try again.",
+  };
+
+  try {
+    const authToken: string = req.headers.authorization as string;
+    console.info("getReviews: " + authToken);
+
+    const response = await axios.get(`${authMicroservice.base_url}/reviews/`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `${authToken}`,
+      },
+      timeout: 10000,
+    });
+
+    customizedResponse = {
+      data: response.data,
+      infoMessage: response.data.msg,
+    };
+
+    res.status(response.status).json(customizedResponse);
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError<{ detail: string }>;
+      if (axiosError.response) {
+        customizedResponse = {
+          data: null,
+          errorMessage: axiosError.response.data?.detail
+            ? axiosError.response.data?.detail
+            : "Could not get the reviews.",
+          errorDetails: error,
+        };
+        return res.status(axiosError.response.status).json(customizedResponse);
+      }
+    }
+    console.error("getReviews :", error);
+    customizedResponse = {
+      data: null,
+      errorMessage: "Could not get the reviews.",
+      errorDetails: error,
+    };
+    return res.status(500).json(customizedResponse);
+  }
+};

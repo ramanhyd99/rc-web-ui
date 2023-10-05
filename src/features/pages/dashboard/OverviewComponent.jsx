@@ -8,6 +8,7 @@ import { HeartIcon } from "@heroicons/react/24/solid";
 import { Spinner } from "@material-tailwind/react";
 import { useGetDashboardMetricsQuery } from "../../../apis/rtk-apis";
 import BarChartComponent from "./BarChartComponent";
+import ReviewsTable from "./ReviewsTable";
 
 const OverviewComponent = () => {
   const {
@@ -151,7 +152,7 @@ const OverviewComponent = () => {
                           <p className="text-4xl">
                             {metricsData?.data?.total_assignments}
                           </p>
-                          {metricsData?.data?.assignments_this_month != 0 ? (
+                          {metricsData?.data?.assignments_this_month !== 0 ? (
                             <p className="text-xs p-2 text-black-200">
                               (+{metricsData?.data?.assignments_this_month} this
                               month)
@@ -293,6 +294,9 @@ const OverviewComponent = () => {
           <BarChartComponent color="green" data={metricsData.data.confirmed_bookings_trend} name="Number of Assigments"/>)
           : <>n/a</>}
         </div> */}
+      </div>
+      <div>
+        <ReviewsTable />
       </div>
     </div>
   );
