@@ -26,8 +26,7 @@ export function FeedBack() {
   const [isCaptchaSuccessfull, setIsCaptchaSuccessfull] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const [uploadMutation, { isLoading, isSuccess }] =
-    useUploadReviewMutation();
+  const [uploadMutation, { isLoading, isSuccess }] = useUploadReviewMutation();
 
   const [formData, setFormData] = useState({
     email: null,
@@ -104,11 +103,11 @@ export function FeedBack() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex justify-center items-center">
       <SEO title="Feedback" />
       <div className="bg-white sm:py-4">
         <div className="mb-10 md:mb-12 flex justify-center">
-          <Card className="w-full max-w-5xl flex justify-start items-center sm:flex-row sm:justify-none">
+          <Card className="w-full max-w-screen-sm md:max-w-5xl max-h-screen flex justify-start items-center sm:flex-row sm:justify-none">
             <CardHeader
               shadow={false}
               floated={false}
@@ -118,11 +117,11 @@ export function FeedBack() {
                 src={require("../../../assets/backgrounds/feedback.jpg")}
                 alt="feedback"
                 loading="lazy"
-                className="h-full w-full object-cover"
+                className="w-full h-full object-cover"
               />
             </CardHeader>
             {!isSubmitted ? (
-              <CardBody className="w-full sm:w-1/2">
+              <CardBody className="sm:w-1/2">
                 <div className="mb-2 uppercase flex justify-center sm:justify-start font-quicksand text-xl text-blue-500">
                   Feedback
                 </div>
@@ -151,7 +150,7 @@ export function FeedBack() {
                       color="blue"
                     />
                   )}
-                  <div className="mt-2.5 flex justify-between items-center">
+                  <div className="mt-2.5 space-y-4 sm:space-y-0 sm:flex sm:justify-between sm:items-center">
                     <div className="">
                       {formData.age != null && !isValidAge(formData.age) ? (
                         <Input
@@ -172,7 +171,7 @@ export function FeedBack() {
                       )}
                     </div>
                     <div>
-                      <div className="w-34">
+                      <div className="">
                         <Select
                           label="Gender"
                           color="blue"

@@ -30,7 +30,7 @@ const ReviewsTable = () => {
       <div className="font-quicksand mb-5 text-xl flex justify-center sm:justify-start">
         Reviews
       </div>
-      <Card className="h-full w-full mt-1">
+      <Card className="h-full w-full mt-1 max-h-[48rem] overflow-hidden">
         <CardHeader floated={false} shadow={false} className="rounded-none">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row ">
             <div className="flex gap-4">
@@ -38,7 +38,7 @@ const ReviewsTable = () => {
               <Input label="search" />
             </div> */}
             </div>
-            <div className="mr-4">
+            <div className="mr-4 mb-4">
               <b>Total</b>: {data?.data?.length}
             </div>
           </div>

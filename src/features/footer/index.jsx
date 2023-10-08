@@ -30,7 +30,10 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/faqs" className="text-gray-400 hover:text-white py-2">
+                  <Link
+                    to="/faqs"
+                    className="text-gray-400 hover:text-white py-2"
+                  >
                     FAQS
                   </Link>
                 </li>
@@ -56,7 +59,7 @@ const Footer = () => {
                 </li> */}
                 <li>
                   <Link
-                    to="https://ijcspub.org/viewfull.php?&p_id=IJCSP23A1290"
+                    to="/publications"
                     className="text-gray-400 hover:text-white py-2"
                     target={"_blank"}
                   >
@@ -64,7 +67,10 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/gallery" className="text-gray-400 hover:text-white py-2">
+                  <Link
+                    to="/gallery"
+                    className="text-gray-400 hover:text-white py-2"
+                  >
                     Gallery
                   </Link>
                 </li>
@@ -76,12 +82,18 @@ const Footer = () => {
               </h2>
               <nav className="list-none mb-10 space-y-1">
                 <li>
-                  <Link to="/privacy-policy" className="text-gray-400 hover:text-white py-2">
+                  <Link
+                    to="/privacy-policy"
+                    className="text-gray-400 hover:text-white py-2"
+                  >
                     Cookie Policy
                   </Link>
                 </li>
                 <li>
-                  <Link to="/terms-and-conditions" className="text-gray-400 hover:text-white py-2">
+                  <Link
+                    to="/terms-and-conditions"
+                    className="text-gray-400 hover:text-white py-2"
+                  >
                     Terms & Conditions
                   </Link>
                 </li>

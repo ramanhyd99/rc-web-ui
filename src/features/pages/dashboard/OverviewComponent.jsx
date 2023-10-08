@@ -19,6 +19,59 @@ const OverviewComponent = () => {
 
   return (
     <div className="p-12 min-h-screen flex-col space-y-8 sm:space-y-12">
+          <div className="block items-center space-y-6 sm:flex justify-around border-b-2 pb-12">
+        <div className="flex justify-center">
+          <div className="rounded-lg bg-gradient-to-tr from-green-600 to-green-400 w-2/3 sm:w-full">
+            <div>
+              <div className="flex justify-between p-3 sm:p-5">
+                <div className="text-white text-xl sm:pr-2">Bookings</div>
+                <div className="text-white text-2xl rounded-full bg-white">
+                  <CheckIcon className="h-12 p-2 w-auto text-black " />
+                </div>
+              </div>
+              <div className="flex justify-center items-center">
+                <div className="p-2 text-white">
+                  {isFetchingClients ? (
+                    <>
+                      <Spinner />
+                    </>
+                  ) : (
+                    <>
+                      {isClientsError && metricsData && metricsData.data ? (
+                        <>n/a</>
+                      ) : (
+                        <div className="flex">
+                          <p className="text-4xl">
+                            {metricsData?.data?.total_confirmed_bookings}
+                          </p>
+                          {/* {metricsData?.data?.confirmed_bookings_this_month > 0 ? (
+                          <p className="!text-lg p-2 text-green-200">
+                            +{metricsData?.data?.confirmed_bookings_this_month}
+                          </p>
+                        ) : (
+                          <></>
+                        )} */}
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="w-full sm:w-3/4">
+          {metricsData?.data ? (
+            <BarChartComponent
+              color="green"
+              data={metricsData.data.confirmed_bookings_trend}
+              name="Number of Confirmed Bookings"
+            />
+          ) : (
+            <>n/a</>
+          )}
+        </div>
+      </div>
       <div className="block items-center space-y-6 sm:flex justify-around border-b-2 pb-12">
         <div className="flex justify-center">
           <div className="rounded-lg bg-gradient-to-tr from-blue-600 to-blue-400 w-2/3 sm:w-full">
@@ -72,59 +125,7 @@ const OverviewComponent = () => {
           )}
         </div>
       </div>
-      <div className="block items-center space-y-6 sm:flex justify-around border-b-2 pb-12">
-        <div className="flex justify-center">
-          <div className="rounded-lg bg-gradient-to-tr from-green-600 to-green-400 w-2/3 sm:w-full">
-            <div>
-              <div className="flex justify-between p-3 sm:p-5">
-                <div className="text-white text-xl sm:pr-2">Bookings</div>
-                <div className="text-white text-2xl rounded-full bg-white">
-                  <CheckIcon className="h-12 p-2 w-auto text-black " />
-                </div>
-              </div>
-              <div className="flex justify-center items-center">
-                <div className="p-2 text-white">
-                  {isFetchingClients ? (
-                    <>
-                      <Spinner />
-                    </>
-                  ) : (
-                    <>
-                      {isClientsError && metricsData && metricsData.data ? (
-                        <>n/a</>
-                      ) : (
-                        <div className="flex">
-                          <p className="text-4xl">
-                            {metricsData?.data?.total_confirmed_bookings}
-                          </p>
-                          {/* {metricsData?.data?.confirmed_bookings_this_month > 0 ? (
-                          <p className="!text-lg p-2 text-green-200">
-                            +{metricsData?.data?.confirmed_bookings_this_month}
-                          </p>
-                        ) : (
-                          <></>
-                        )} */}
-                        </div>
-                      )}
-                    </>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="w-full sm:w-3/4">
-          {metricsData?.data ? (
-            <BarChartComponent
-              color="green"
-              data={metricsData.data.confirmed_bookings_trend}
-              name="Number of Confirmed Bookings"
-            />
-          ) : (
-            <>n/a</>
-          )}
-        </div>
-      </div>
+  
       <div className="block items-center space-y-6 sm:flex justify-around border-b-2 pb-12">
         <div className="block items-center w-full sm:flex justify-center space-y-4 sm:space-x-2">
           <div className="rounded-lg bg-gradient-to-tr from-purple-600 to-purple-400 w-full sm:w-full mt-4">

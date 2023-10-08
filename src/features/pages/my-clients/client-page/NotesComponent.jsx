@@ -178,7 +178,6 @@ const NoteComp = ({
           <Menu>
             <MenuHandler>
               <EllipsisHorizontalIcon className="h-6" />
-              {/* <EllipsisVerticalIcon className="h-6" /> */}
             </MenuHandler>
             <MenuList>
               <MenuItem onClick={handleEditClick}>Edit</MenuItem>

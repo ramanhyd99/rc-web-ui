@@ -1,4 +1,4 @@
-import { Carousel } from "@material-tailwind/react";
+import { Button, Carousel } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import AnimatedHomeTitle from "../../../common/AnimatedHomeTitle";
 
@@ -35,17 +35,20 @@ const CarouselComp = () => {
                   yourself a little bit more. Don't worry, I've got your back!
                 </p>
                 <div className="flex justify-center mt-2 sm:mt-4">
-                  <Link
+                  {/* <Link
                     to="/your-psychologist"
                     className="inline-flex text-white bg-gray-900 py-2 px-6 focus:outline-none hover:bg-gray-800 rounded text-lg"
                   >
                     Know more &#8594;
+                  </Link> */}
+                  <Link to="/your-psychologist">
+                    <Button className="bg-black"> Know more &#8594;</Button>
                   </Link>
-                  <Link
-                    to="/contact-us"
-                    className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"
-                  >
-                    Contact Us
+                  <Link to="/contact-us" className="ml-4">
+                    <Button className="bg-gray-200 text-gray-700">
+                      {" "}
+                      Contact Us
+                    </Button>
                   </Link>
                 </div>
               </div>
@@ -117,6 +120,84 @@ const CarouselComp = () => {
                   </Link>
                 </div>
               </div> */}
+            </div>
+          </div>
+        </div>
+        {/* Slide 3 */}
+        <div>
+          <div className="block sm:grid grid-cols-2 grid-rows-1 gap-0 min-h-screen max-h-screen bg-gradient-to-r from-pink-200 via-purple-100 to-pink-50">
+            <div className="flex justify-center items-center py-12 sm:py-1">
+              <div className="my-7 w-full flex justify-center items-center">
+                <video className="rounded-lg w-[32rem] h-[20rem]" controls>
+                  <source
+                    src={require("../../../../assets/img/gallery/vid1.mp4")}
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              {/* <div class="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
+                <div class="-m-1 flex flex-wrap md:-m-2">
+                  <div class="flex w-1/2 flex-wrap">
+                    <div class="w-1/2 p-1 md:p-2">
+                      <img
+                        class="h-auto max-w-full hover:scale-125 transition-all duration-500 cursor-pointer rounded-lg"
+                        src={require("../../../../assets/img/gallery/c.jpeg")}
+                        alt=""
+                      />
+                    </div>
+                    <div class="w-1/2 p-1 md:p-2">
+                      <img
+                        class="h-auto max-w-full hover:scale-125 transition-all duration-500 cursor-pointer rounded-lg"
+                        src={require("../../../../assets/img/gallery/u.jpeg")}
+                        alt=""
+                      />
+                    </div>
+                    <div class="w-full p-1 md:p-2">
+                      <img
+                        class="h-auto max-w-full hover:scale-125 transition-all duration-500 cursor-pointer rounded-lg"
+                        src={require("../../../../assets/img/gallery/q.jpeg")}
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div class="flex w-1/2 flex-wrap">
+                    <div class="w-full p-1 md:p-2">
+                      <img
+                        class="h-auto max-w-full hover:scale-125 transition-all duration-500 cursor-pointer rounded-lg"
+                        src={require("../../../../assets/img/gallery/r.jpeg")}
+                        alt=""
+                      />
+                    </div>
+                    <div class="w-1/2 p-1 md:p-2">
+                      <img
+                        class="h-auto max-w-full hover:scale-125 transition-all duration-500 cursor-pointer rounded-lg"
+                        src={require("../../../../assets/img/gallery/o.jpeg")}
+                        alt=""
+                      />
+                    </div>
+                    <div class="w-1/2 p-1 md:p-2">
+                      <img
+                        class="h-auto max-w-full hover:scale-125 transition-all duration-500 cursor-pointer rounded-lg"
+                        src={require("../../../../assets/img/gallery/e.jpeg")}
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div> */}
+            </div>
+            <div className="flex justify-center sm:justify-start items-center mt-6 md:mt-5 w-full">
+              <div className="block w-2/3 sm:w-3/4">
+                <div className="text-2xl sm:text-4xl font-quicksand text-center">
+                  Checkout Random Capsule's Gallery!
+                </div>
+                <div className="flex justify-center mt-12">
+                  <Link to="/gallery">
+                    <Button className="bg-black">Gallery &rarr;</Button>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>

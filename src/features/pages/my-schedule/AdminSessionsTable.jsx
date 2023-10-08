@@ -3,7 +3,7 @@ import { Card, Spinner, Tooltip, Typography } from "@material-tailwind/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useGetAllSessionsByDateQuery } from "../../../apis/rtk-apis";
-import CancelBookingModal from "../my-sessions/CancelSessionModel";
+import CancelSessionModel from "../my-sessions/CancelSessionModel";
 
 const headers = [
   { id: 1, name: "Booking ID", direction: "desc", sorting_field: "name" },
@@ -288,7 +288,7 @@ const AdminSessionsTable = ({ date }) => {
         <></>
       )}
       {cancelBooking && (
-        <CancelBookingModal
+        <CancelSessionModel
           id={cancelBooking["booking_id"]}
           formatted_date={cancelBooking["formatted_date"]}
           formatted_start_time={cancelBooking["formatted_start_time"]}

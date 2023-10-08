@@ -1,6 +1,7 @@
 import {
   NumberOfClients,
   NumberOfSessions,
+  NumberOfStudentsCounselled,
   NumberOfYearsExp,
 } from "../../../../utils/constants";
 
@@ -43,7 +44,7 @@ const Experience = ({ className }) => {
             />
           </video> */}
         </div>
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-3 md:gap-0 md:divide-x">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-0 md:divide-x">
           <div className="flex flex-col items-center md:p-4">
             <div className="text-5xl font-bold text-black/70  sm:text-2xl md:text-3xl lg:text-6xl highlight highlight-green-50 highlight-spread-sm highlight-variant-5">
               {NumberOfClients}+
@@ -57,6 +58,12 @@ const Experience = ({ className }) => {
               {NumberOfSessions}+
             </div>
             <div className="text-sm font-semibold sm:text-base">Sessions</div>
+          </div>
+          <div className="flex flex-col items-center md:p-4">
+            <div className="text-5xl font-bold text-black/70  sm:text-2xl md:text-3xl lg:text-6xl highlight highlight-orange-50 highlight-spread-sm highlight-variant-5">
+              {NumberOfStudentsCounselled}+
+            </div>
+            <div className="text-sm font-semibold sm:text-base">Students counselled</div>
           </div>
           <div className="flex flex-col items-center md:p-4">
             <div className="text-5xl font-bold text-black/70  sm:text-2xl md:text-3xl lg:text-6xl highlight highlight-orange-50 highlight-spread-sm highlight-variant-5">
