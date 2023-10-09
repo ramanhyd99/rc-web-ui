@@ -71,8 +71,7 @@ const About = () => {
               yourself a little bit more.
             </p>
             <p className="font-medium text-gray-600">
-              I am with you in this journey of healing and loving yourself a
-              little bit more. Don't worry, your therapist got your back!
+              Come, be heard and don't worry! Your therapist has got your back!
             </p>
           </div>
           <div

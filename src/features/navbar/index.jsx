@@ -20,6 +20,7 @@ import { LocalStorageLoggedInKey } from "../../utils/constants";
 import Button1 from "../common/styled-components/button1";
 
 import { Drawer, IconButton, Typography } from "@material-tailwind/react";
+import NotificationComp from "./NotificationComp";
 
 const navigation = [
   { id: 1, name: "Your Psychologist", to: "/your-psychologist", current: true },

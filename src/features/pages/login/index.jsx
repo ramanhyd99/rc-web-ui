@@ -64,13 +64,9 @@ const Login = ({ userInfo }) => {
               </div>
               <div
                 // className="bg-random bg-cover flex justify-center sm:h-full p-4"
-                className="flex justify-center sm:h-full p-4"
-                // style={{ border: "2px red solid" }}
+                className="flex justify-center sm:h-full pt-2"
               >
-                <div
-                  className="flex justify-center mt-5 sm:items-center sm:pt-5"
-                  // style={{ border: "2px red solid" }}
-                >
+                <div className="flex justify-center mt-0 sm:items-center sm:pt-5">
                   <div className="">
                     <h2 className="text-center text-3xl lg:text-4xl text-blue-500">
                       Login/Sign-up
@@ -78,11 +74,10 @@ const Login = ({ userInfo }) => {
                     <h3 className="text-center text-lg pt-2 sm:pt-3 text-pink-300">
                       Welcome to Random Capsule!
                     </h3>
-                    {/* <h4 className="text-center text-md pt-2 sm:pt-3 text-red-500 flex">
-                      <ExclamationTriangleIcon className="h-6" />
-                      This is a test environment, we will be launching soon!
-                    </h4> */}
-                    <div className="pt-4 sm:mt-12 px-2 h-full flex items-center">
+                    <h4 className="text-center text-md pt-2 sm:pt-0 text-blue-800">
+                      Be Heard, Today!
+                    </h4>
+                    <div className="pt-0 sm:mt-8 px-2 h-full flex items-center -mt-2">
                       <div>
                         <form className="mx-auto max-w-lg rounded-lg sm:rounded-none border">
                           <div className="flex flex-col gap-4 p-4 md:p-8">

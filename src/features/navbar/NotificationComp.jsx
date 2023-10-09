@@ -30,7 +30,8 @@ class NotificationHandler {
         break;
       case "booking.cancellation":
         icon = XMarkIcon;
-        message = "Booking #RC-0046 for client ramanhyd99@gmail.com was cancelled.";
+        message =
+          "Booking #RC-0046 for client ramanhyd99@gmail.com was cancelled.";
         css = css + " text-red-500";
         link = "/my-sessions";
         break;
@@ -103,6 +104,7 @@ const NotificationComp = () => {
   const handleBellClick = () => {
     if (openMenu === true) {
       clearBadge();
+      if (badgeValue) alert("sending seen api update");
     }
     setOpenMenu(!openMenu);
   };
@@ -140,7 +142,7 @@ const NotificationComp = () => {
           {/* <NotificationRow type={"booking"} subtype={"confirmation"} /> */}
           <NotificationRow type={"assignment"} subtype={"upload"} />
           <NotificationRow type={"booking"} subtype={"cancellation"} />
-        {/*  <NotificationRow type={"booking"} subtype={"cancellation"} />
+          {/*  <NotificationRow type={"booking"} subtype={"cancellation"} />
           <NotificationRow type={"booking"} subtype={"cancellation"} /> */}
           {/* <NotificationRow type={"general"} /> */}
 

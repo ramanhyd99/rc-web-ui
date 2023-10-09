@@ -1,4 +1,7 @@
-import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowDownTrayIcon,
+  ChevronUpDownIcon,
+} from "@heroicons/react/24/outline";
 import {
   Button,
   Card,
@@ -20,36 +23,36 @@ const headers = [
   },
 ];
 
-// const data = [
-//   {
-//     title:
-//       "Compassion Focused Therapy (CFT) Distinctive Features (Paul Gilbert).pdf",
-//     bookingDateTime: "2023-06-19",
-//     tag: "Social Psychology",
-//     status: "completed",
-//     link: "https://example.com",
-//     bookingDetails: {
-//       name: "John Doe",
-//       phone: "1234567890",
-//       email: "john.doe@example.com",
-//       age: 8,
-//     },
-//   },
-//   {
-//     title:
-//       "Relating to Voices using Compassion Focused Therapy A Self-help Companion.pdf",
-//     bookingDateTime: "2023-06-20",
-//     tag: "Self-help",
-//     status: "Pending",
-//     link: "https://example.com",
-//     bookingDetails: {
-//       name: "Jane Smith",
-//       phone: "9876543210",
-//       email: "jane.smith@example.com",
-//       age: 24,
-//     },
-//   },
-// ];
+const data = [
+  {
+    title:
+      "Compassion Focused Therapy (CFT) Distinctive Features (Paul Gilbert).pdf",
+    bookingDateTime: "2023-06-19",
+    tag: "Social Psychology",
+    status: "completed",
+    link: "https://example.com",
+    bookingDetails: {
+      name: "John Doe",
+      phone: "1234567890",
+      email: "john.doe@example.com",
+      age: 8,
+    },
+  },
+  {
+    title:
+      "Relating to Voices using Compassion Focused Therapy A Self-help Companion.pdf",
+    bookingDateTime: "2023-06-20",
+    tag: "Self-help",
+    status: "Pending",
+    link: "https://example.com",
+    bookingDetails: {
+      name: "Jane Smith",
+      phone: "9876543210",
+      email: "jane.smith@example.com",
+      age: 24,
+    },
+  },
+];
 
 const LibraryTable = () => {
   return (
@@ -106,7 +109,7 @@ const LibraryTable = () => {
                 ))}
               </tr>
             </thead>
-            {/* <tbody>
+            <tbody>
               {data &&
                 data.map(({ title, tag, link }, index) => {
                   const isLast = index === data.length - 1;
@@ -124,10 +127,7 @@ const LibraryTable = () => {
                               color="blue-gray"
                               className="font-semibold"
                             >
-                              <div className="flex">
-                                <BookmarkIcon className="w-6 mr-2" />
-                                {title}
-                              </div>
+                              <div className="flex">{title}</div>
                             </Typography>
                           </div>
                         </div>
@@ -139,7 +139,7 @@ const LibraryTable = () => {
                       </td>
                       <td className={classes}>
                         <span
-                          className={` rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20
+                          className={`rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20
    `}
                         >
                           {tag}
@@ -148,7 +148,7 @@ const LibraryTable = () => {
                     </tr>
                   );
                 })}
-            </tbody> */}
+            </tbody>
           </table>
         </CardBody>
         {/* <div className="flex justify-center items-right w-full">

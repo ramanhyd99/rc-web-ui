@@ -21,15 +21,11 @@ const BookNow = ({ className }) => {
             </video> */}
           </div>
 
-          <div className="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-3/5">
+          <div className="flex text-center w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-3/5">
             <h2 className="flex sm:justify-start justify-center mb-4 text-3xl font-bold text-gray-800 md:text-2xl lg:text-5xl">
-              Sessions at{" "}
-              <span className="px-2 highlight highlight-blue-50 highlight-spread-sm highlight-variant-5">
-                ₹329
-              </span>{" "}
-              only
+              Sessions at ₹329 only
             </h2>
-            <h3 className="flex sm:justify-start justify-center mb-4 text-md  text-pink-200 md:text-xl lg:text-2xl">
+            <h3 className="flex sm:justify-start justify-center mb-4 text-xl  text-pink-200 md:text-xl lg:text-2xl">
               Free follow-up sessions!
             </h3>
 
