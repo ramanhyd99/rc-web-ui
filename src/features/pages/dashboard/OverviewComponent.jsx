@@ -296,9 +296,9 @@ const OverviewComponent = () => {
           : <>n/a</>}
         </div> */}
       </div>
-      <div>
+      {/* <div>
         <ReviewsTable />
-      </div>
+      </div> */}
     </div>
   );
 };
