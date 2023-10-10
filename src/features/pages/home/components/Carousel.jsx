@@ -35,12 +35,6 @@ const CarouselComp = () => {
                   yourself a little bit more. Don't worry, I've got your back!
                 </p>
                 <div className="flex justify-center mt-2 sm:mt-4">
-                  {/* <Link
-                    to="/your-psychologist"
-                    className="inline-flex text-white bg-gray-900 py-2 px-6 focus:outline-none hover:bg-gray-800 rounded text-lg"
-                  >
-                    Know more &#8594;
-                  </Link> */}
                   <Link to="/your-psychologist">
                     <Button className="bg-black"> Know more &#8594;</Button>
                   </Link>
@@ -93,39 +87,12 @@ const CarouselComp = () => {
                   ></iframe>
                 </div>
               </div>
-
-              {/* <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-                <div className="flex justify-center ">
-                  <AnimatedHomeTitle />
-                </div>
-                <p className="my-2 sm:mb-8 leading-relaxed sm:mr-20">
-                  Hello! I'm <b>Pooja Gupta</b>, a psychologist specialising in
-                  Clinical Psychology. <br /> <br /> My mission is to bring
-                  afforadable and the best possible mental healthcare to
-                  everyone. I am with you in this journey of healing and loving
-                  yourself a little bit more. Don't worry, I've got your back!
-                </p>
-                <div className="flex justify-center">
-                  <Link
-                    to="/your-psychologist"
-                    className="inline-flex text-white bg-gray-900 py-2 px-6 focus:outline-none hover:bg-gray-800 rounded text-lg"
-                  >
-                    Know more &#8594;
-                  </Link>
-                  <Link
-                    to="/contact-us"
-                    className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"
-                  >
-                    Contact Us
-                  </Link>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
         {/* Slide 3 */}
         <div>
-          <div className="block sm:grid grid-cols-2 grid-rows-1 gap-0 min-h-screen max-h-screen bg-gradient-to-r from-pink-200 via-purple-100 to-pink-50">
+          <div className="block sm:grid grid-cols-2 grid-rows-1 gap-0 min-h-screen max-h-screen bg-gradient-to-r from-pink-100 via-purple-100 to-pink-50">
             <div className="flex justify-center items-center py-12 sm:py-1">
               <div className="my-7 w-full flex justify-center items-center">
                 <video className="rounded-lg w-[32rem] h-[20rem]" controls>
@@ -136,56 +103,6 @@ const CarouselComp = () => {
                   Your browser does not support the video tag.
                 </video>
               </div>
-              {/* <div class="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
-                <div class="-m-1 flex flex-wrap md:-m-2">
-                  <div class="flex w-1/2 flex-wrap">
-                    <div class="w-1/2 p-1 md:p-2">
-                      <img
-                        class="h-auto max-w-full hover:scale-125 transition-all duration-500 cursor-pointer rounded-lg"
-                        src={require("../../../../assets/img/gallery/c.jpeg")}
-                        alt=""
-                      />
-                    </div>
-                    <div class="w-1/2 p-1 md:p-2">
-                      <img
-                        class="h-auto max-w-full hover:scale-125 transition-all duration-500 cursor-pointer rounded-lg"
-                        src={require("../../../../assets/img/gallery/u.jpeg")}
-                        alt=""
-                      />
-                    </div>
-                    <div class="w-full p-1 md:p-2">
-                      <img
-                        class="h-auto max-w-full hover:scale-125 transition-all duration-500 cursor-pointer rounded-lg"
-                        src={require("../../../../assets/img/gallery/q.jpeg")}
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="flex w-1/2 flex-wrap">
-                    <div class="w-full p-1 md:p-2">
-                      <img
-                        class="h-auto max-w-full hover:scale-125 transition-all duration-500 cursor-pointer rounded-lg"
-                        src={require("../../../../assets/img/gallery/r.jpeg")}
-                        alt=""
-                      />
-                    </div>
-                    <div class="w-1/2 p-1 md:p-2">
-                      <img
-                        class="h-auto max-w-full hover:scale-125 transition-all duration-500 cursor-pointer rounded-lg"
-                        src={require("../../../../assets/img/gallery/o.jpeg")}
-                        alt=""
-                      />
-                    </div>
-                    <div class="w-1/2 p-1 md:p-2">
-                      <img
-                        class="h-auto max-w-full hover:scale-125 transition-all duration-500 cursor-pointer rounded-lg"
-                        src={require("../../../../assets/img/gallery/e.jpeg")}
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </div>
             <div className="flex justify-center sm:justify-start items-center mt-6 md:mt-5 w-full">
               <div className="block w-2/3 sm:w-3/4">

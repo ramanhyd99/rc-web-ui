@@ -80,7 +80,7 @@ const About = () => {
           >
             <img
               className="h-1/2 lg:h-max border-2 border-black/70 rounded-2xl"
-              src={require("../../../assets/img/pooja_about_me.jpg")}
+              src={require("../../../assets/img/pooja_about_me.jpeg")}
               alt="Pooja Gupta"
             />
             <div className="flex items-center flex-col mt-2">
