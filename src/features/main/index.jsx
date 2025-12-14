@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import NoInternetComp from "../common/NoInternetComp";
 import CookieModal from "../common/modals/CookieModal";
 import MoodTracker from "../common/modals/MoodTrackerModal";
@@ -114,6 +115,7 @@ const Main = () => {
           <Footer />
         </div>
       </div>
+      <Analytics />
     </>
   );
 };
