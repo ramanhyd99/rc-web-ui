@@ -35,12 +35,12 @@ const OurTeam = () => {
 
               <div className="flex justify-center">
                 <div className="flex">
-                  <Link className="text-gray-400  hover:text-pink-200 active:text-gray-600">
+                  {/* <Link className="text-gray-400  hover:text-pink-200 active:text-gray-600">
                     <Facebook />
                   </Link>
                   <Link className="ml-3 text-gray-400  hover:text-pink-200 active:text-gray-600">
                     <Twitter />
-                  </Link>
+                  </Link> */}
                   <Link
                     to="https://www.instagram.com/random_capsule/"
                     target="_blank"

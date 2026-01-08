@@ -180,7 +180,7 @@ const NavBar = ({ userInfo }) => {
                                     className="block font-semibold text-gray-900"
                                     rel="noopener noreferrer"
                                   >
-                                    My Publications
+                                    Publications
                                     <span className="absolute inset-0"></span>
                                   </a>
                                   <p className="mt-1 text-gray-600">
@@ -224,7 +224,7 @@ const NavBar = ({ userInfo }) => {
                         <PhoneIcon className="h-5 w-5 text-blue-500" />
                       </motion.a>
                       <motion.a
-                        href="https://wa.me/918867439162"
+                        href="https://wa.me/917975897538"
                         target={"_blank"}
                         whileHover={{ y: -2 }}
                         whileTap={{ scale: 0.9 }}
@@ -240,27 +240,23 @@ const NavBar = ({ userInfo }) => {
                       >
                         <SpotifyIcon />
                       </motion.a>
-                      <motion.a
+                      {/* <motion.a
                         href="https://www.instagram.com/random_capsule/"
                         target={"_blank"}
                         whileHover={{ y: -2 }}
                         whileTap={{ scale: 0.9 }}
                       >
                         <InstagramIcon />
-                      </motion.a>
+                      </motion.a> */}
                     </div>
                     <Button1 text="Book Session" />
                     {/* Profile dropdown */}
-                    <Menu as="div" className="relative ml-3">
+                    {/* <Menu as="div" className="relative ml-3">
                       <div>
                         <Menu.Button className="flex rounded-full bg-gray-1000 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-1 focus:ring-offset-gray-800">
                           <span className="sr-only">Open user menu</span>
                           {userInfo != null && userInfo.profile_picture ? (
-                            // <Badge
-                            //   content="5"
-                            //   overlap="circular"
-                            //   placement="bottom-end"
-                            // >
+                          
                             <Avatar
                               className="h-9 w-9 rounded-full"
                               src={userInfo.profile_picture}
@@ -347,44 +343,7 @@ const NavBar = ({ userInfo }) => {
                                         </div>
                                       </div>
                                     </div>
-                                    {/* <div>
-                                      <span
-                                        className="text-gray-700 block text-xs justify-center"
-                                        role="menuitem"
-                                        tabindex="-1"
-                                        id="menu-item-0"
-                                      >
-                                        <div className="items-center text-center flex justify-center ">
-                                          <b className="text-lg">
-                                            {userInfo.name}
-                                          </b>
-                                        </div>
-                                        {userInfo.email}
-                                      </span>
-                                    </div>
-                                    <div>
-                                      <span
-                                        className="text-gray-700 block px-4 py-2 text-sm justify-center"
-                                        role="menuitem"
-                                        tabindex="-1"
-                                        id="menu-item-0"
-                                      >
-                                        <span className="items-center text-center flex justify-between">
-                                          Environment:
-                                          <b>{process.env.NODE_ENV}</b>
-                                        </span>
-                                      </span>
-                                    </div>
-                                    <div>
-                                      <button
-                                        onClick={handleLogout}
-                                        className={classNames(
-                                          "px-4 py-2 text-sm  w-full text-red-600 bg-gray-50 hover:bg-gray-100"
-                                        )}
-                                      >
-                                        Logout
-                                      </button>
-                                    </div> */}
+                                    
                                   </div>
                                 ) : (
                                   <a
@@ -402,7 +361,7 @@ const NavBar = ({ userInfo }) => {
                           </Menu.Item>
                         </Menu.Items>
                       </Transition>
-                    </Menu>
+                    </Menu> */}
 
                     {/* Notification bell */}
                     {/* {userInfo && (
@@ -539,7 +498,7 @@ const NavBar = ({ userInfo }) => {
                       <PhoneIcon className="h-5 w-5 " />
                     </motion.a>
                     {/* <motion.a
-                      href="https://wa.me/918867439162"
+                      href="https://wa.me/917975897538"
                       target={"_blank"}
                       whileHover={{ y: -2 }}
                     >
@@ -552,13 +511,13 @@ const NavBar = ({ userInfo }) => {
                     >
                       <SpotifyIcon />
                     </motion.a>
-                    <motion.a
+                    {/* <motion.a
                       href="https://www.instagram.com/random_capsule/"
                       target={"_blank"}
                       whileHover={{ y: -2 }}
                     >
                       <InstagramIcon />
-                    </motion.a>
+                    </motion.a> */}
                   </div>
                 </div>
               </Drawer>
@@ -642,7 +601,7 @@ const NavBar = ({ userInfo }) => {
                       <PhoneIcon className="h-5 w-5 text-gray-800" />
                     </motion.a>
                     <motion.a
-                      href="https://wa.me/918867439162"
+                      href="https://wa.me/917975897538"
                       target={"_blank"}
                       whileHover={{ y: -2 }}
                     >

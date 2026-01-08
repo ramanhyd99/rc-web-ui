@@ -200,7 +200,7 @@ export function FeedBack() {
                     <div className="items-center flex">
                       {/* <div className="text-xs font-varela font-bold">rating</div> */}
                       <Rating
-                        value={4}
+                        value={0}
                         onChange={handleRatingChange}
                         name="rating"
                       />

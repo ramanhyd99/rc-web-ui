@@ -39,7 +39,7 @@ const About = () => {
       <SEO title="Your Psychologist" />
       <main
         className="flex w-full h-min-screen flex-col items-center justify-center md:px-24 px-12 pb-4"
-        // style={{ border: " 2px solid magenta" }}
+      // style={{ border: " 2px solid magenta" }}
       >
         <PageTitle text="Your Psychologist" className="mb-12" />
         <div className="lg:grid w-full grid-cols-8 gap-16 flex flex-col lg:items-stretch  items-center">
@@ -47,31 +47,29 @@ const About = () => {
             <h2 className="mb-4 text-lg font-bold uppercase text-gray-700  highlight highlight-pink-50 highlight-spread-sm highlight-variant-5">
               About Me
             </h2>
+            <p>Hello! I am Pooja Gupta RCI-licensed Clinical Psychologist (MPhil in clinical psychology).</p>
+            <br />
             <p className="font-medium text-gray-600">
-              Hello! I am a psychologist, specialising in Clinical Psychology. I
-              am a behavioural therapist, consultant child-psychologist,
-              certified cognitive behavioural therapy practitioner, dream
-              analyst, principal investigator in various research studies, a
-              well trained counsellor and the founder of (your very own) Random
-              Capsule. I use an empathetic approach and focus on client centred
-              therapy. My unique style of counselling is based on the principles
-              of psychoanalytic and humanistic schools of psychology and
-              indegineous healing techniques. I am an active yoga and
-              acupressure practitioner. I provide a safe, inclusive and a
-              non-judgmental space for us to talk, vent, listen and understand.
+              I am a behavioural therapist, consultant child psychologist, certified Cognitive Behaviour Therapy (CBT) practitioner,OCD specialist, dream analyst, and principal investigator involved in multiple research studies. I am a well-trained therapist  and the founder of (your very own)  Random Capsule. 
+              Just like how different journeys require different routes, healing too cannot follow a single path—Hence, my therapeutic approach is empathetic, client-centred, holistic, and eclectic. I draw upon the principles of psychoanalytic and humanistic schools of psychology too, while also integrating indigenous healing practices. Alongside psychotherapy, I am an active practitioner of yoga and acupressure, which allows me to adopt a holistic perspective towards mental health and wellbeing.
+
             </p>
             <p className="font-medium text-gray-600 my-4">
-              I deal with the people having issues related to anxiety, stress,
-              interpersonal relationship issues, depression, grief, abuse,
-              organisational stress, health issues, motivation, trauma,
-              loneliness, poor self-esteem, body-image issues, autism,
-              attention-deficit/hyperactivity disorder, cerebral palsy, learning
-              disabilities and anything that takes a toll on mental health of an
-              individual. I am with you in this journey of healing and loving
-              yourself a little bit more.
+              I strive to provide a safe, inclusive, and non-judgmental space—one where we can talk, vent, feel heard, and truly understood.
+
             </p>
             <p className="font-medium text-gray-600">
-              Come, be heard and don't worry! Your therapist has got your back!
+
+              I work with individuals experiencing concerns related to anxiety, stress, interpersonal and relationship difficulties, depression, grief and loss, trauma, abuse, organisational and occupational stress, health-related issues, low motivation, loneliness, poor self-esteem, body-image concerns, and clinical populations like obsessive–compulsive disorder (OCD),  depression, schizophrenia, bipolar disorder and  addiction cases. I also have experience working with neurodevelopmental childhood conditions, including autism spectrum disorder, attention-deficit/hyperactivity disorder (ADHD), and learning disabilities.
+
+            </p>
+            <p className="font-medium text-gray-600">
+              <br />
+              Therapy, for me, is a collaborative journey, where we work on accepting and loving ourselves little more each day.
+            </p>
+            <p className="font-medium text-gray-600">
+              <br />
+              Come, be heard. And don’t worry—your therapist has got your back.
             </p>
           </div>
           <div
@@ -87,7 +85,7 @@ const About = () => {
               <h2 className="text-2xl font-bold text-blue-500">
                 Ms. Pooja Gupta
               </h2>
-              <h2 className="text-md text-pink-200">Msc Psychology</h2>
+              <h2 className="text-md text-pink-200">MPhil. Psychology</h2>
               <h2 className="text-md text-black">Gold Medalist</h2>
             </div>
           </div>

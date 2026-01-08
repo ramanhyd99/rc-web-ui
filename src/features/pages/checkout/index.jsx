@@ -40,7 +40,7 @@ const Checkout = ({ userInfo, ...props }) => {
     userInfo && userInfo.free_follow_up
   );
   const [finalPrice, setFinalPrice] = useState(
-    selectedFreeFollowUp ? "0" : "329" // Modify here for the price and different prices for different modes.
+    selectedFreeFollowUp ? "0" : "529" // Modify here for the price and different prices for different modes.
   );
   const [timer, setTimer] = useState(600); // Modify here to adjust booking session time in seconds
 
@@ -62,7 +62,7 @@ const Checkout = ({ userInfo, ...props }) => {
     session_mode: "Call",
     payment_mode: "pay_later",
     session_for: "self",
-    price: selectedFreeFollowUp ? "0" : "329",
+    price: selectedFreeFollowUp ? "0" : "529",
     ...props.slotData,
   });
 
@@ -151,10 +151,10 @@ const Checkout = ({ userInfo, ...props }) => {
   const handleFreeFollowUpSelect = () => {
     if (selectedFreeFollowUp) {
       setSelectedFreeFollowUp(false);
-      setFinalPrice("329");
+      setFinalPrice("529");
       setFormData({
         ...formData,
-        price: "329",
+        price: "529",
         session_type: "regular",
       });
     } else {

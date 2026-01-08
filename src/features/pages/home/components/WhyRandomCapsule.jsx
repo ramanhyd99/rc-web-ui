@@ -45,7 +45,7 @@ const WhyRandomCapsule = ({ className }) => {
                   variant="h5"
                   className="mb-8 text-blue-500  border-gray-200"
                 >
-                  Afforadable Pricing @ ₹329 only
+                  Afforadable Pricing @ 529 only
                 </Typography>
                 <Typography>
                   Prioritizing affordability without compomising quality, we aim

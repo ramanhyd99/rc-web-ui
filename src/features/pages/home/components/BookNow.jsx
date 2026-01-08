@@ -23,7 +23,7 @@ const BookNow = ({ className }) => {
 
           <div className="flex text-center w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-3/5">
             <h2 className="flex sm:justify-start justify-center mb-4 text-3xl font-bold text-gray-800 md:text-2xl lg:text-5xl">
-              Sessions at ₹329 only
+              Sessions at 529 only
             </h2>
             <h3 className="flex sm:justify-start justify-center mb-4 text-xl  text-pink-200 md:text-xl lg:text-2xl">
               Free follow-up sessions!

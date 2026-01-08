@@ -9,7 +9,7 @@ const HowItWorks = ({ className }) => {
             How It Works
           </h2>
         </div>
-        <div className="block sm:flex flex-wrap md:mx-40 mt-12 sm:mt-2">
+        <div className="block sm:flex flex-wrap md:mx-40 mt-12 sm:mt-2 justify-center ml-12">
           <div className="lg:w-1/3 md:w-1/2 w-full md:pr-10 md:py-6">
             <motion.div
               initial="hidden"
@@ -41,13 +41,16 @@ const HowItWorks = ({ className }) => {
                     />
                   </svg>
                 </div>
-                <div className="flex-grow pl-4">
+                <div className="flex-grow pl-12">
                   <h2 className="font-medium title-font text-lg text-gray-900 mb-1 tracking-wider">
                     Book Session
                   </h2>
-                  <p className="leading-relaxed">
+                  {/* <p className="leading-relaxed">
                     Book a session as per your convenience. You can choose your
                     preferred mode such as <b>video, chat or call</b>.
+                  </p> */}
+                  <p className="leading-relaxed">
+                    Book a session over Email/Whatsapp.
                   </p>
                 </div>
               </div>
@@ -80,12 +83,16 @@ const HowItWorks = ({ className }) => {
                     />
                   </svg>
                 </div>
-                <div className="flex-grow pl-4">
+                <div className="flex-grow pl-12">
                   <h2 className="font-medium title-font text-medium text-gray-900 mb-1 tracking-wider">
                     Receive Confirmation
                   </h2>
-                  <p className="leading-relaxed">
+                  {/* <p className="leading-relaxed">
                     You will receive an <b>email</b> confirmation post booking &
+                    details of how to join the session.
+                  </p> */}
+                  <p className="leading-relaxed">
+                    You will receive a confirmation post booking &
                     details of how to join the session.
                   </p>
                 </div>
@@ -118,7 +125,7 @@ const HowItWorks = ({ className }) => {
                     />
                   </svg>
                 </div>
-                <div className="flex-grow pl-4">
+                <div className="flex-grow pl-12">
                   <h2 className="font-medium title-font text-medium text-gray-900 mb-1 tracking-wider">
                     1 hr session
                   </h2>
@@ -141,13 +148,6 @@ const HowItWorks = ({ className }) => {
                     src={require("../../../../assets/backgrounds/how_it_works.gif")}
                     alt="How it works recording"
                   />
-                  {/* TODO use mp4 instead of gif */}
-                  {/* <video preload="yes" autoPlay muted playsInline width="640" height="360" className="w-full  h-full rounded-xl">
-                    <source
-                      src={require("../../../../assets/backgrounds/how_it_works.mp4")}
-                      type="video/mp4"
-                    />
-                  </video> */}
                 </div>
               </div>
             </div>

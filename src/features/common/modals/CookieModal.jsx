@@ -28,8 +28,16 @@ const CookieModal = () => {
         <div className="flex justify-center mr-2">
           <div className="bg-teal-50 rounded-2xl z-10 fixed bottom-3">
             <div className="mx-auto max-w-screen-2xl">
+              <div className="w-full items-end flex justify-end">
+                 <button
+                  onClick={handleAcceptCookies}
+                  className="order-last inline-block  m-2 whitespace-nowrap rounded-lg  px-4 py-0 text-center text-lg font-semibold text-black outline-none ring-indigo-300 transition duration-100 hover:bg-blue-500 focus-visible:ring active:bg-blue-500 sm:order-none sm:w-auto md:text-lg"
+                >
+                 X
+                </button>
+              </div>
               {/* <div className="flex justify-end pr-3 pt-2"><XMarkIcon className="h-6"/></div> */}
-              <div className="relative flex flex-wrap rounded-lg p-8 pb-6 shadow-lg sm:flex-nowrap sm:items-center sm:justify-center sm:gap-3 sm:pr-8 md:px-8">
+              <div className="relative flex flex-wrap rounded-lg p-5 pb-6 shadow-lg sm:flex-nowrap sm:items-center sm:justify-center sm:gap-3 sm:pr-8 md:px-8">
                 <div className="order-1 mb-2 inline-block w-11/12 max-w-screen-sm text-sm text-black sm:order-none sm:mb-0 sm:w-auto md:text-base">
                   <div className="flex ">
                     <img
@@ -60,7 +68,6 @@ const CookieModal = () => {
                 >
                   Accept Cookies
                 </button>
-
                 {/* <div className="order-2 flex w-1/12 items-start justify-end sm:absolute sm:right-0 sm:order-none sm:mr-2 sm:w-auto xl:mr-3">
                   <button
                     type="button"

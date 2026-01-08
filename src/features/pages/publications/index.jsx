@@ -8,7 +8,7 @@ const MyPublications = () => {
       <SEO title="Library" />
       <div>
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-          <PageTitle text="My Publications" className="mb-0 sm:font-md" />
+          <PageTitle text="Publications" className="mb-0 sm:font-md" />
 
           <div>
             <div className="flex justify-center items-center mb-4 font-quicksand text-pink-200">

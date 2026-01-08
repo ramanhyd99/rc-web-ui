@@ -28,7 +28,7 @@ const CarouselComp = () => {
                   <AnimatedHomeTitle />
                 </div>
                 <p className="py-2 sm:py-12 leading-relaxed sm:mr-20">
-                  Hello! I'm <b>Pooja Gupta</b>, a psychologist specialising in
+                  Hello! I'm <b>Pooja Gupta</b>, a licensed psychologist specialising in
                   Clinical Psychology. <br /> <br /> My mission is to bring
                   afforadable and the best possible mental healthcare to
                   everyone. I am with you in this journey of healing and loving

@@ -63,7 +63,7 @@ const Footer = () => {
                     className="text-gray-400 hover:text-white py-2"
                     target={"_blank"}
                   >
-                    My Publications
+                    Publications
                   </Link>
                 </li>
                 <li>

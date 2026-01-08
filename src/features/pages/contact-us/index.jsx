@@ -15,7 +15,7 @@ const ContactUsPage = () => {
             marginwidth="0"
             title="map"
             scrolling="no"
-            src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Random Capsule, Karnataka - 590006&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+            src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Bangalore, Karnataka - 590006&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
             // style="filter: grayscale(1) contrast(1.2) opacity(0.4);"
           ></iframe>
         </div>
@@ -31,12 +31,12 @@ const ContactUsPage = () => {
 
             <div className="flex mt-4">
               <EnvelopeIcon className="h-7 w-7 text-blue-300" />
-              <div className="ml-4 ">beheard@randomcapsule.in</div>
+              <div className="ml-4 ">session.randomcapsule@gmail.com</div>
             </div>
 
-            <div className="flex mt-4">
-              <MapPinIcon className="h-10 w-auto text-blue-300" />
-              <div className="ml-4">1487, Javali Koot Road, Basavanagar, Khoot, Bailhongal, Karnataka - 591102</div>
+            <div className="flex mt-4 ">
+              <MapPinIcon className="h-8 w-8 text-blue-300" />
+              <div className="ml-4">Bangalore, Karnataka</div>
             </div>
           </div>
         </div>
