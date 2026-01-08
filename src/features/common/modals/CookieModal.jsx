@@ -36,7 +36,7 @@ const CookieModal = () => {
                  X
                 </button>
               </div>
-              {/* <div className="flex justify-end pr-3 pt-2"><XMarkIcon className="h-6"/></div> */}
+              {/* <div className="flex justify-ends pr-3 pt-2"><XMarkIcon className="h-6"/></div> */}
               <div className="relative flex flex-wrap rounded-lg p-5 pb-6 shadow-lg sm:flex-nowrap sm:items-center sm:justify-center sm:gap-3 sm:pr-8 md:px-8">
                 <div className="order-1 mb-2 inline-block w-11/12 max-w-screen-sm text-sm text-black sm:order-none sm:mb-0 sm:w-auto md:text-base">
                   <div className="flex ">
