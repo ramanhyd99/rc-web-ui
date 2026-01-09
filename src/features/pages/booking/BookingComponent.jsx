@@ -80,7 +80,7 @@ const BookingComponent = (props) => {
                 </div>
                 <div>
                   <Button className="mt-2.5 sm:hidden bg-gradient-to-r from-blue-400 to-pink-300 text-sm pointer-events-none flex">
-                    All sessions 529
+                    All sessions ₹529
                   </Button>
                 </div>
               </div>
@@ -125,7 +125,7 @@ const BookingComponent = (props) => {
                 </ul>
                 <div className="flex justify-center">
                   <Button className="bg-gradient-to-r from-blue-400 to-pink-300 text-sm pointer-events-none flex">
-                    All sessions 529
+                    All sessions ₹529
                   </Button>
                 </div>
               </form>
