@@ -482,7 +482,8 @@ const NavBar = ({ userInfo }) => {
                 </div>
                 <div className="mt-8">
                   <Link
-                    to="/booking"
+                     to="https://wa.me/917975897538"
+                     target="_blank"
                     className="mx-auto my-0 ml-0 space-y-1 p-4  text-white bg-blue-500 border-0 focus:outline-none hover:bg-blue-400 rounded"
                   >
                     Book Session

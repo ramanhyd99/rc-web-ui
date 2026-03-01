@@ -42,7 +42,8 @@ const BookNow = ({ className }) => {
                 whileTap={{ scale: 0.9 }}
               >
                 <Link
-                  to="/booking"
+                   to="https://wa.me/917975897538"
+                    target="_blank"
                   className="flex justify-center sm:inline-block rounded-lg bg-blue-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-blue-400 focus-visible:ring active:bg-gray-200 md:text-base shadow-[0_0_3px_blue]"
                 >
                   <span>Book Now</span>

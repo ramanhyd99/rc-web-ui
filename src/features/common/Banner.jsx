@@ -40,7 +40,8 @@ const Banner = (props) => {
           Free sessions on 10th Oct, 2023. 
         </p>
         <a
-          href="/booking"
+          to="https://wa.me/917975897538"
+          target="_blank"
           className="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
         >
           Book now <span aria-hidden="true">&rarr;</span>
